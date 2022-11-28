@@ -15,5 +15,5 @@
     ],
     "moduleResolution": "node",
   },
-  "include": ["src/react"],
+  "include": ["src"],
 }
