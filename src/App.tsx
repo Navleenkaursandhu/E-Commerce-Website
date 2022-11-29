@@ -1,9 +1,21 @@
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from 'react-router-dom'
 import './App.css'
+import { PageMain } from './page_main/PageMain'
 
-export const App =() => {
+
+export const App = () => {
   return (
-    <>
-    <div className='text-lg font-bold'>hello</div>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          <Route index element={<PageMain/>} />
+          
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
