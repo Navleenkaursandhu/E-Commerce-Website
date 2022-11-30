@@ -20,7 +20,7 @@ export const Body = () => {
         </div>
       </div>
 
-      <div className='flex justify-between px-6  py-16 items-center'>
+      <div className='flex justify-between px-6 pt-16 items-center'>
         <div className='text-3xl'>Find Something Classy!</div>
         <div className='flex gap-10 text-lg items-center'>
           <div className='px-3 py-1 bg-[#F4DADB] rounded-md flex gap-2'>All Filters
@@ -38,9 +38,9 @@ export const Body = () => {
         </div>
       </div>
 
-        <div className='flex flex-wrap px-6 gap-6 justify-evenly'>
+        <div className='flex flex-wrap px-6 py-16 gap-10 justify-evenly'>
           {product.read().map((obj, i) => {
-            return <div key={obj.id} className='flex flex-col gap-2 w-[24rem]'>
+            return <div key={obj.id} className='flex flex-col gap-1.5 w-[24rem]'>
               <img className='rounded-md' src={obj.image}></img>
               <div>{obj.name}</div>
               <div>{obj.currency} {obj.price.toFixed(2)}</div>
