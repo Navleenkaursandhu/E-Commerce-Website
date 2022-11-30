@@ -13,7 +13,7 @@ export const Header = () => {
 
         <div className="flex items-center gap-10">
           <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md`}><a href='/Login'>LOGIN</a></button>
-          <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md`}>SIGN UP</button>
+          <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md`}><a href='./SignUp'>SIGN UP</a></button>
           <span className="material-symbols-outlined text-4xl text-[#F4DADB]">
             shopping_bag
           </span>

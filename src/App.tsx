@@ -7,6 +7,7 @@ import './App.css'
 import { PageMain } from './page_main/PageMain'
 import { PageAboutUs } from './page_about_us/PageAboutUs'
 import { PageLogin } from './page_login/PageLogin'
+import { PageSignUp } from './page_sign_up/PageSignUp'
 
 export const App = () => {
   return (
@@ -16,6 +17,7 @@ export const App = () => {
           <Route index element={<PageMain />} />
           <Route path='AboutUs' element={<PageAboutUs />} />
           <Route path='Login' element={<PageLogin />} />
+          <Route path='SignUp' element={<PageSignUp/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

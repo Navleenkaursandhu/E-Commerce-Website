@@ -5,7 +5,7 @@ export const PageLogin = () => {
     <>
       <div className='bg-no-repeat bg-auto h-screen bg-right-bottom text-[#7D515E] bg-[#F3EBF1]' style={{ backgroundImage: `url(${girlLoginImage})` }}>
         <div className='w-1/2 h-full flex justify-center items-center'>
-          <div className='bg-white p-16 ml-56 w-9/12'>
+          <div className='bg-white p-16 ml-56 w-9/12 rounded-md'>
             <div className='text-center font-semibold text-2xl'>LOGIN</div>
             <div className='flex flex-col gap-16 pt-16'>
               <div className='flex flex-col gap-2'>
