@@ -33,6 +33,7 @@ class Product {
         price: 35.25,
         currency: 'CAD',
         hasFreeDelivery: true,
+        sizes: ['S', 'M,']
         //reviews: TODO
       }, 
       {

@@ -10,10 +10,8 @@ export const Footer = () => {
           <div>Sign In</div>
         </div>
         <div className="flex flex-col gap-2 text-[#F4DADB]">
-          <div className="flex items-center gap-1"><span className="material-symbols-outlined">
-            copyright
-          </span>2022navleenkaurbrar</div>
-          <a href='https://www.navleenbrar.com/'>Visit My Portfolio</a>
+          <div className="flex items-center gap-1">© 2022 Navleen Kaur Brar</div>
+          <a target="_blank" href="https://www.navleenbrar.com/">Visit My Portfolio</a>
         </div>
       </div>
     </>
