@@ -8,6 +8,7 @@ import { PageMain } from './page_main/PageMain'
 import { PageAboutUs } from './page_about_us/PageAboutUs'
 import { PageLogin } from './page_login/PageLogin'
 import { PageSignUp } from './page_sign_up/PageSignUp'
+import { PageForgotPassword } from './page_forgot_password/PageForgotPassword'
 
 export const App = () => {
   return (
@@ -18,6 +19,7 @@ export const App = () => {
           <Route path='AboutUs' element={<PageAboutUs />} />
           <Route path='Login' element={<PageLogin />} />
           <Route path='SignUp' element={<PageSignUp/>}/>
+          <Route path='ForgotPassword' element={<PageForgotPassword/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
