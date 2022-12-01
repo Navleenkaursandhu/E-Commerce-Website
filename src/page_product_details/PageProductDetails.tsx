@@ -9,16 +9,16 @@ export const PageProductDetails = () => {
   const params = useParams()
   const id = Number(params.id)
   const productObject = product.read().find((obj, i) => obj.id === id)
-  const [sizeSelected, setSizeSelected] = useState('')
+  const [sizeSelected, setSizeSelected] = useState('M')
   const [quantitySelected, setQuantitySelected] = useState('1')
 
   console.log(sizeSelected)
   console.log(quantitySelected)
 
   return (
-    <div className='text-[#7D515E]'>
+    <div className='text-[#7D515E] h-screen '>
       <Header />
-      <div className="bg-[#F3EBF1] h-screen py-16 px-32  text-2xl">
+      <div className="bg-[#F3EBF1]py-16 px-32 text-2xl">
         <div className="flex gap-32">
           <img className="w-[32rem] rounded-md" src={productObject.image}></img>
 
@@ -60,7 +60,7 @@ export const PageProductDetails = () => {
             </div>
 
             <div className='pt-10'>
-              <a >
+              <a href='/start-checkout'>
                 <button className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}>Add To Bag</button>
               </a>
             </div>

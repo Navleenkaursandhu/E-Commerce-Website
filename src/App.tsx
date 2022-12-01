@@ -10,6 +10,7 @@ import { PageLogin } from './page_login/PageLogin'
 import { PageSignUp } from './page_sign_up/PageSignUp'
 import { PageForgotPassword } from './page_forgot_password/PageForgotPassword'
 import { PageProductDetails } from './page_product_details/PageProductDetails'
+import { PageStartCheckout } from './page_start_checkout/PageStartCheckout'
 
 export const App = () => {
   return (
@@ -17,13 +18,14 @@ export const App = () => {
       <Routes>
         <Route path="/">
           <Route index element={<PageMain />} />
-          <Route path='about-us' element={<PageAboutUs />} />
-          <Route path='login' element={<PageLogin />} />
-          <Route path='sign-up' element={<PageSignUp />} />
-          <Route path='forgot-password' element={<PageForgotPassword />} />
+          <Route path="about-us" element={<PageAboutUs />} />
+          <Route path="login" element={<PageLogin />} />
+          <Route path="sign-up" element={<PageSignUp />} />
+          <Route path="forgot-password" element={<PageForgotPassword />} />
           <Route path="product-details">
             <Route path=':id' element={<PageProductDetails />} />
           </Route>
+          <Route path="start-checkout" element={<PageStartCheckout />} />
         </Route>
       </Routes>
     </BrowserRouter>

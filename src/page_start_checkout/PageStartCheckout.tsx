@@ -1,4 +1,4 @@
-export const StartCheckout = () => {
+export const PageStartCheckout = () => {
   return (
     <>
     <div>Checkout</div>
