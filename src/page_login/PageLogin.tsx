@@ -1,9 +1,12 @@
 import { buttonShadowEffect } from '../common/tailwind_constants'
 import girlLoginImage from '../assets/GirlLoginImage.svg'
+import { Header } from '../common/Header'
+import { Footer } from '../common/Footer'
 export const PageLogin = () => {
   return (
-    <>
-      <div className='bg-no-repeat bg-auto h-screen bg-right-bottom text-[#7D515E] bg-[#F3EBF1]' style={{ backgroundImage: `url(${girlLoginImage})` }}>
+    <div className='text-[#7D515E]'>
+      <Header />
+      <div className='bg-no-repeat bg-auto h-screen bg-right-bottom  bg-[#F3EBF1]' style={{ backgroundImage: `url(${girlLoginImage})` }}>
         <div className='w-1/2 h-full flex justify-center items-center'>
           <div className='bg-white p-16 ml-56 w-9/12 rounded-md'>
             <div className='text-center font-semibold text-2xl'>LOGIN</div>
@@ -24,6 +27,7 @@ export const PageLogin = () => {
           </div>
         </div>
       </div>
-    </>
+      <Footer />
+    </div>
   )
 }

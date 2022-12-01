@@ -33,7 +33,9 @@ class Product {
         price: 35.25,
         currency: 'CAD',
         hasFreeDelivery: true,
-        sizes: ['S', 'M,']
+        sizes: ['S', 'M', 'L', 'XL'],
+        description: 'Soft cotton summer wear with smart look',
+        color: 'Grey',
         //reviews: TODO
       }, 
       {
@@ -43,6 +45,9 @@ class Product {
         price: 26.50,
         currency: 'CAD',
         hasFreeDelivery: true,
+        sizes: ['S', 'M', 'L', 'XL'],
+        description: 'Soft cotton summer wear with smart look',
+        color: 'White',
         //reviews: TODO
       },
       {
@@ -52,6 +57,9 @@ class Product {
         price: 32.50,
         currency: 'CAD',
         hasFreeDelivery: true,
+        sizes: ['S', 'M', 'L', 'XL'],
+        description: 'Soft cotton summer wear with smart look',
+        color: 'Navy Blue',
         //reviews: TODO
       },
       {
@@ -61,6 +69,9 @@ class Product {
         price: 50.00,
         currency: 'CAD',
         hasFreeDelivery: true,
+        sizes: ['S', 'M', 'L', 'XL'],
+        description: 'Soft cotton summer wear with smart look',
+        color: 'Grey',
         //reviews: TODO
       },{
         id: 4,
@@ -69,6 +80,9 @@ class Product {
         price: 30.05,
         currency: 'CAD',
         hasFreeDelivery: true,
+        sizes: ['S', 'M', 'L', 'XL'],
+        description: 'Soft cotton summer wear with smart look',
+        color: 'Black',
         //reviews: TODO
       },
       {
@@ -78,6 +92,9 @@ class Product {
         price: 40.75,
         currency: 'CAD',
         hasFreeDelivery: true,
+        sizes: ['S', 'M', 'L', 'XL'],
+        description: 'Soft cotton summer wear with smart look',
+        color: 'Peachy Orange',
         //reviews: TODO
       },
       {
@@ -87,6 +104,9 @@ class Product {
         price: 18.50,
         currency: 'CAD',
         hasFreeDelivery: true,
+        sizes: ['S', 'M', 'L', 'XL'],
+        description: 'Soft cotton summer wear with smart look',
+        color: 'Brown',
         //reviews: TODO
       },
       {
@@ -96,6 +116,9 @@ class Product {
         price: 34.05,
         currency: 'CAD',
         hasFreeDelivery: true,
+        sizes: ['S', 'M', 'L', 'XL'],
+        description: 'Soft cotton summer wear with smart look',
+        color: 'pink',
         //reviews: TODO
       },
       {
@@ -105,6 +128,9 @@ class Product {
         price: 20.00,
         currency: 'CAD',
         hasFreeDelivery: true,
+        sizes: ['S', 'M', 'L', 'XL'],
+        description: 'Soft cotton summer wear with smart look',
+        color: 'Red',
         //reviews: TODO
       },
       {
@@ -114,6 +140,9 @@ class Product {
         price: 45.70,
         currency: 'CAD',
         hasFreeDelivery: true,
+        sizes: ['S', 'M', 'L', 'XL'],
+        description: 'Soft cotton summer wear with smart look',
+        color: 'Pinkish Brown',
         //reviews: TODO
       },
       {
@@ -123,6 +152,9 @@ class Product {
         price: 35.50,
         currency: 'CAD',
         hasFreeDelivery: true,
+        sizes: ['S', 'M', 'L', 'XL'],
+        description: 'Soft cotton summer wear with smart look',
+        color: 'Black',
         //reviews: TODO
       },
       {
@@ -132,6 +164,9 @@ class Product {
         price: 55.00,
         currency: 'CAD',
         hasFreeDelivery: true,
+        sizes: ['S', 'M', 'L', 'XL'],
+        description: 'Soft cotton summer wear with smart look',
+        color: 'Bottle Green',
         //reviews: TODO
       },
       {
@@ -141,6 +176,9 @@ class Product {
         price: 38.25,
         currency: 'CAD',
         hasFreeDelivery: true,
+        sizes: ['S', 'M', 'L', 'XL'],
+        description: 'Soft cotton summer wear with smart look',
+        color: 'Red',
         //reviews: TODO
       },
       {
@@ -150,6 +188,9 @@ class Product {
         price: 46.15,
         currency: 'CAD',
         hasFreeDelivery: true,
+        sizes: ['S', 'M', 'L', 'XL'],
+        description: 'Soft cotton summer wear with smart look',
+        color: 'White',
         //reviews: TODO
       },
       {
@@ -159,6 +200,9 @@ class Product {
         price: 30.25,
         currency: 'CAD',
         hasFreeDelivery: true,
+        sizes: ['S', 'M', 'L', 'XL'],
+        description: 'Soft cotton summer wear with smart look',
+        color: 'Yellow',
         //reviews: TODO
       },
       {
@@ -168,6 +212,9 @@ class Product {
         price: 52.00,
         currency: 'CAD',
         hasFreeDelivery: true,
+        sizes: ['S', 'M', 'L', 'XL'],
+        description: 'Soft cotton summer wear with smart look',
+        color: 'Pink',
         //reviews: TODO
       },
       {
@@ -177,6 +224,9 @@ class Product {
         price: 36.55,
         currency: 'CAD',
         hasFreeDelivery: true,
+        sizes: ['S', 'M', 'L', 'XL'],
+        description: 'Soft cotton summer wear with smart look',
+        color: 'Light Pink',
         //reviews: TODO
       },
       {
@@ -186,6 +236,9 @@ class Product {
         price: 26.90,
         currency: 'CAD',
         hasFreeDelivery: true,
+        sizes: ['S', 'M', 'L', 'XL'],
+        description: 'Soft cotton summer wear with smart look',
+        color: 'Sky Blue',
         //reviews: TODO
       },
     ]

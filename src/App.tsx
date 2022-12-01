@@ -9,6 +9,7 @@ import { PageAboutUs } from './page_about_us/PageAboutUs'
 import { PageLogin } from './page_login/PageLogin'
 import { PageSignUp } from './page_sign_up/PageSignUp'
 import { PageForgotPassword } from './page_forgot_password/PageForgotPassword'
+import { PageProductDetails } from './page_product_details/PageProductDetails'
 
 export const App = () => {
   return (
@@ -20,6 +21,9 @@ export const App = () => {
           <Route path='login' element={<PageLogin />} />
           <Route path='sign-up' element={<PageSignUp />} />
           <Route path='forgot-password' element={<PageForgotPassword />} />
+          <Route path="product-details">
+            <Route path=':id' element={<PageProductDetails />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,10 +1,10 @@
-import { buttonShadowEffect } from "../common/tailwind_constants"
+import { buttonShadowEffect } from "./tailwind_constants"
 export const Header = () => {
   return (
     <>
       <div className="flex bg-[#7D515E] justify-between p-6 text-lg font-medium">
         <div className="flex items-center gap-10">
-          <div className="text-[#F4DADB] text-3xl">CLASSIC TEES</div>
+          <a className="text-[#F4DADB] text-3xl" href='/'>CLASSIC TEES</a>
           <div className="text-[#F4DADB]">
             <a href='/about-us'>About us</a>
           </div>

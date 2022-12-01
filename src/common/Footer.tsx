@@ -2,7 +2,7 @@ export const Footer = () => {
   return (
     <>
       <div className="flex p-6 bg-[#7D515E] justify-between">
-        <div className="text-[#F4DADB] text-3xl">CLASSIC TEES</div>
+        <a className="text-[#F4DADB] text-3xl" href='/'>CLASSIC TEES</a>
         <div className="flex flex-col gap-2 text-[#F4DADB]">
           <a href='/about-us'>About Us</a>
           <div>Orders</div>

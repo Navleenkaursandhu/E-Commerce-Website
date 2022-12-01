@@ -4,7 +4,6 @@ import img3 from '../assets/img3.jpg'
 import { product } from '../models/product'
 export const Body = () => {
 
-  console.log(product.read())
   return (
     <div className='bg-[#F3EBF1]'>
       <div className="flex h-[44rem]">
@@ -40,13 +39,13 @@ export const Body = () => {
 
         <div className='flex flex-wrap px-6 py-16 gap-10 justify-evenly'>
           {product.read().map((obj, i) => {
-            return <div key={obj.id} className='flex flex-col gap-1.5 w-[24rem]'>
+            return <a href={`/product-details/${obj.id}`} key={obj.id} className='flex flex-col gap-1.5 w-[24rem]'>
               <img className='rounded-md' src={obj.image}></img>
               <div>{obj.name}</div>
               <div>{obj.currency} {obj.price.toFixed(2)}</div>
               {obj.hasFreeDelivery && <div className='bg-[#F4DADB] px-3 py-1 rounded-md w-1/2 text-center'>Free Delivery</div>
               }
-            </div>
+            </a>
           })}
         </div>
     </div>

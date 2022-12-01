@@ -1,6 +1,6 @@
-import { Header } from "./Header"
+import { Header } from "../common/Header"
 import { Body } from "./Body"
-import { Footer } from "./Footer"
+import { Footer } from "../common/Footer"
 export const PageMain = () => {
 
   return (
