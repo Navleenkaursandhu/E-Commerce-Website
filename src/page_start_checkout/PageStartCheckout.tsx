@@ -1,7 +1,7 @@
 export const PageStartCheckout = () => {
   return (
-    <>
-    <div>Checkout</div>
-    </>
+    <div className="text-[#7D515E]">
+      <div>Checkout</div>
+    </div>
   )
 }

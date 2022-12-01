@@ -3,9 +3,9 @@ import { Header } from '../common/Header'
 import { Footer } from '../common/Footer'
 export const PageForgotPassword = () => {
   return (
-    <div className='text-[#7D515E] h-screen'>
+    <div className='text-[#7D515E] min-h-screen flex flex-col'>
       <Header />
-      <div className="bg-[#F3EBF1] flex flex-col items-center ">
+      <div className="bg-[#F3EBF1] flex flex-col items-center flex-1 ">
         <div className="mt-32">
           <div className="font-semibold text-3xl mb-4">Password Assistance</div>
           <p>Enter the mobile number or the E-mail address associated with your account</p>

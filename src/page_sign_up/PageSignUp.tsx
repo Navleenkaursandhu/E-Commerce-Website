@@ -4,10 +4,10 @@ import { Header } from '../common/Header'
 import { Footer } from '../common/Footer'
 export const PageSignUp = () => {
   return (
-    <div className='text-[#7D515E] h-screen'>
+    <div className='text-[#7D515E] min-h-screen flex flex-col'>
       <Header />
-      <div className='flex justify-end bg-no-repeat bg-auto bg-left-bottom bg-[#F3EBF1]' style={{ backgroundImage: `url(${girlSignUpImage})` }}>
-        <div className='w-1/2 h-full flex justify-center items-center'>
+      <div className='flex justify-end bg-no-repeat bg-auto bg-left-bottom bg-[#F3EBF1] flex-1' style={{ backgroundImage: `url(${girlSignUpImage})` }}>
+        <div className='w-1/2 flex justify-center items-center'>
           <div className='bg-white px-16 py-10 mr-56 my-6 w-9/12 rounded-md'>
             <div className='text-center font-semibold text-2xl'>CREATE ACCOUNT</div>
             <div className='flex flex-col gap-10 pt-16'>

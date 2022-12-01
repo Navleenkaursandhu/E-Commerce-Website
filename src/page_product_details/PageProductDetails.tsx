@@ -16,9 +16,9 @@ export const PageProductDetails = () => {
   console.log(quantitySelected)
 
   return (
-    <div className='text-[#7D515E] h-screen '>
+    <div className='text-[#7D515E] flex flex-col min-h-screen'>
       <Header />
-      <div className="bg-[#F3EBF1]py-16 px-32 text-2xl">
+      <div className="bg-[#F3EBF1]py-16 px-32 py-16 text-2xl flex-1">
         <div className="flex gap-32">
           <img className="w-[32rem] rounded-md" src={productObject.image}></img>
 
@@ -60,9 +60,12 @@ export const PageProductDetails = () => {
             </div>
 
             <div className='pt-10'>
-              <a href='/start-checkout'>
-                <button className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}>Add To Bag</button>
-              </a>
+              <button
+                className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}
+                
+              >
+                Add To Bag
+              </button>
             </div>
 
             <div className='text-lg'>*Return Policy: Returnable after 30 days of purchase</div>
