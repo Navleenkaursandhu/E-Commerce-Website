@@ -4,10 +4,10 @@ export const Footer = () => {
       <div className="flex p-6 bg-[#7D515E] justify-between">
         <div className="text-[#F4DADB] text-3xl">CLASSIC TEES</div>
         <div className="flex flex-col gap-2 text-[#F4DADB]">
-          <div>About Us</div>
+          <a href='/about-us'>About Us</a>
           <div>Orders</div>
-          <div>Login</div>
-          <div>Sign In</div>
+          <a href='/login'>Login</a>
+          <a href='/sign-up'>Sign Up</a>
         </div>
         <div className="flex flex-col gap-2 text-[#F4DADB]">
           <div className="flex items-center gap-1">© 2022 Navleen Kaur Brar</div>

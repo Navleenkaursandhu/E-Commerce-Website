@@ -6,14 +6,14 @@ export const Header = () => {
         <div className="flex items-center gap-10">
           <div className="text-[#F4DADB] text-3xl">CLASSIC TEES</div>
           <div className="text-[#F4DADB]">
-            <a href='/AboutUs'>About us</a>
+            <a href='/about-us'>About us</a>
           </div>
           <div className="text-[#F4DADB]">Orders</div>
         </div>
 
         <div className="flex items-center gap-10">
-          <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md`}><a href='/Login'>LOGIN</a></button>
-          <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md`}><a href='./SignUp'>SIGN UP</a></button>
+          <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md`}><a href='/login'>LOGIN</a></button>
+          <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md`}><a href='./sign-up'>SIGN UP</a></button>
           <span className="material-symbols-outlined text-4xl text-[#F4DADB]">
             shopping_bag
           </span>

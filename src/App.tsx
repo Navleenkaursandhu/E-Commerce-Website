@@ -16,10 +16,10 @@ export const App = () => {
       <Routes>
         <Route path="/">
           <Route index element={<PageMain />} />
-          <Route path='AboutUs' element={<PageAboutUs />} />
-          <Route path='Login' element={<PageLogin />} />
-          <Route path='SignUp' element={<PageSignUp/>}/>
-          <Route path='ForgotPassword' element={<PageForgotPassword/>}/>
+          <Route path='about-us' element={<PageAboutUs />} />
+          <Route path='login' element={<PageLogin />} />
+          <Route path='sign-up' element={<PageSignUp />} />
+          <Route path='forgot-password' element={<PageForgotPassword />} />
         </Route>
       </Routes>
     </BrowserRouter>
