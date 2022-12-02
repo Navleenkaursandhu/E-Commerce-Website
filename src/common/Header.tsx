@@ -14,6 +14,8 @@ export const Header = () => {
           <a className="sm:inline hidden text-[#F4DADB]" href='/about-us'>About us</a>
           <div className="sm:inline hidden text-[#F4DADB]">Orders</div>
         </div>
+        
+     
 
         {isMenuClicked && <div className="flex flex-col gap-6 sm:hidden absolute top-20 bg-[#7D515E] p-6 rounded-md text-sm">
           <a className="text-[#F4DADB]" href='/about-us'>About us</a>

@@ -6,8 +6,9 @@ export const PageLogin = () => {
   return (
     <div className='text-[#7D515E] flex flex-col min-h-screen'>
       <Header />
-      <div className='bg-no-repeat bg-auto bg-right-bottom bg-[#F3EBF1] flex-1' style={{ backgroundImage: `url(${girlLoginImage})` }}>
-        <div className='w-1/2 flex justify-center items-center'>
+      <div className='flex flex-1 sm:flex-row flex-col bg-[#F3EBF1]'>
+
+        <div className='flex sm:flex-1 flex-auto justify-center items-center'>
           <div className='bg-white p-16 ml-56 w-9/12 rounded-md my-6'>
             <div className='text-center font-semibold text-2xl'>LOGIN</div>
             <div className='flex flex-col gap-16 pt-16'>
@@ -26,8 +27,12 @@ export const PageLogin = () => {
             </div>
           </div>
         </div>
+
+
+        <div className='sm:flex-1 flex-auto bg-no-repeat bg-auto sm:bg-right-bottom ' style={{ backgroundImage: `url(${girlLoginImage})` }}></div>
+        <img src={girlLoginImage} className='sm:hidden w-full'></img>
+        
       </div>
       <Footer />
-    </div>
-  )
+    </div>)
 }
