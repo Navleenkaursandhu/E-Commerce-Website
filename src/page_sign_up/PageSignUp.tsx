@@ -6,9 +6,11 @@ export const PageSignUp = () => {
   return (
     <div className='text-[#7D515E] min-h-screen flex flex-col'>
       <Header />
-      <div className='flex justify-end bg-no-repeat bg-auto bg-left-bottom bg-[#F3EBF1] flex-1' style={{ backgroundImage: `url(${girlSignUpImage})` }}>
-        <div className='w-1/2 flex justify-center items-center'>
-          <div className='bg-white px-16 py-10 mr-56 my-6 w-9/12 rounded-md'>
+      <div className='flex flex-1 md:flex-row flex-col  bg-[#F3EBF1]' >
+        <div className="md:flex-1 flex-auto bg-no-repeat bg-auto sm:bg-left-bottom" style={{ backgroundImage: `url(${girlSignUpImage})` }}></div>
+
+        <div className='flex md:flex-1 flex-auto justify-center items-center'>
+          <div className='bg-white xl:m-24 lg:p-10 lg:m-10 md:mx-2 sm:m-24 p-4 m-2.5 w-full rounded-md'>
             <div className='text-center font-semibold text-2xl'>CREATE ACCOUNT</div>
             <div className='flex flex-col gap-10 pt-16'>
               <div className='flex flex-col gap-2'>
@@ -34,6 +36,8 @@ export const PageSignUp = () => {
             </div>
           </div>
         </div>
+
+        <div className='flex justify-center'><img src={girlSignUpImage} className='md:hidden w-72'></img></div>
       </div>
       <Footer />
     </div>
