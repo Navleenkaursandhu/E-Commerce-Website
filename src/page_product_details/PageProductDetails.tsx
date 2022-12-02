@@ -18,11 +18,11 @@ export const PageProductDetails = () => {
   return (
     <div className='text-[#7D515E] flex flex-col min-h-screen'>
       <Header />
-      <div className="bg-[#F3EBF1]py-16 px-32 py-16 text-2xl flex-1">
-        <div className="flex gap-32">
-          <img className="w-[32rem] rounded-md" src={productObject.image}></img>
+      <div className="bg-[#F3EBF1] py-16 xl:px-32 lg:px-20 text-2xl flex-1">
+        <div className="flex lg:flex-row flex-col items-center gap-16 xl:gap-32 lg:gap-20">
+          <img className="w-[32rem] rounded-md sm:p-0 p-4" src={productObject.image}></img>
 
-          <div className="flex flex-col w-1/2 gap-4">
+          <div className="flex flex-col md:w-3/5 sm:w-4/5 w-full gap-4 p-4">
             <div>
               <div className="text-3xl font-semibold">{productObject.name}</div>
               <div className="h-0.5 bg-[#7D515E]"></div>
@@ -38,7 +38,7 @@ export const PageProductDetails = () => {
 
             <div className="flex gap-6">
               <div>Sizes: </div>
-              <div className="flex gap-12">
+              <div className="flex sm:gap-12 gap-2">
                 {productObject.sizes.map((str, i) => <button className={` ${buttonShadowEffect} w-[2.5rem] rounded-md bg-[#F4DADB]`} onClick={() => setSizeSelected(str)} key={i}>{str}</button>)}
               </div>
             </div>
