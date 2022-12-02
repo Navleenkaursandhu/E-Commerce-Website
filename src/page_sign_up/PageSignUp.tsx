@@ -6,11 +6,11 @@ export const PageSignUp = () => {
   return (
     <div className='text-[#7D515E] min-h-screen flex flex-col'>
       <Header />
-      <div className='flex flex-1 md:flex-row flex-col  bg-[#F3EBF1]' >
+      <div className='flex flex-1 lg:flex-row flex-col  bg-[#F3EBF1]' >
         <div className="md:flex-1 flex-auto bg-no-repeat bg-auto sm:bg-left-bottom" style={{ backgroundImage: `url(${girlSignUpImage})` }}></div>
 
         <div className='flex md:flex-1 flex-auto justify-center items-center'>
-          <div className='bg-white xl:m-24 lg:p-10 lg:m-10 md:mx-2 sm:m-24 p-4 m-2.5 w-full rounded-md'>
+          <div className='bg-white xl:m-24 lg:p-10 lg:m-10 md:m-32 md:p-16 sm:m-24 p-4 m-2.5 w-full rounded-md'>
             <div className='text-center font-semibold text-2xl'>CREATE ACCOUNT</div>
             <div className='flex flex-col gap-10 pt-16'>
               <div className='flex flex-col gap-2'>
@@ -25,7 +25,7 @@ export const PageSignUp = () => {
               </div>
               <div className='flex flex-col gap-2'>
                 <div>Password</div>
-                <input className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder='Atleast 6 characters'></input>
+                <input className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder='At least 6 characters'></input>
               </div>
               <div className='flex flex-col gap-2'>
                 <div>Retype Password</div>
@@ -37,7 +37,7 @@ export const PageSignUp = () => {
           </div>
         </div>
 
-        <div className='flex justify-center'><img src={girlSignUpImage} className='md:hidden w-72'></img></div>
+        <div className='flex justify-center'><img src={girlSignUpImage} className='lg:hidden'></img></div>
       </div>
       <Footer />
     </div>
