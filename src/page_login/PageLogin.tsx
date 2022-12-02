@@ -6,10 +6,9 @@ export const PageLogin = () => {
   return (
     <div className='text-[#7D515E] flex flex-col min-h-screen'>
       <Header />
-      <div className='flex flex-1 sm:flex-row flex-col bg-[#F3EBF1]'>
-
-        <div className='flex sm:flex-1 flex-auto justify-center items-center'>
-          <div className='bg-white p-16 ml-56 w-9/12 rounded-md my-6'>
+      <div className='flex flex-1 md:flex-row flex-col bg-[#F3EBF1]'>
+        <div className='flex md:flex-1 flex-auto justify-center items-center'>
+          <div className='bg-white xl:m-24 lg:p-10 lg:m-10 md:mx-2 sm:m-24 p-4 m-2.5 w-full rounded-md'>
             <div className='text-center font-semibold text-2xl'>LOGIN</div>
             <div className='flex flex-col gap-16 pt-16'>
               <div className='flex flex-col gap-2'>
@@ -28,10 +27,8 @@ export const PageLogin = () => {
           </div>
         </div>
 
-
-        <div className='sm:flex-1 flex-auto bg-no-repeat bg-auto sm:bg-right-bottom ' style={{ backgroundImage: `url(${girlLoginImage})` }}></div>
-        <img src={girlLoginImage} className='sm:hidden w-full'></img>
-        
+        <div className='md:flex-1 flex-auto bg-no-repeat bg-auto sm:bg-right-bottom' style={{ backgroundImage: `url(${girlLoginImage})` }}></div>
+        <div className='flex justify-center'><img src={girlLoginImage} className='md:hidden w-96'></img></div>
       </div>
       <Footer />
     </div>)
