@@ -4,6 +4,7 @@ import { product } from '../models/product'
 import { Header } from '../common/Header';
 import { Footer } from '../common/Footer';
 import { useState } from 'react';
+import { db } from '../db';
 
 export const PageProductDetails = () => {
   const params = useParams()
@@ -62,7 +63,11 @@ export const PageProductDetails = () => {
             <div className='pt-10'>
               <button
                 className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}
-                
+                onClick={() => db.bagItems.add({
+                  productId: productObject.id,
+                  size: sizeSelected,
+                  qty: Number(quantitySelected)
+                })}
               >
                 Add To Bag
               </button>
