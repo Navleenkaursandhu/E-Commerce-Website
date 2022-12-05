@@ -14,38 +14,41 @@ export const PageStartCheckout = () => {
   return (
     <div className="text-[#7D515E] flex flex-col min-h-screen">
       <Header />
-      <div className="bg-[#F3EBF1] text-xl flex-1">
+      <div className="bg-[#F3EBF1] sm:text-xl text-md flex-1">
         <div className="p-10">
           <div className="flex flex-row">
-            <div className="text-2xl">MY BAG</div>
-            <div className="flex-1 text-center text-2xl">Total Items: {bagItems && bagItems.reduce((prev, curr, i) => prev + curr.qty, 0)}</div>
+            <div className="sm:text-2xl text-lg">MY BAG</div>
+            <div className="flex-1 text-center sm:text-2xl text-lg">Total Items: {bagItems && bagItems.reduce((prev, curr, i) => prev + curr.qty, 0)}</div>
           </div>
           <div className="h-0.5 bg-[#7D515E]"></div>
         </div>
 
-        <div className="flex flex-row p-10 justify-between">
-          <div className="flex flex-col gap-10">
+        <div className="flex lg:flex-row flex-col p-10 lg:justify-between lg:gap-0 gap-16">
+          <div className="flex flex-col gap-16">
             {bagItems && bagItems.map((bagObj, i) => {
               return (
                 <div key={bagObj.id}>
-                  <div className="flex gap-16">
+                  <div className="flex sm:flex-row flex-col lg:gap-16 gap-6 sm:justify-between">
                     <img className="w-[20rem]" src={bagObj.product.image}></img>
-                    <div>
-                      <div className="text-2xl">{bagObj.product.name}</div>
-                      <div>Color: {bagObj.product.color}</div>
-                      <div>Size: {bagObj.size}</div>
-                      <div>Quantity: {bagObj.qty}</div>
-                      <div>Each: {CURRENCY} {bagObj.product.price}</div>
-                      <div>Total: {CURRENCY} {bagObj.qty * bagObj.product.price}</div>
+                    <div className="flex sm:flex-row md:gap-32 sm:gap-12 gap-6">
+                      <div>
+                        <div className="sm:text-2xl text-lg">{bagObj.product.name}</div>
+                        <div>Color: {bagObj.product.color}</div>
+                        <div>Size: {bagObj.size}</div>
+                        <div>Quantity: {bagObj.qty}</div>
+                        <div>Each: {CURRENCY} {bagObj.product.price}</div>
+                        <div>Total: {CURRENCY} {bagObj.qty * bagObj.product.price}</div>
+                      </div>
+                      <div><span onClick={() => db.bagItems.delete(bagObj.id)} className="material-symbols-outlined">close</span></div>
                     </div>
-                    <span onClick={() => db.bagItems.delete(bagObj.id)} className="material-symbols-outlined">close</span>
                   </div>
+                  <div className="sm:hidden h-0.5 bg-[#7D515E]"></div>
                 </div>
               )
             })}
           </div>
           <div className="flex flex-col flex-1 items-center gap-4">
-            <div className="text-2xl">Estimated Total: {CURRENCY} {bagItems && bagItems.reduce((prev, curr, i) => {
+            <div className="sm:text-2xl text-lg">Estimated Total: {CURRENCY} {bagItems && bagItems.reduce((prev, curr, i) => {
               const newSum = (curr.qty * curr.product.price) + prev
               return newSum
             }, 0)}</div>
