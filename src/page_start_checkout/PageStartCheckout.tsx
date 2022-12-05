@@ -2,7 +2,7 @@ import { useLiveQuery } from "dexie-react-hooks"
 import { Footer } from "../common/Footer"
 import { Header } from "../common/Header"
 import { db } from "../db"
-import { product } from "../models/product"
+import { CURRENCY, product } from "../models/product"
 import { buttonShadowEffect } from "../common/tailwind_constants"
 
 export const PageStartCheckout = () => {
@@ -38,8 +38,8 @@ export const PageStartCheckout = () => {
                       <div>Color: {bagObj.product.color}</div>
                       <div>Size: {bagObj.size}</div>
                       <div>Quantity: {bagObj.qty}</div>
-                      <div>Each: {bagObj.product.currency} {bagObj.product.price}</div>
-                      <div>Total: {bagObj.product.currency} {bagObj.qty * bagObj.product.price}</div>
+                      <div>Each: {CURRENCY} {bagObj.product.price}</div>
+                      <div>Total: {CURRENCY} {bagObj.qty * bagObj.product.price}</div>
                     </div>
                     <span onClick={() => db.bagItems.delete(bagObj.id)} className="material-symbols-outlined">close</span>
                   </div>
@@ -48,7 +48,7 @@ export const PageStartCheckout = () => {
             })}
           </div>
           <div className="flex flex-col flex-1 items-center gap-4">
-            <div className="text-2xl">Estimated Total: {bagItems && bagItems.reduce((prev, curr, i) => {
+            <div className="text-2xl">Estimated Total: {CURRENCY} {bagItems && bagItems.reduce((prev, curr, i) => {
                 const newSum = (curr.qty * curr.product.price) + prev
                 return newSum
             }, 0)}</div>

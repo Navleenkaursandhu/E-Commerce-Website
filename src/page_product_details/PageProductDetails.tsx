@@ -1,6 +1,6 @@
 import { buttonShadowEffect } from '../common/tailwind_constants'
 import { useParams } from "react-router-dom";
-import { product } from '../models/product'
+import { CURRENCY, product } from '../models/product'
 import { Header } from '../common/Header';
 import { Footer } from '../common/Footer';
 import { useState } from 'react';
@@ -30,7 +30,7 @@ export const PageProductDetails = () => {
               <div>{productObject.description}</div>
             </div>
 
-            <div>{productObject.currency} {productObject.price}</div>
+            <div>{CURRENCY} {productObject.price}</div>
 
             <div className="flex gap-6">
               <div>Color: </div>

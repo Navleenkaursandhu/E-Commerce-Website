@@ -1,7 +1,7 @@
 import img1 from '../assets/img1.jpg'
 import img2 from '../assets/img2.jpg'
 import img3 from '../assets/img3.jpg'
-import { product } from '../models/product'
+import { CURRENCY, product } from '../models/product'
 export const Body = () => {
 
   return (
@@ -42,7 +42,7 @@ export const Body = () => {
             return <a href={`/product-details/${obj.id}`} key={obj.id} className='flex flex-col gap-1.5 md:[24rem] sm:w-[16rem] w-[9rem]'>
               <img className='rounded-md' src={obj.image}></img>
               <div>{obj.name}</div>
-              <div>{obj.currency} {obj.price.toFixed(2)}</div>
+              <div>{CURRENCY} {obj.price.toFixed(2)}</div>
               {obj.hasFreeDelivery && <div className='bg-[#F4DADB] sm:px-3 sm:py-1 p-1 rounded-md sm:w-1/2 w-full text-center'>Free Delivery</div>
               }
             </a>
