@@ -21,16 +21,15 @@ export const PageProductDetails = () => {
       <Header />
       <div className="bg-[#F3EBF1] py-16 xl:px-32 lg:px-20 text-2xl flex-1">
         <div className="flex lg:flex-row flex-col items-center gap-16 xl:gap-32 lg:gap-20">
-          <img className="w-[32rem] rounded-md sm:p-0 p-4" src={productObject.image}></img>
+         <img className="w-[32rem] rounded-md sm:p-0 p-4" src={productObject.image}></img>
 
           <div className="flex flex-col md:w-3/5 sm:w-4/5 w-full gap-4 p-4">
             <div>
               <div className="text-3xl font-semibold">{productObject.name}</div>
               <div className="h-0.5 bg-[#7D515E]"></div>
-              <div>{productObject.description}</div>
+             <div>{productObject.description}</div>
             </div>
-
-            <div>{CURRENCY} {productObject.price}</div>
+           <div>{CURRENCY} {productObject.price}</div>
 
             <div className="flex gap-6">
               <div>Color: </div>

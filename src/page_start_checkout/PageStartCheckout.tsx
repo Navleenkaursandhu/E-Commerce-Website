@@ -6,14 +6,11 @@ import { CURRENCY, product } from "../models/product"
 import { buttonShadowEffect } from "../common/tailwind_constants"
 
 export const PageStartCheckout = () => {
-
   const bagItems = useLiveQuery(() => db.bagItems.toArray())
     ?.map(item => ({
       ...item,
       product: product.read().filter((object, i) => object.id === item.productId)[0]
     }));
-
-  console.log(bagItems)
   return (
     <div className="text-[#7D515E] flex flex-col min-h-screen">
       <Header />
@@ -21,7 +18,7 @@ export const PageStartCheckout = () => {
         <div className="p-10">
           <div className="flex flex-row">
             <div className="text-2xl">MY BAG</div>
-            <div className="flex-1 text-center text-2xl">{bagItems && bagItems.reduce((prev, curr, i) => prev + curr.qty, 0)} Items</div>
+            <div className="flex-1 text-center text-2xl">Total Items: {bagItems && bagItems.reduce((prev, curr, i) => prev + curr.qty, 0)}</div>
           </div>
           <div className="h-0.5 bg-[#7D515E]"></div>
         </div>
@@ -30,9 +27,9 @@ export const PageStartCheckout = () => {
           <div className="flex flex-col gap-10">
             {bagItems && bagItems.map((bagObj, i) => {
               return (
-                <div>
+                <div key={bagObj.id}>
                   <div className="flex gap-16">
-                    <img className="w-[16rem]" src={bagObj.product.image}></img>
+                    <img className="w-[20rem]" src={bagObj.product.image}></img>
                     <div>
                       <div className="text-2xl">{bagObj.product.name}</div>
                       <div>Color: {bagObj.product.color}</div>
@@ -49,8 +46,8 @@ export const PageStartCheckout = () => {
           </div>
           <div className="flex flex-col flex-1 items-center gap-4">
             <div className="text-2xl">Estimated Total: {CURRENCY} {bagItems && bagItems.reduce((prev, curr, i) => {
-                const newSum = (curr.qty * curr.product.price) + prev
-                return newSum
+              const newSum = (curr.qty * curr.product.price) + prev
+              return newSum
             }, 0)}</div>
             <button className={`${buttonShadowEffect} w-3/5 font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>Start Checkout</button>
           </div>
