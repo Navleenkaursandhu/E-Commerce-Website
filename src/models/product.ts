@@ -35,7 +35,7 @@ class Product {
         hasFreeDelivery: true,
         sizes: ['S', 'M', 'L', 'XL'],
         description: 'Soft cotton summer wear with smart look',
-        color: 'Grey',
+        color: 'Peach',
         //reviews: TODO
       }, 
       {
