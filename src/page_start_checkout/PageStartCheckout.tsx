@@ -28,10 +28,10 @@ export const PageStartCheckout = () => {
             {bagItems && bagItems.map((bagObj, i) => {
               return (
                 <div key={bagObj.id}>
-                  <div className="flex sm:flex-row flex-col lg:gap-16 gap-6 sm:justify-between">
+                  <div className="flex sm:flex-row flex-col lg:gap-16 gap-6 ">
                     <img className="w-[20rem] rounded-md" src={bagObj.product.image}></img>
-                    <div className="flex sm:flex-row md:gap-32 sm:gap-12 gap-6">
-                      <div>
+                    <div className="flex sm:flex-row md:gap-32 sm:gap-12 gap-6 flex-1">
+                      <div className="flex-1">
                         <div className="sm:text-2xl text-lg">{bagObj.product.name}</div>
                         <div>Color: {bagObj.product.color}</div>
                         <div>Size: {bagObj.size}</div>
@@ -39,7 +39,9 @@ export const PageStartCheckout = () => {
                         <div>Each: {CURRENCY} {bagObj.product.price}</div>
                         <div>Total: {CURRENCY} {bagObj.qty * bagObj.product.price}</div>
                       </div>
-                      <div><span onClick={() => db.bagItems.delete(bagObj.id)} className="material-symbols-outlined">close</span></div>
+                      <div>
+                        <button><span onClick={() => db.bagItems.delete(bagObj.id)} className="material-symbols-outlined">close</span></button>
+                      </div>
                     </div>
                   </div>
                   <div className="sm:hidden h-0.5 bg-[#7D515E]"></div>
