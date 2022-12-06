@@ -25,13 +25,13 @@ export const PageOrderSummary = () => {
             <div className="md:w-2/5 flex flex-col lg:pl-16 lg:pr-24 md:px-10  px-8 pt-16 gap-6">
               <div>
                 <div>ADDRESS DETAILS:</div>
-                <div className="w-full p-3 rounded-md bg-[#F4DADB]"></div>
+                <div className="w-full p-3 rounded-md bg-[#F4DADB]">TODO</div>
               </div>
 
               <div>
                 <div>PAYMENT DETAILS:</div>
                 <div>Credit Card Number</div>
-                <div className="w-full p-3 rounded-md bg-[#F4DADB]"></div>
+                <div className="w-full p-3 rounded-md bg-[#F4DADB]">TODO</div>
               </div>
             </div>
 
@@ -49,10 +49,10 @@ export const PageOrderSummary = () => {
                     <div className="h-0.5 bg-[#7D515E]"></div>
                   </div>
 
-                  <div>Order ID: { }</div>
+                  <div>Order ID: 'TODO'</div>
                   <div>Subtotal: {CURRENCY} {total}</div>
-                  <div>Shipping: CAD 0.00</div>
-                  <div>Sales Tax: 12%</div>
+                  <div>Shipping: {CURRENCY} 0.00</div>
+                  <div>Sales Tax: {CURRENCY} {total * 0.12}</div>
                   <div className="pt-8 text-2xl">TOTAL: {CURRENCY} {(total * 1.12).toFixed(2)}</div>
                 </div>
 
