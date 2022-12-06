@@ -13,6 +13,7 @@ import { PageProductDetails } from './page_product_details/PageProductDetails'
 import { PageStartCheckout } from './page_start_checkout/PageStartCheckout'
 import { Address } from './page_address/Address'
 import { Payment } from './page_payment/Payment'
+import { OrderSummary } from './page_order_summary/OrderSummary'
 
 export const App = () => {
   return (
@@ -30,6 +31,7 @@ export const App = () => {
           <Route path="start-checkout" element={<PageStartCheckout />} />
           <Route path="address" element={<Address />} />
           <Route path="payment" element={<Payment />} />
+          <Route path="order-summary" element={<OrderSummary />} />
         </Route>
       </Routes>
     </BrowserRouter>
