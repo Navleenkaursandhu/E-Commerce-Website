@@ -31,7 +31,7 @@ export const PageOrderSummary = (prop) => {
               <div>
                 <div>PAYMENT DETAILS:</div>
                 <div>Credit Card Number</div>
-                <div className="w-full p-3 rounded-md bg-[#F4DADB]">TODO</div>
+                <div className="w-full p-3 rounded-md bg-[#F4DADB]">{prop.payment}</div>
               </div>
             </div>
 
