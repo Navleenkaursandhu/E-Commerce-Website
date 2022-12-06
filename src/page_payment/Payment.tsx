@@ -8,13 +8,13 @@ export const Payment = () => {
       <div className="text-[#7D515E] flex flex-col min-h-screen">
         <Header />
         <div className="bg-[#F3EBF1] sm:text-xl text-md flex flex-1 justify-center items-center">
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 md:w-auto w-full md:p-0 p-4 ">
             <div>
               <div>Credit Card Number</div>
               <input className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder="Type your credit card number"></input>
             </div>
 
-            <div className="flex flex-row gap-2">
+            <div className="flex md:flex-row flex-col gap-2">
               <div>
                 <div>Expiry Month*</div>
                 <input className='p-1.5 rounded-md bg-[#F4DADB]'></input>
