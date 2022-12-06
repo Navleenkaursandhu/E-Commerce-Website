@@ -6,7 +6,7 @@ import { CURRENCY, product } from "../models/product"
 import { buttonShadowEffect } from "../common/tailwind_constants"
 import { BagItemsSummary } from "../common/BagItemsSummary"
 
-export const PageStartCheckout = () => {
+export const PageStartCheckout = (prop) => {
   const bagItems = useLiveQuery(() => db.bagItems.toArray())
     ?.map(item => ({
       ...item,
@@ -33,9 +33,9 @@ export const PageStartCheckout = () => {
               const newSum = (curr.qty * curr.product.price) + prev
               return newSum
             }, 0)}</div>
-            <a href='/address' className="w-4/5">
-              <button className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>Start Checkout</button>
-            </a>
+
+            <button onClick={() => prop.onNext()} className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>Start Checkout</button>
+
           </div>
         </div>
       </div>

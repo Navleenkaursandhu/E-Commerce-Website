@@ -5,7 +5,7 @@ import { useLiveQuery } from "dexie-react-hooks"
 import { CURRENCY, product } from "../models/product"
 import { BagItemsSummary } from "../common/BagItemsSummary"
 
-export const OrderSummary = () => {
+export const PageOrderSummary = () => {
   const bagItems = useLiveQuery(() => db.bagItems.toArray())
     ?.map(item => ({
       ...item,

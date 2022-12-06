@@ -2,7 +2,7 @@ import { Footer } from "../common/Footer"
 import { Header } from "../common/Header"
 import { buttonShadowEffect } from "../common/tailwind_constants"
 
-export const Address = () => {
+export const PageAddress = (prop) => {
   return (
     <>
       <div className="text-[#7D515E] flex flex-col min-h-screen">
@@ -24,9 +24,8 @@ export const Address = () => {
 
             <div className="mb-12">Estimate Delivery: 3 - 7 Business Days</div>
 
-            <a href='/payment' className="w-full">
-              <button className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>CONTINUE TO PAYMENT</button>
-            </a>
+            <button onClick={() => prop.onNext()} className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>CONTINUE TO PAYMENT</button>
+
           </div>
 
         </div>
