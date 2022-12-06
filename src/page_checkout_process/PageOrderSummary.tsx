@@ -6,7 +6,7 @@ import { CURRENCY, product } from "../models/product"
 import { BagItemsSummary } from "../common/BagItemsSummary"
 import { buttonShadowEffect } from "../common/tailwind_constants"
 
-export const PageOrderSummary = () => {
+export const PageOrderSummary = (prop) => {
   const bagItems = useLiveQuery(() => db.bagItems.toArray())
     ?.map(item => ({
       ...item,
@@ -25,7 +25,7 @@ export const PageOrderSummary = () => {
             <div className="md:w-2/5 flex flex-col lg:pl-16 lg:pr-24 md:px-10  px-8 pt-16 gap-6">
               <div>
                 <div>ADDRESS DETAILS:</div>
-                <div className="w-full p-3 rounded-md bg-[#F4DADB]">TODO</div>
+                <div className="w-full p-3 rounded-md bg-[#F4DADB]">{prop.address}</div>
               </div>
 
               <div>
