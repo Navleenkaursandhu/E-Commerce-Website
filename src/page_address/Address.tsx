@@ -10,7 +10,7 @@ export const Address = () => {
 
         <div className="bg-[#F3EBF1] sm:text-xl text-md flex flex-1 justify-center items-center">
           <div className="flex flex-col gap-6">
-            <div className="flex flex-row gap-72 items-center border-b-2 border-[#7D515E]">
+            <div className="flex flex-row sm:gap-72 gap-6 items-center border-b-2 border-[#7D515E]">
               <span className="material-symbols-outlined text-6xl">
                 local_shipping
               </span>
