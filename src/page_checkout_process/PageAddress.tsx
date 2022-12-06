@@ -1,8 +1,11 @@
+import { useState } from "react"
 import { Footer } from "../common/Footer"
 import { Header } from "../common/Header"
 import { buttonShadowEffect } from "../common/tailwind_constants"
 
 export const PageAddress = (prop) => {
+  const[inputAddress, setInputAddress] = useState('')
+
   return (
     <>
       <div className="text-[#7D515E] flex flex-col min-h-screen">
@@ -19,7 +22,7 @@ export const PageAddress = (prop) => {
 
             <div className='flex flex-col gap-2'>
               <div>Address</div>
-              <input className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder='Type your address'></input>
+              <input onChange={(e) => setInputAddress(e.target.value)} className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder='Type your address'></input>
             </div>
 
             <div className="mb-12">Estimate Delivery: 3 - 7 Business Days</div>
