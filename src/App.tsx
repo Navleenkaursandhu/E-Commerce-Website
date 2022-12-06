@@ -12,6 +12,7 @@ import { PageForgotPassword } from './page_forgot_password/PageForgotPassword'
 import { PageProductDetails } from './page_product_details/PageProductDetails'
 import { PageStartCheckout } from './page_start_checkout/PageStartCheckout'
 import { Address } from './page_address/Address'
+import { Payment } from './page_payment/Payment'
 
 export const App = () => {
   return (
@@ -28,6 +29,7 @@ export const App = () => {
           </Route>
           <Route path="start-checkout" element={<PageStartCheckout />} />
           <Route path="address" element={<Address />} />
+          <Route path="payment" element={<Payment />} />
         </Route>
       </Routes>
     </BrowserRouter>
