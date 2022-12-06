@@ -29,7 +29,7 @@ export const PageStartCheckout = () => {
               return (
                 <div key={bagObj.id}>
                   <div className="flex sm:flex-row flex-col lg:gap-16 gap-6 sm:justify-between">
-                    <img className="w-[20rem]" src={bagObj.product.image}></img>
+                    <img className="w-[20rem] rounded-md" src={bagObj.product.image}></img>
                     <div className="flex sm:flex-row md:gap-32 sm:gap-12 gap-6">
                       <div>
                         <div className="sm:text-2xl text-lg">{bagObj.product.name}</div>
@@ -52,7 +52,9 @@ export const PageStartCheckout = () => {
               const newSum = (curr.qty * curr.product.price) + prev
               return newSum
             }, 0)}</div>
-            <button className={`${buttonShadowEffect} w-3/5 font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>Start Checkout</button>
+            <a href='/address' className="w-4/5">
+              <button className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>Start Checkout</button>
+            </a>
           </div>
         </div>
       </div>
