@@ -6,7 +6,6 @@ export const ShoppingBag = () => {
   const bagItems = useLiveQuery(() => db.bagItems.toArray())
 
   const totalItems = bagItems?.reduce((prev, curr, i) => prev + curr.qty, 0)
-  console.log(totalItems)
 
   return (
     <>
