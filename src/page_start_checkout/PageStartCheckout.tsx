@@ -4,6 +4,7 @@ import { Header } from "../common/Header"
 import { db } from "../db"
 import { CURRENCY, product } from "../models/product"
 import { buttonShadowEffect } from "../common/tailwind_constants"
+import { BagItemsSummary } from "../common/BagItemsSummary"
 
 export const PageStartCheckout = () => {
   const bagItems = useLiveQuery(() => db.bagItems.toArray())
@@ -25,29 +26,7 @@ export const PageStartCheckout = () => {
 
         <div className="flex lg:flex-row flex-col p-10 lg:justify-between lg:gap-0 gap-16">
           <div className="flex flex-col gap-16">
-            {bagItems && bagItems.map((bagObj, i) => {
-              return (
-                <div key={bagObj.id}>
-                  <div className="flex sm:flex-row flex-col lg:gap-16 gap-6 ">
-                    <img className="w-[20rem] rounded-md" src={bagObj.product.image}></img>
-                    <div className="flex sm:flex-row md:gap-32 sm:gap-12 gap-6 flex-1">
-                      <div className="flex-1">
-                        <div className="sm:text-2xl text-lg">{bagObj.product.name}</div>
-                        <div>Color: {bagObj.product.color}</div>
-                        <div>Size: {bagObj.size}</div>
-                        <div>Quantity: {bagObj.qty}</div>
-                        <div>Each: {CURRENCY} {bagObj.product.price}</div>
-                        <div>Total: {CURRENCY} {bagObj.qty * bagObj.product.price}</div>
-                      </div>
-                      <div>
-                        <button><span onClick={() => db.bagItems.delete(bagObj.id)} className="material-symbols-outlined">close</span></button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="sm:hidden h-0.5 bg-[#7D515E]"></div>
-                </div>
-              )
-            })}
+            <BagItemsSummary />
           </div>
           <div className="flex flex-col flex-1 items-center gap-4">
             <div className="sm:text-2xl text-lg">Estimated Total: {CURRENCY} {bagItems && bagItems.reduce((prev, curr, i) => {
