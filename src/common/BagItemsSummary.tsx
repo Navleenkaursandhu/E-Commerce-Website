@@ -13,7 +13,7 @@ export const BagItemsSummary = () => {
       {bagItems && bagItems.map((bagObj, i) => {
         return (
           <div key={bagObj.id}>
-            <div className="flex sm:flex-row flex-col lg:gap-16 gap-6 ">
+            <div className="flex sm:flex-row flex-col lg:gap-12 gap-6 ">
               <img className="w-[20rem] rounded-md" src={bagObj.product.image}></img>
               <div className="flex sm:flex-row md:gap-32 sm:gap-12 gap-6 flex-1">
                 <div className="flex-1">
