@@ -7,20 +7,31 @@ export interface BagItem {
   qty: number;
 }
 
+export interface User {
+  id?: number;
+  email: string;
+  firstName: string;
+  lastName: string;
+  passwordHash: string;
+}
+
 export class MainDatabase extends Dexie {
-  bagItems!: Table<BagItem>; 
+  bagItems!: Table<BagItem>;
+  user!: Table<User>;
 
   constructor() {
     super('myDatabase');
     this.version(1).stores({
       bagItems: '++id',
-      // user
+      user: '++id,email', 
       // review
       // bag
       // order history
     });
   }
+
+
 }
 
-export const db = new MainDatabase(); 
+export const db = new MainDatabase();
 (window as any).db = db
