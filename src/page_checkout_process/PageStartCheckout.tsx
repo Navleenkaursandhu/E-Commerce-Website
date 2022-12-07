@@ -7,6 +7,7 @@ import { buttonShadowEffect } from "../common/tailwind_constants"
 import { BagItemsSummary } from "../common/BagItemsSummary"
 
 export const PageStartCheckout = (prop) => {
+
   const bagItems = useLiveQuery(() => db.bagItems.toArray())
     ?.map(item => ({
       ...item,

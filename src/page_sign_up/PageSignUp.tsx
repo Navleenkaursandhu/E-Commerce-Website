@@ -2,7 +2,9 @@ import { buttonShadowEffect } from '../common/tailwind_constants'
 import girlSignUpImage from '../assets/girlSignUpImage.svg'
 import { Header } from '../common/Header'
 import { Footer } from '../common/Footer'
-export const PageSignUp = () => {
+
+export const PageSignUp = (prop) => {
+  console.log(prop)
   return (
     <div className='text-[#7D515E] min-h-screen flex flex-col'>
       <Header />
@@ -32,10 +34,10 @@ export const PageSignUp = () => {
                 <input className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder='At least 6 characters'></input>
               </div>
               <div className='flex flex-col gap-2'>
-                <div>Retype Password</div>
+                <div>Confirm Password</div>
                 <input className='w-full px-4 py-2 rounded-md bg-[#F4DADB]'></input>
               </div>
-              <button className={`${buttonShadowEffect} p-2 font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] w-full rounded-md`}>CONTINUE</button>
+              <button onClick={() => prop.onNext()} className={`${buttonShadowEffect} p-2 font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] w-full rounded-md`}>CONTINUE</button>
               <div className='text-center'>*This will not create a real account</div>
             </div>
           </div>
