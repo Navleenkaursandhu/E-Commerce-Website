@@ -2,7 +2,7 @@ import { Footer } from "../common/Footer"
 import { Header } from "../common/Header"
 import { buttonShadowEffect } from "../common/tailwind_constants"
 
-export const PageUserSignedUp = () => {
+export const PageUserSignedUp = (prop) => {
   return (
     <>
       <div className='text-[#7D515E] min-h-screen flex flex-col'>
@@ -13,7 +13,7 @@ export const PageUserSignedUp = () => {
               check_circle
             </span>
             <div className="sm:text-4xl text-xl font-semibold mb-10">Thanks for Signing Up!</div>
-            <button className={`${buttonShadowEffect} font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] w-full p-2 rounded-md`}>CONTINUE TO LOGIN PAGE</button>
+            <button onClick={() => prop.onNext()} className={`${buttonShadowEffect} font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] w-full p-2 rounded-md`}>CONTINUE TO LOGIN PAGE</button>
           </div>
         </div>
         <Footer />
