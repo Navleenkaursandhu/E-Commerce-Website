@@ -9,17 +9,21 @@ export const PageSignUp = () => {
       <div className='flex flex-1 lg:flex-row flex-col  bg-[#F3EBF1]' >
         <div className="md:flex-1 flex-auto bg-no-repeat bg-auto sm:bg-left-bottom" style={{ backgroundImage: `url(${girlSignUpImage})` }}></div>
 
-        <div className='flex md:flex-1 flex-auto justify-center items-center'>
+        <div className='flex md:flex-1 justify-center items-center'>
           <div className='bg-white xl:m-24 lg:p-10 lg:m-10 md:m-32 md:p-16 sm:m-24 p-4 m-2.5 w-full rounded-md'>
             <div className='text-center font-semibold text-2xl'>CREATE ACCOUNT</div>
             <div className='flex flex-col gap-10 pt-16'>
               <div className='flex flex-col gap-2'>
-                <div>Name</div>
-                <input className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder='Type your name'></input>
+                <div>First Name</div>
+                <input className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder='Type your first name'></input>
               </div>
               <div className='flex flex-col gap-2'>
-                <div>Mobile Number or E-mail</div>
-                <input className='w-full px-4 py-2 rounded-md bg-[#F4DADB]'></input>
+                <div>Last Name</div>
+                <input className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder='Type your last name'></input>
+              </div>
+              <div className='flex flex-col gap-2'>
+                <div>E-mail</div>
+                <input className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder='Type your e-mail address'></input>
                 <div className='flex justify-end'>
                 </div>
               </div>
