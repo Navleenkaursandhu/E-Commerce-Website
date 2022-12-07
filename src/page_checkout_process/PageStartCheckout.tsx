@@ -22,7 +22,7 @@ export const PageStartCheckout = (prop) => {
             <div className="p-6 mt-24 text-center font-semibold sm:text-5xl text-3xl">YOUR BAG IS EMPTY</div>
         }
 
-        {bagItems?.length && <div className="p-10">
+        {!!bagItems?.length && <div className="p-10">
           <div className="flex flex-row">
             <div className="sm:text-2xl text-lg">MY BAG</div>
             <div className="flex-1 text-center sm:text-2xl text-lg">Total Items: {bagItems && bagItems.reduce((prev, curr, i) => prev + curr.qty, 0)}</div>
@@ -30,7 +30,7 @@ export const PageStartCheckout = (prop) => {
           <div className="h-0.5 bg-[#7D515E]"></div>
         </div>}
 
-        {bagItems?.length  && <div className="flex lg:flex-row flex-col p-10 lg:justify-between lg:gap-6 gap-16">
+        {!!bagItems?.length  && <div className="flex lg:flex-row flex-col p-10 lg:justify-between lg:gap-6 gap-16">
           <div className="flex flex-col gap-16">
             <BagItemsSummary />
           </div>
