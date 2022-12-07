@@ -12,19 +12,25 @@ export const PageStartCheckout = (prop) => {
       ...item,
       product: product.read().filter((object, i) => object.id === item.productId)[0]
     }));
+
+  console.log(bagItems)
   return (
     <div className="text-[#7D515E] flex flex-col min-h-screen">
       <Header />
       <div className="bg-[#F3EBF1] sm:text-xl text-md flex-1">
-        <div className="p-10">
+        {bagItems?.length === 0 &&
+            <div className="p-6 mt-24 text-center font-semibold sm:text-5xl text-3xl">YOUR BAG IS EMPTY</div>
+        }
+
+        {bagItems?.length && <div className="p-10">
           <div className="flex flex-row">
             <div className="sm:text-2xl text-lg">MY BAG</div>
             <div className="flex-1 text-center sm:text-2xl text-lg">Total Items: {bagItems && bagItems.reduce((prev, curr, i) => prev + curr.qty, 0)}</div>
           </div>
           <div className="h-0.5 bg-[#7D515E]"></div>
-        </div>
+        </div>}
 
-        <div className="flex lg:flex-row flex-col p-10 lg:justify-between lg:gap-6 gap-16">
+        {bagItems?.length  && <div className="flex lg:flex-row flex-col p-10 lg:justify-between lg:gap-6 gap-16">
           <div className="flex flex-col gap-16">
             <BagItemsSummary />
           </div>
@@ -38,6 +44,7 @@ export const PageStartCheckout = (prop) => {
 
           </div>
         </div>
+        }
       </div>
       <Footer />
     </div>
