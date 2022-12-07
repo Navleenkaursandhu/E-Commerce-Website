@@ -56,7 +56,7 @@ export const PageOrderSummary = (prop) => {
                   <div className="pt-8 text-2xl">TOTAL: {CURRENCY} {(total * 1.12).toFixed(2)}</div>
                 </div>
 
-                <button className={`${buttonShadowEffect} font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>PLACE ORDER</button>
+                <button onClick={() => prop.onNext()} className={`${buttonShadowEffect} font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>PLACE ORDER</button>
               </div>
             </div>
 

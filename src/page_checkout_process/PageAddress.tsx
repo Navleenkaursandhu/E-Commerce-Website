@@ -22,7 +22,7 @@ export const PageAddress = (prop) => {
 
             <div className='flex flex-col gap-2'>
               <div>Address</div>
-              <input onChange={(e) => setInputAddress(e.target.value)} className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder='Type your address'></input>
+              <input onChange={(e) => setInputAddress(e.target.value)} className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder='Type your address & postal code'></input>
             </div>
 
             <div className="mb-12">Estimate Delivery: 3 - 7 Business Days</div>

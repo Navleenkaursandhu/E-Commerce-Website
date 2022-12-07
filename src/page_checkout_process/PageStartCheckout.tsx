@@ -24,7 +24,7 @@ export const PageStartCheckout = (prop) => {
           <div className="h-0.5 bg-[#7D515E]"></div>
         </div>
 
-        <div className="flex lg:flex-row flex-col p-10 lg:justify-between lg:gap-0 gap-16">
+        <div className="flex lg:flex-row flex-col p-10 lg:justify-between lg:gap-6 gap-16">
           <div className="flex flex-col gap-16">
             <BagItemsSummary />
           </div>
