@@ -2,9 +2,25 @@ import { buttonShadowEffect } from '../common/tailwind_constants'
 import girlSignUpImage from '../assets/girlSignUpImage.svg'
 import { Header } from '../common/Header'
 import { Footer } from '../common/Footer'
+import { useState } from 'react'
 
 export const PageSignUp = (prop) => {
-  console.log(prop)
+
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+
+  const ContinueToAccountConfirmationPage = () => {
+    if (firstName && lastName && email && password && confirmPassword) {
+      return <button onClick={() => prop.onNext()} className={`${buttonShadowEffect} p-2 font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] w-full rounded-md`}>CONTINUE</button>
+    }
+    else {
+      return <button className={`${buttonShadowEffect} p-2 font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] w-full rounded-md`}>CONTINUE</button>
+    }
+  }
+
   return (
     <div className='text-[#7D515E] min-h-screen flex flex-col'>
       <Header />
@@ -17,27 +33,27 @@ export const PageSignUp = (prop) => {
             <div className='flex flex-col gap-10 pt-16'>
               <div className='flex flex-col gap-2'>
                 <div>First Name</div>
-                <input className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder='Type your first name'></input>
+                <input onChange={(e) => setFirstName(e.target.value)} className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder='Type your first name'></input>
               </div>
               <div className='flex flex-col gap-2'>
                 <div>Last Name</div>
-                <input className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder='Type your last name'></input>
+                <input onChange={(e) => setLastName(e.target.value)} className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder='Type your last name'></input>
               </div>
               <div className='flex flex-col gap-2'>
                 <div>E-mail</div>
-                <input className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder='Type your e-mail address'></input>
+                <input onChange={(e) => setEmail(e.target.value)} className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder='Type your e-mail address'></input>
                 <div className='flex justify-end'>
                 </div>
               </div>
               <div className='flex flex-col gap-2'>
                 <div>Password</div>
-                <input className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder='At least 6 characters'></input>
+                <input onChange={(e) => setPassword(e.target.value)} className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder='At least 6 characters'></input>
               </div>
               <div className='flex flex-col gap-2'>
                 <div>Confirm Password</div>
-                <input className='w-full px-4 py-2 rounded-md bg-[#F4DADB]'></input>
+                <input onChange={(e) => setConfirmPassword(e.target.value)} className='w-full px-4 py-2 rounded-md bg-[#F4DADB]'></input>
               </div>
-              <button onClick={() => prop.onNext()} className={`${buttonShadowEffect} p-2 font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] w-full rounded-md`}>CONTINUE</button>
+              <ContinueToAccountConfirmationPage />
               <div className='text-center'>*This will not create a real account</div>
             </div>
           </div>
