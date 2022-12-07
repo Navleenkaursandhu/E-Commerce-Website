@@ -21,7 +21,7 @@ export class MainDatabase extends Dexie {
 
   constructor() {
     super('myDatabase');
-    this.version(1).stores({
+    this.version(2).stores({
       bagItems: '++id',
       user: '++id,email', 
       // review

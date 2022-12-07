@@ -3,6 +3,7 @@ import girlSignUpImage from '../assets/girlSignUpImage.svg'
 import { Header } from '../common/Header'
 import { Footer } from '../common/Footer'
 import { useState } from 'react'
+import { db } from '../db'
 
 export const PageSignUp = (prop) => {
 
@@ -14,7 +15,16 @@ export const PageSignUp = (prop) => {
 
   const ContinueToAccountConfirmationPage = () => {
     if (firstName && lastName && email && password && confirmPassword) {
-      return <button onClick={() => prop.onNext()} className={`${buttonShadowEffect} p-2 font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] w-full rounded-md`}>CONTINUE</button>
+      return <button onClick={(event) => {
+        prop.onNext()
+        db.user.add({
+          email: email,
+          lastName:lastName,
+          firstName:firstName,
+          passwordHash:password
+        })
+      }} 
+      className={`${buttonShadowEffect} p-2 font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] w-full rounded-md`}>CONTINUE</button>
     }
     else {
       return <button className={`${buttonShadowEffect} p-2 font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] w-full rounded-md`}>CONTINUE</button>
@@ -47,11 +57,11 @@ export const PageSignUp = (prop) => {
               </div>
               <div className='flex flex-col gap-2'>
                 <div>Password</div>
-                <input onChange={(e) => setPassword(e.target.value)} className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder='At least 6 characters'></input>
+                <input type='password' onChange={(e) => setPassword(e.target.value)} className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder='At least 6 characters'></input>
               </div>
               <div className='flex flex-col gap-2'>
                 <div>Confirm Password</div>
-                <input onChange={(e) => setConfirmPassword(e.target.value)} className='w-full px-4 py-2 rounded-md bg-[#F4DADB]'></input>
+                <input type='password' onChange={(e) => setConfirmPassword(e.target.value)} className='w-full px-4 py-2 rounded-md bg-[#F4DADB]'></input>
               </div>
               <ContinueToAccountConfirmationPage />
               <div className='text-center'>*This will not create a real account</div>

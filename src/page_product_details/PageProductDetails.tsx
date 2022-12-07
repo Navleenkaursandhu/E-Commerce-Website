@@ -13,9 +13,6 @@ export const PageProductDetails = () => {
   const [sizeSelected, setSizeSelected] = useState('M')
   const [quantitySelected, setQuantitySelected] = useState('1')
 
-  console.log(sizeSelected)
-  console.log(quantitySelected)
-
   return (
     <div className='text-[#7D515E] flex flex-col min-h-screen'>
       <Header />
