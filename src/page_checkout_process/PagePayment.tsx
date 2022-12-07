@@ -4,10 +4,19 @@ import { Header } from "../common/Header"
 import { buttonShadowEffect } from "../common/tailwind_constants"
 
 export const PagePayment = (prop) => {
-  const[inputCreditCardNum, setInputCreditCardNum] = useState('')
-  const[inputExpiryMonth, setInputExpiryMonth] = useState('')
-  const[inputExpiryYear, setInputExpiryYear] = useState('')
-  const[inputCvv, setInputCvv] = useState('')
+  const [inputCreditCardNum, setInputCreditCardNum] = useState('')
+  const [inputExpiryMonth, setInputExpiryMonth] = useState('')
+  const [inputExpiryYear, setInputExpiryYear] = useState('')
+  const [inputCvv, setInputCvv] = useState('')
+
+  const ReviewOrderSummaryButton = () => {
+    if (inputCreditCardNum && inputExpiryMonth && inputExpiryYear && inputCvv) {
+      return <button onClick={() => prop.onNext(inputCreditCardNum, inputExpiryMonth, inputExpiryYear, inputCvv)} className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>REVIEW ORDER SUMMARY</button>
+    }
+    else {
+      return <button className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>REVIEW ORDER SUMMARY</button>
+    }
+  }
 
   return (
     <>
@@ -38,8 +47,7 @@ export const PagePayment = (prop) => {
 
             </div>
 
-            <button onClick={() => prop.onNext(inputCreditCardNum, inputExpiryMonth, inputExpiryYear, inputCvv)} className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>REVIEW ORDER SUMMARY</button>
-
+            <ReviewOrderSummaryButton />
           </div>
         </div>
         <Footer />
