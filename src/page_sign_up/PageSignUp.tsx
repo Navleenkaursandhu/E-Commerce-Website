@@ -14,21 +14,18 @@ export const PageSignUp = (prop) => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
-  const hashed = bcrypt.hashSync(password,10)
-  console.log(hashed)
-
   const ContinueToAccountConfirmationPage = () => {
-    if (firstName && lastName && email && password && confirmPassword) {
+    if (firstName && lastName && email && password && confirmPassword && password === confirmPassword) {
       return <button onClick={(event) => {
         prop.onNext()
         db.user.add({
           email: email,
-          lastName:lastName,
-          firstName:firstName,
+          lastName: lastName,
+          firstName: firstName,
           passwordHash: bcrypt.hashSync(password, 10)
         })
-      }} 
-      className={`${buttonShadowEffect} p-2 font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] w-full rounded-md`}>CONTINUE</button>
+      }}
+        className={`${buttonShadowEffect} p-2 font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] w-full rounded-md`}>CONTINUE</button>
     }
     else {
       return <button className={`${buttonShadowEffect} p-2 font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] w-full rounded-md`}>CONTINUE</button>
