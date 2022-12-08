@@ -10,9 +10,11 @@ export const PageLogin = () => {
   const [userEmail, setUserEmail] = useState('')
   const [userPassword, setUserPassword] = useState('')
   const [isUserValid, setIsUserValid] = useState(false)
+  const[hasUserLoggedIn, setHasUserLoggedIn] = useState(false)
 
   const loginUser = async () => {
     setIsUserValid(false)
+    setHasUserLoggedIn(true)
 
     const result = await db.user.where({ email: userEmail }).toArray()
 
@@ -21,7 +23,6 @@ export const PageLogin = () => {
         throw err
       }
       else if (!isMatch) {
-        console.log("invalid password")
         setIsUserValid(false)
       }
       else {
@@ -51,7 +52,7 @@ export const PageLogin = () => {
               </div>
               <button onClick={() => loginUser()} className={`${buttonShadowEffect} font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] w-full p-2 rounded-md`}>LOGIN</button>
               {isUserValid && <div className="text-center">User Successfully Logged In</div>}
-              {!isUserValid && <div className="flex items-center justify-center gap-2 text-red-800 text-lg"><span className="material-symbols-outlined">
+              {!isUserValid && hasUserLoggedIn && <div className="flex items-center justify-center gap-2 text-red-800 text-lg"><span className="material-symbols-outlined">
                 warning
               </span>Oops! Incorrect E-mail or Password</div>}
             </div>
