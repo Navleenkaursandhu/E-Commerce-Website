@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react"
 import { ShoppingBag } from "./ShoppingBag"
 import { buttonShadowEffect } from "./tailwind_constants"
+import { db } from "../db"
+import { useLiveQuery } from "dexie-react-hooks"
 export const Header = () => {
   const [isMenuClicked, setIsMenuClicked] = useState(false)
+
+  const loginSessionData = useLiveQuery(() =>  db.loginSession.toArray())
+  console.log(loginSessionData)
 
   useEffect(() => {
 
