@@ -6,6 +6,8 @@ import { Footer } from '../common/Footer'
 import { useState } from 'react'
 import { db } from '../db'
 import bcrypt from 'bcryptjs'
+import addDays from 'date-fns/addDays'
+
 export const PageLogin = () => {
   const [userEmail, setUserEmail] = useState('')
   const [userPassword, setUserPassword] = useState('')
@@ -27,13 +29,17 @@ export const PageLogin = () => {
       if (err) {
         throw err
       }
-
       else if (!isMatch) {
         setLoginFailed(true)
       }
       else {
         setLoginSuccessful(true)
         window.open('/', '_self')
+        db.loginSession.add({
+          userId: result[0].id,
+          expiryTimestamp: addDays(new Date(), 10).getTime()
+        })
+
       }
     })
   }
