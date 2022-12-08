@@ -5,6 +5,7 @@ import { Header } from '../common/Header'
 import { Footer } from '../common/Footer'
 import { useState } from 'react'
 import { db } from '../db'
+import bcrypt from 'bcryptjs'
 export const PageLogin = () => {
   const [userEmail, setUserEmail] = useState('')
   const [userPassword, setUserPassword] = useState('')
@@ -12,13 +13,22 @@ export const PageLogin = () => {
 
   const loginUser = async () => {
     setIsUserValid(false)
-    const result = await db.user.where({ email: userEmail }).toArray()
-    if (userPassword === result[0].passwordHash && result[0].passwordHash) {
-      setIsUserValid(true)
-    }
-  }
 
-  console.log(isUserValid)
+    const result = await db.user.where({ email: userEmail }).toArray()
+
+    bcrypt.compare(userPassword, result[0].passwordHash, function (err, isMatch) {
+      if (err) {
+        throw err
+      }
+      else if (!isMatch) {
+        console.log("invalid password")
+        setIsUserValid(false)
+      }
+      else {
+        setIsUserValid(true)
+      }
+    })
+  }
 
   return (
     <div className='text-[#7D515E] flex flex-col min-h-screen'>
@@ -34,7 +44,7 @@ export const PageLogin = () => {
               </div>
               <div className='flex flex-col gap-2'>
                 <div>Password</div>
-                <input onChange={(e) => setUserPassword(e.target.value)} className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder='Type your password'></input>
+                <input onChange={(e) => setUserPassword(e.target.value)} type="password" className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder='Type your password'></input>
                 <div className='flex justify-end'>
                   <div><a href='/forgot-password'>Forgot Password?</a></div>
                 </div>

@@ -4,6 +4,7 @@ import { Header } from '../common/Header'
 import { Footer } from '../common/Footer'
 import { useState } from 'react'
 import { db } from '../db'
+import bcrypt from 'bcryptjs'
 
 export const PageSignUp = (prop) => {
 
@@ -13,6 +14,9 @@ export const PageSignUp = (prop) => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
+  const hashed = bcrypt.hashSync(password,10)
+  console.log(hashed)
+
   const ContinueToAccountConfirmationPage = () => {
     if (firstName && lastName && email && password && confirmPassword) {
       return <button onClick={(event) => {
@@ -21,7 +25,7 @@ export const PageSignUp = (prop) => {
           email: email,
           lastName:lastName,
           firstName:firstName,
-          passwordHash:password
+          passwordHash: bcrypt.hashSync(password, 10)
         })
       }} 
       className={`${buttonShadowEffect} p-2 font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] w-full rounded-md`}>CONTINUE</button>
