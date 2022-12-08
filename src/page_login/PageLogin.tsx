@@ -33,22 +33,10 @@ export const PageLogin = () => {
       }
       else {
         setLoginSuccessful(true)
+        window.open('/', '_self')
       }
     })
   }
-
-  // const LoginButton = () => {
-  //   if(isUserValid && hasUserLoggedIn) {
-
-  //     return <button onClick={() => loginUser()} 
-  //       className={`${buttonShadowEffect} font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] w-full p-2 rounded-md`}>LOGIN</button>
-  //   }
-  //   else {
-
-  //     return <button onClick={() => loginUser()
-  //     } className={`${buttonShadowEffect} disable font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] w-full p-2 rounded-md`}>LOGIN</button>
-  //   }
-  // }
 
   return (
     <div className='text-[#7D515E] flex flex-col min-h-screen'>
