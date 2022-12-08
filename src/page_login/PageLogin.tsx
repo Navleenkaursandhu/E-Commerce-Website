@@ -15,6 +15,8 @@ export const PageLogin = () => {
   const [loginFailed, setLoginFailed] = useState(false)
 
 
+  console.log(db.loginSession.count())
+
   const loginUser = async () => {
     setLoginSuccessful(false)
     setLoginFailed(false)
@@ -25,23 +27,26 @@ export const PageLogin = () => {
       setLoginFailed(true)
     }
 
-    bcrypt.compare(userPassword, result[0].passwordHash, function (err, isMatch) {
-      if (err) {
-        throw err
-      }
-      else if (!isMatch) {
-        setLoginFailed(true)
-      }
-      else {
-        setLoginSuccessful(true)
-        window.open('/', '_self')
-        db.loginSession.add({
-          userId: result[0].id,
-          expiryTimestamp: addDays(new Date(), 10).getTime()
-        })
+    const isMatch = bcrypt.compareSync(userPassword, result[0].passwordHash);
+    if (!isMatch) {
+      setLoginFailed(true)
+    }
+    else {
+      setLoginSuccessful(true)
 
+      const loginSessionData = await db.loginSession.toArray();
+
+      if (loginSessionData.length > 0) {
+        await db.loginSession.clear()
       }
-    })
+      
+      await db.loginSession.add({
+        userId: result[0].id,
+        expiryTimestamp: addDays(new Date(), 10).getTime()
+      })
+
+      window.open('/', '_self')
+    }
   }
 
   return (
