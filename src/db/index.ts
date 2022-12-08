@@ -15,15 +15,23 @@ export interface User {
   passwordHash: string;
 }
 
+export interface LoginSession {
+  id?: number;
+  userId: number;
+  expiryTimestamp: number 
+}
+
 export class MainDatabase extends Dexie {
   bagItems!: Table<BagItem>;
   user!: Table<User>;
+  loginSession!: Table<LoginSession>;
 
   constructor() {
     super('myDatabase');
-    this.version(2).stores({
+    this.version(3).stores({
       bagItems: '++id',
       user: '++id,email', 
+      loginSession: '++id',
       // review
       // bag
       // order history
