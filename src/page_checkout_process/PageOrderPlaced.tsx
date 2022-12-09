@@ -13,7 +13,7 @@ export const PageOrderPlaced = (prop) => {
               check_circle
             </span>
             <div className="sm:text-4xl text-xl font-semibold" >ORDER SUCCESSFULLY PLACED</div>
-            <div>Your Order ID: {orderIdString}</div>
+            <div className="sm:text-3xl text-lg">Your Order ID: {orderIdString}</div>
             <div className="flex gap-2 p-2">
               <span className="material-symbols-outlined">
                 warning
