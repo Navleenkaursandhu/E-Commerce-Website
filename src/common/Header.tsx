@@ -10,7 +10,10 @@ export const Header = () => {
 
   const userLoginSessionData = useLoggedInUser()
 
-  const logOutUser = async () => await db.loginSession.clear()
+  const logOutUser = async () => {
+    await db.loginSession.clear()
+    window.location.reload()
+  }
 
   useEffect(() => {
 
