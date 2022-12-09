@@ -5,8 +5,13 @@ import { db } from "../db"
 import { CURRENCY, product } from "../models/product"
 import { buttonShadowEffect } from "../common/tailwind_constants"
 import { BagItemsSummary } from "../common/BagItemsSummary"
+import { useLoggedInUser } from "../hooks/use_logged_in_user"
 
 export const PageStartCheckout = (prop) => {
+
+  const loggedInUser = useLoggedInUser()
+
+  console.log(!!loggedInUser)
 
   const bagItems = useLiveQuery(() => db.bagItems.toArray())
     ?.map(item => ({
@@ -14,13 +19,13 @@ export const PageStartCheckout = (prop) => {
       product: product.read().filter((object, i) => object.id === item.productId)[0]
     }));
 
-  console.log(bagItems)
+
   return (
     <div className="text-[#7D515E] flex flex-col min-h-screen">
       <Header />
       <div className="bg-[#F3EBF1] sm:text-xl text-md flex-1">
         {bagItems?.length === 0 &&
-            <div className="p-6 mt-24 text-center font-semibold sm:text-5xl text-3xl">YOUR BAG IS EMPTY</div>
+          <div className="p-6 mt-24 text-center font-semibold sm:text-5xl text-3xl">YOUR BAG IS EMPTY</div>
         }
 
         {!!bagItems?.length && <div className="p-10">
@@ -31,7 +36,7 @@ export const PageStartCheckout = (prop) => {
           <div className="h-0.5 bg-[#7D515E]"></div>
         </div>}
 
-        {!!bagItems?.length  && <div className="flex lg:flex-row flex-col p-10 lg:justify-between lg:gap-6 gap-16">
+        {!!bagItems?.length && <div className="flex lg:flex-row flex-col p-10 lg:justify-between lg:gap-6 gap-16">
           <div className="flex flex-col gap-16">
             <BagItemsSummary />
           </div>
@@ -40,9 +45,11 @@ export const PageStartCheckout = (prop) => {
               const newSum = (curr.qty * curr.product.price) + prev
               return newSum
             }, 0)}</div>
-
-            <button onClick={() => prop.onNext()} className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>Start Checkout</button>
-
+            {loggedInUser && <button onClick={() => prop.onNext()} className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>Start Checkout</button>}
+            {loggedInUser === undefined && <div className="flex items-center justify-center gap-1.5 text-red-800 md:text-xl text-md"><span className="material-symbols-outlined">
+              warning
+            </span>
+              <div className="text-center">Oops! Please Login to checkout</div></div>}
           </div>
         </div>
         }

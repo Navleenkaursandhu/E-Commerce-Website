@@ -53,7 +53,7 @@ export const Header = () => {
         </div>}
 
         <div className="flex items-center justify-end md:gap-10 gap-4">
-          {userLoginSessionData && <div className="text-[#F4DADB] text-center ml-6 lg:text-lg sm:text-md text-sm">Welcome {userLoginSessionData[0].firstName}</div>}
+          {userLoginSessionData && <div className="text-[#F4DADB] text-center ml-6 lg:text-lg sm:text-md text-sm">Welcome {userLoginSessionData.firstName}</div>}
           {!userLoginSessionData && <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md sm:inline hidden`}><a href='/login'>LOGIN</a></button>}
           {!userLoginSessionData && <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md sm:inline hidden`}><a href='./sign-up'>SIGN UP</a></button>}
           {userLoginSessionData && <button onClick={() => logOutUser()} className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md sm:inline hidden`}>LOG OUT</button>}
