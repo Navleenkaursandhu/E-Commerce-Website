@@ -5,7 +5,7 @@ import { buttonShadowEffect } from "../common/tailwind_constants"
 
 export const PageAddress = (prop) => {
   const [inputAddress, setInputAddress] = useState('')
-  const [isButtonClicked, setIsButtonClicked] = useState(false)
+  const [isPaymentButtonClicked, setIsPaymentButtonClicked] = useState(false)
 
   console.log(inputAddress)
   const ContinueToPaymentButton = () => {
@@ -14,8 +14,8 @@ export const PageAddress = (prop) => {
     }
     else {
       return <div>
-        <button onClick={() => setIsButtonClicked(true)} className={`${buttonShadowEffect} disabled w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>CONTINUE TO PAYMENT</button>
-        {isButtonClicked && <div className="flex items-center justify-center gap-1.5 text-red-800 text-lg p-4"><span className="material-symbols-outlined">
+        <button onClick={() => setIsPaymentButtonClicked(true)} className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>CONTINUE TO PAYMENT</button>
+        {isPaymentButtonClicked && <div className="flex items-center justify-center gap-1.5 text-red-800 text-lg p-4"><span className="material-symbols-outlined">
           warning
         </span>Please type your shipping address to proceed</div>}
       </div>

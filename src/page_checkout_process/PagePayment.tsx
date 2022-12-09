@@ -8,13 +8,19 @@ export const PagePayment = (prop) => {
   const [inputExpiryMonth, setInputExpiryMonth] = useState('')
   const [inputExpiryYear, setInputExpiryYear] = useState('')
   const [inputCvv, setInputCvv] = useState('')
+  const [isOrderSummaryButtonClicked, setIsOrderSummaryButtonClicked] = useState(false)
 
   const ReviewOrderSummaryButton = () => {
     if (inputCreditCardNum && inputExpiryMonth && inputExpiryYear && inputCvv) {
       return <button onClick={() => prop.onNext(inputCreditCardNum, inputExpiryMonth, inputExpiryYear, inputCvv)} className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>REVIEW ORDER SUMMARY</button>
     }
     else {
-      return <button className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>REVIEW ORDER SUMMARY</button>
+      return <div>
+        <button onClick={() => setIsOrderSummaryButtonClicked(true)} className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>REVIEW ORDER SUMMARY</button>
+        {isOrderSummaryButtonClicked && <div className="flex items-center justify-center gap-1.5 text-red-800 text-lg p-4"><span className="material-symbols-outlined">
+          warning
+        </span>Please type your credit card details to proceed</div>}
+      </div>
     }
   }
 
