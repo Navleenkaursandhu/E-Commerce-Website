@@ -9,20 +9,12 @@ export const Header = () => {
 
   const userLoginSessionData = useLiveQuery(async () => {
     const data = await db.loginSession.toArray()
-    const userData = await db.user.where({ id: data[0].userId }).toArray()
+    console.log(data)
+    const userData = data[0] && await db.user.where({ id: data[0].userId }).toArray()
     return userData
   })
 
-  // const userDetails = userLoginSessionData.length > 0 && useLiveQuery(async () => {
-  //   const userData = await db.user.where({id: userLoginSessionData[0].id }).toArray()
-  //   return userData
-  // })
-
-  // console.log(userDetails)
-
-  console.log(userLoginSessionData)
-
-
+  const logOutUser = async () => await db.loginSession.clear()
 
   useEffect(() => {
 
@@ -59,7 +51,7 @@ export const Header = () => {
             <button className={`${buttonShadowEffect} px-1.5 py-1 bg-[#F4DADB] rounded-md`}><a href='./sign-up'>SIGN UP</a></button>
           </div>}
           {userLoginSessionData && <div>
-          <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md`}><a href='./sign-up'>LOG OUT</a></button>
+            <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md`}><a href='./sign-up'>LOG OUT</a></button>
           </div>}
           <div className="text-[#F4DADB]"><ShoppingBag /></div>
         </div>}
@@ -68,7 +60,7 @@ export const Header = () => {
           {userLoginSessionData && <div className="text-[#F4DADB] text-center ml-6 lg:text-lg sm:text-md text-sm">Welcome {userLoginSessionData[0].firstName}</div>}
           {!userLoginSessionData && <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md sm:inline hidden`}><a href='/login'>LOGIN</a></button>}
           {!userLoginSessionData && <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md sm:inline hidden`}><a href='./sign-up'>SIGN UP</a></button>}
-          {userLoginSessionData && <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md sm:inline hidden`}><a href='./sign-up'> LOG OUT</a></button>}
+          {userLoginSessionData && <button onClick={() => logOutUser()} className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md sm:inline hidden`}>LOG OUT</button>}
           <div className=" sm:inline hidden"><ShoppingBag /></div>
         </div>
       </div>
