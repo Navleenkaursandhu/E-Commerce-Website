@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { db } from '../db'
 import bcrypt from 'bcryptjs'
 import addDays from 'date-fns/addDays'
+import addMinutes from 'date-fns/addMinutes'
 
 export const PageLogin = () => {
   const [userEmail, setUserEmail] = useState('')
@@ -42,7 +43,7 @@ export const PageLogin = () => {
       
       await db.loginSession.add({
         userId: result[0].id,
-        expiryTimestamp: addDays(new Date(), 10).getTime()
+        expiryTimestamp: addDays(new Date(), 7).getTime()
       })
 
       window.open('/', '_self')
