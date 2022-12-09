@@ -1,7 +1,8 @@
 import { Footer } from "../common/Footer"
 import { Header } from "../common/Header"
 
-export const PageOrderPlaced = () => {
+export const PageOrderPlaced = (prop) => {
+  const orderIdString = prop.orderIdNum.toString().padStart(5, 0)
   return (
     <>
       <div className="text-[#7D515E] flex flex-col min-h-screen">
@@ -12,6 +13,7 @@ export const PageOrderPlaced = () => {
               check_circle
             </span>
             <div className="sm:text-4xl text-xl font-semibold" >ORDER SUCCESSFULLY PLACED</div>
+            <div>Your Order ID: {orderIdString}</div>
             <div className="flex gap-2 p-2">
               <span className="material-symbols-outlined">
                 warning
@@ -23,7 +25,6 @@ export const PageOrderPlaced = () => {
         </div>
         <Footer />
       </div>
-
     </>
   )
 }
