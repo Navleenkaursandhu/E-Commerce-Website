@@ -35,12 +35,8 @@ export const PageLogin = () => {
     else {
       setLoginSuccessful(true)
 
-      const loginSessionData = await db.loginSession.toArray();
+      await db.loginSession.clear()
 
-      if (loginSessionData.length > 0) {
-        await db.loginSession.clear()
-      }
-      
       await db.loginSession.add({
         userId: result[0].id,
         expiryTimestamp: addDays(new Date(), 7).getTime()

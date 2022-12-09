@@ -3,20 +3,12 @@ import { ShoppingBag } from "./ShoppingBag"
 import { buttonShadowEffect } from "./tailwind_constants"
 import { db } from "../db"
 import { useLiveQuery } from "dexie-react-hooks"
+import { useLoggedInUser } from "../hooks/use_logged_in_user"
 
 export const Header = () => {
   const [isMenuClicked, setIsMenuClicked] = useState(false)
 
-  const userLoginSessionData = useLiveQuery(async () => {
-    const data = await db.loginSession.toArray()
-    if (data[0] && data[0].expiryTimestamp > new Date().getTime() ) {
-      
-      const userData = data[0] && await db.user.where({ id: data[0].userId }).toArray()
-      return userData
-    }
-  
-
-  })
+  const userLoginSessionData = useLoggedInUser()
 
   const logOutUser = async () => await db.loginSession.clear()
 
