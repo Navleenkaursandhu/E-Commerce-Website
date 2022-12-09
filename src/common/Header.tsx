@@ -3,11 +3,26 @@ import { ShoppingBag } from "./ShoppingBag"
 import { buttonShadowEffect } from "./tailwind_constants"
 import { db } from "../db"
 import { useLiveQuery } from "dexie-react-hooks"
+
 export const Header = () => {
   const [isMenuClicked, setIsMenuClicked] = useState(false)
 
-  const loginSessionData = useLiveQuery(() =>  db.loginSession.toArray())
-  console.log(loginSessionData)
+  const userLoginSessionData = useLiveQuery(async () => {
+    const data = await db.loginSession.toArray()
+    const userData = await db.user.where({ id: data[0].userId }).toArray()
+    return userData
+  })
+
+  // const userDetails = userLoginSessionData.length > 0 && useLiveQuery(async () => {
+  //   const userData = await db.user.where({id: userLoginSessionData[0].id }).toArray()
+  //   return userData
+  // })
+
+  // console.log(userDetails)
+
+  console.log(userLoginSessionData)
+
+
 
   useEffect(() => {
 
@@ -29,26 +44,31 @@ export const Header = () => {
           }} className="sm:hidden inline text-[#F4DADB] material-symbols-outlined">
             menu
           </span>
-          <a className="text-[#F4DADB] text-3xl" href='/'>CLASSIC TEES</a>
-          <a className="sm:inline hidden text-[#F4DADB]" href='/about-us'>About us</a>
-          <div className="sm:inline hidden text-[#F4DADB]">Orders</div>
+          <a className="text-[#F4DADB] lg:text-3xl md:text-2xl text-lg" href='/'>CLASSIC TEES</a>
+          <a className="sm:inline hidden text-[#F4DADB] lg:text-lg md:text-md text-sm" href='/about-us'>About us</a>
+          {userLoginSessionData && <div className="sm:inline hidden text-[#F4DADB] lg:text-lg md:text-md text-sm">Orders</div>}
         </div>
 
-        {isMenuClicked && <div onClick={(e) => e.stopPropagation()} className="flex flex-col gap-6 sm:hidden absolute top-20 bg-[#7D515E] p-6 rounded-md text-sm">
+        {isMenuClicked && <div onClick={(e) => e.stopPropagation()} className="flex flex-col z-10 gap-6 sm:hidden absolute top-20 bg-[#7D515E] p-6 rounded-md text-sm">
           <a className="text-[#F4DADB]" href='/about-us'>About us</a>
-          <div className="text-[#F4DADB]">Orders</div>
-          <div>
+          {userLoginSessionData && <div className="text-[#F4DADB]">Orders</div>}
+          {!userLoginSessionData && <div>
             <button className={`${buttonShadowEffect} px-1.5 py-1 bg-[#F4DADB] rounded-md`}><a href='/login'>LOGIN</a></button>
-          </div>
-          <div>
+          </div>}
+          {!userLoginSessionData && <div>
             <button className={`${buttonShadowEffect} px-1.5 py-1 bg-[#F4DADB] rounded-md`}><a href='./sign-up'>SIGN UP</a></button>
-          </div>
+          </div>}
+          {userLoginSessionData && <div>
+          <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md`}><a href='./sign-up'>LOG OUT</a></button>
+          </div>}
           <div className="text-[#F4DADB]"><ShoppingBag /></div>
         </div>}
 
         <div className="flex items-center justify-end md:gap-10 gap-4">
-          <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md sm:inline hidden`}><a href='/login'>LOGIN</a></button>
-          <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md sm:inline hidden`}><a href='./sign-up'>SIGN UP</a></button>
+          {userLoginSessionData && <div className="text-[#F4DADB] text-center ml-6 lg:text-lg sm:text-md text-sm">Welcome {userLoginSessionData[0].firstName}</div>}
+          {!userLoginSessionData && <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md sm:inline hidden`}><a href='/login'>LOGIN</a></button>}
+          {!userLoginSessionData && <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md sm:inline hidden`}><a href='./sign-up'>SIGN UP</a></button>}
+          {userLoginSessionData && <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md sm:inline hidden`}><a href='./sign-up'> LOG OUT</a></button>}
           <div className=" sm:inline hidden"><ShoppingBag /></div>
         </div>
       </div>
