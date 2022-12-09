@@ -49,7 +49,7 @@ export const PageOrderSummary = (prop) => {
                     <div className="h-0.5 bg-[#7D515E]"></div>
                   </div>
 
-                  <div>Order ID: 'TODO'</div>
+                  <div>Order ID: 'todo'</div>
                   <div>Subtotal: {CURRENCY} {total}</div>
                   <div>Shipping: {CURRENCY} 0.00</div>
                   <div>Sales Tax: {CURRENCY} {total * 0.12}</div>

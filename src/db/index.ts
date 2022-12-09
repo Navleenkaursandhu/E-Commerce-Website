@@ -18,27 +18,37 @@ export interface User {
 export interface LoginSession {
   id?: number;
   userId: number;
-  expiryTimestamp: number 
+  expiryTimestamp: number
+}
+
+export interface Order {
+  id?: number;
+  userId: number;
+  timestamp: number;
+  products: {
+    productId: number;
+    size: string;
+    qty: number;
+    price: number;
+  }[]
 }
 
 export class MainDatabase extends Dexie {
   bagItems!: Table<BagItem>;
   user!: Table<User>;
   loginSession!: Table<LoginSession>;
+  order!: Table<Order>
 
   constructor() {
     super('myDatabase');
-    this.version(3).stores({
+    this.version(4).stores({
       bagItems: '++id',
-      user: '++id,email', 
+      user: '++id,email',
       loginSession: '++id',
+      order: '++id',
       // review
-      // bag
-      // order history
     });
   }
-
-
 }
 
 export const db = new MainDatabase();
