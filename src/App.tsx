@@ -11,6 +11,7 @@ import { PageForgotPassword } from './page_forgot_password/PageForgotPassword'
 import { PageProductDetails } from './page_product_details/PageProductDetails'
 import { CheckoutProcess } from './page_checkout_process/CheckoutProcess'
 import { SignUpProcess } from './page_sign_up/SignUpProcess'
+import { PageOrderHistory } from './page_order_history/PageOrderHistory'
 
 export const App = () => {
   return (
@@ -26,6 +27,7 @@ export const App = () => {
             <Route path=':id' element={<PageProductDetails />} />
           </Route>
           <Route path="start-checkout" element={<CheckoutProcess />} />
+          <Route path="order-history" element={<PageOrderHistory />} />
         </Route>
       </Routes>
     </BrowserRouter>

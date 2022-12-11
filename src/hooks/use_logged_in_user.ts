@@ -1,5 +1,6 @@
 import { useLiveQuery } from "dexie-react-hooks"
 import { db } from "../db"
+
 export const useLoggedInUser = () => {
   return useLiveQuery(async () => {
     const data = await db.loginSession.toArray()

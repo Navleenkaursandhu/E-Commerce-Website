@@ -41,11 +41,11 @@ export class MainDatabase extends Dexie {
 
   constructor() {
     super('myDatabase');
-    this.version(4).stores({
+    this.version(5).stores({
       bagItems: '++id',
       user: '++id,email',
       loginSession: '++id',
-      order: '++id',
+      order: '++id,userId',
       // review
     });
   }
