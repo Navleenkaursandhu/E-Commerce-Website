@@ -8,7 +8,6 @@ import { CURRENCY, product } from "../models/product"
 export const PageOrderHistory = () => {
 
   const loggedInUserId = useLoggedInUser()?.id
-  console.log(loggedInUserId)
 
   const orderPlacedData = useLiveQuery(async () => await db.order.where({ userId: loggedInUserId || -1 }).toArray(), [loggedInUserId])
     ?.map((order) => {
@@ -23,10 +22,6 @@ export const PageOrderHistory = () => {
       }
     })
 
-
-  console.log(orderPlacedData)
-
-
   return (
     <>
       <div className='text-[#7D515E] flex flex-col min-h-screen'>
@@ -34,12 +29,11 @@ export const PageOrderHistory = () => {
         <div className='flex flex-1 flex-col items-center bg-[#F3EBF1]'>
           <div className="flex flex-col gap-8 md:p-16 sm:p-10 p-4 lg:w-1/2 w-full">
             {!!orderPlacedData?.length && orderPlacedData.map((order, i) => {
-              return <div className="rounded-md bg-[#F4DADB] flex flex-col lg:gap-6 gap-12 p-4">
-                <div key={order.id}>
+              return <div key={order.id} className="rounded-md bg-[#F4DADB] flex flex-col lg:gap-6 gap-12 p-4">
+                <div className="font-semibold" key={order.id}>
                   <div>OrderId: {order.id.toString().padStart(5, '0')}</div>
-                  <div>Date: {new Date(order.timestamp).toLocaleString()}</div>
+                  <div>Date, Time: {new Date(order.timestamp).toLocaleString()}</div>
                   <div>Total: {CURRENCY} {order.products.map((product) => product.price * product.qty).reduce((prev, curr) => prev + curr)}</div>
-                  <div>Status: Processing</div>
                 </div>
 
                 <div>
@@ -48,7 +42,7 @@ export const PageOrderHistory = () => {
                 </div>
 
                 {order.products.map((productOrdered) => {
-                  return <div className="flex sm:flex-row flex-col sm:gap-16 gap-4">
+                  return <div key={productOrdered.productId} className="flex sm:flex-row flex-col sm:gap-16 gap-4">
                     <div>
                       <img className="w-[10rem] rounded-md" src={productOrdered.product.image}></img>
                     </div>
