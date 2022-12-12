@@ -33,20 +33,28 @@ export interface Order {
   }[]
 }
 
+export interface Reviews {
+  id?: number;
+  userId: number;
+  productId: number;
+  review: string;
+}
+
 export class MainDatabase extends Dexie {
   bagItems!: Table<BagItem>;
   user!: Table<User>;
   loginSession!: Table<LoginSession>;
   order!: Table<Order>
+  reviews!: Table<Reviews>
 
   constructor() {
     super('myDatabase');
-    this.version(5).stores({
+    this.version(6).stores({
       bagItems: '++id',
       user: '++id,email',
       loginSession: '++id',
       order: '++id,userId',
-      // review
+      review: '++id,productId'
     });
   }
 }

@@ -12,7 +12,8 @@ export const PageProductDetails = () => {
   const productObject = product.read().find((obj, i) => obj.id === id)
   const [sizeSelected, setSizeSelected] = useState('M')
   const [quantitySelected, setQuantitySelected] = useState('1')
-
+  const [starIndex, setStarIndex] = useState(-1)
+  console.log(starIndex)
   return (
     <div className='text-[#7D515E] flex flex-col min-h-screen'>
       <Header />
@@ -73,6 +74,21 @@ export const PageProductDetails = () => {
 
             <div className='text-lg'>*Return Policy: Returnable after 30 days of purchase</div>
           </div>
+        </div>
+
+        <div className='flex flex-col gap-4'>
+          <div className='mt-10'>
+            <div>Please give us a star rating:</div>
+            {new Array(5).fill(0).map((element, i) => <button key={i} onClick={() => setStarIndex(i)} className={i <= starIndex ? 'text-yellow-400' : ''}><span className="material-symbols-outlined">
+              grade
+            </span></button>)}
+          </div>
+
+          <div>What would you tell others about your experience?</div>
+          <textarea ></textarea>
+
+
+          <button className={`${buttonShadowEffect} w-1/5 flex items-center justify-center gap-2 font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}>Submit Review</button>
         </div>
       </div>
       <Footer />
