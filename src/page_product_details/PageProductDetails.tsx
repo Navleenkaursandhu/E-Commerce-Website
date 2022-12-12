@@ -5,6 +5,7 @@ import { Header } from '../common/Header';
 import { Footer } from '../common/Footer';
 import { useState } from 'react';
 import { db } from '../db';
+import { useLiveQuery } from 'dexie-react-hooks';
 
 export const PageProductDetails = () => {
   const params = useParams()
@@ -13,7 +14,11 @@ export const PageProductDetails = () => {
   const [sizeSelected, setSizeSelected] = useState('M')
   const [quantitySelected, setQuantitySelected] = useState('1')
   const [starIndex, setStarIndex] = useState(-1)
-  console.log(starIndex)
+
+
+  const loginData = useLiveQuery(async () => await db.loginSession.toArray())
+  console.log(loginData)
+
   return (
     <div className='text-[#7D515E] flex flex-col min-h-screen'>
       <Header />
@@ -76,7 +81,7 @@ export const PageProductDetails = () => {
           </div>
         </div>
 
-        <div className='flex flex-col gap-4'>
+        {!!loginData?.length && <div className='flex flex-col gap-4'>
           <div className='mt-10'>
             <div>Please give us a star rating:</div>
             {new Array(5).fill(0).map((element, i) => <button key={i} onClick={() => setStarIndex(i)} className={i <= starIndex ? 'text-yellow-400' : ''}><span className="material-symbols-outlined">
@@ -89,7 +94,7 @@ export const PageProductDetails = () => {
 
 
           <button className={`${buttonShadowEffect} w-1/5 flex items-center justify-center gap-2 font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}>Submit Review</button>
-        </div>
+        </div>}
       </div>
       <Footer />
     </div>
