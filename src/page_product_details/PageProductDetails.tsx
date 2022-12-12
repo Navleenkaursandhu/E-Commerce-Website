@@ -6,6 +6,7 @@ import { Footer } from '../common/Footer';
 import { useState } from 'react';
 import { db } from '../db';
 import { useLiveQuery } from 'dexie-react-hooks';
+import { useLoggedInUserOrderHistory } from '../hooks/use_logged_in_user_order_history';
 
 export const PageProductDetails = () => {
   const params = useParams()
@@ -14,10 +15,18 @@ export const PageProductDetails = () => {
   const [sizeSelected, setSizeSelected] = useState('M')
   const [quantitySelected, setQuantitySelected] = useState('1')
   const [starIndex, setStarIndex] = useState(-1)
+  const [reviewByLoggedInUser, setReviewByLoggedInUser] = useState('')
 
+  // const loginData = useLiveQuery(async () => await db.loginSession.toArray())
+  // console.log(!!loginData?.length && loginData[0].userId)
 
-  const loginData = useLiveQuery(async () => await db.loginSession.toArray())
-  console.log(loginData)
+  console.log(reviewByLoggedInUser)
+
+  const loggedInUserOrderHistoryData = useLoggedInUserOrderHistory()
+  console.log(loggedInUserOrderHistoryData)
+
+  const ordersWithProduct = loggedInUserOrderHistoryData?.filter((order, i) => order.products.filter((product, i) => product.productId === id).length > 0)
+
 
   return (
     <div className='text-[#7D515E] flex flex-col min-h-screen'>
@@ -81,7 +90,7 @@ export const PageProductDetails = () => {
           </div>
         </div>
 
-        {!!loginData?.length && <div className='flex flex-col gap-4'>
+        {!!ordersWithProduct?.length && <div className='flex flex-col gap-4'>
           <div className='mt-10'>
             <div>Please give us a star rating:</div>
             {new Array(5).fill(0).map((element, i) => <button key={i} onClick={() => setStarIndex(i)} className={i <= starIndex ? 'text-yellow-400' : ''}><span className="material-symbols-outlined">
@@ -90,12 +99,21 @@ export const PageProductDetails = () => {
           </div>
 
           <div>What would you tell others about your experience?</div>
-          <textarea ></textarea>
+          <textarea onChange={(e) => setReviewByLoggedInUser(e.target.value)}></textarea>
 
-
-          <button className={`${buttonShadowEffect} w-1/5 flex items-center justify-center gap-2 font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}>Submit Review</button>
+          <button onClick={() => db.reviews.add({
+            userId: ordersWithProduct[0].userId,
+            productId: id,
+            review: reviewByLoggedInUser,
+            rating: starIndex,
+          })} className={`${buttonShadowEffect} w-1/5 flex items-center justify-center gap-2 font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}>Submit Review</button>
         </div>}
+
+        {!ordersWithProduct?.length && <div className='mt-10 flex items-center gap-2'><span className="material-symbols-outlined">
+          warning
+        </span>Only logged in users who have purchased this product can add a review</div>}
       </div>
+
       <Footer />
     </div>
   )

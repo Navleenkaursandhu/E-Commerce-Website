@@ -38,6 +38,7 @@ export interface Reviews {
   userId: number;
   productId: number;
   review: string;
+  rating: number;
 }
 
 export class MainDatabase extends Dexie {
@@ -49,12 +50,12 @@ export class MainDatabase extends Dexie {
 
   constructor() {
     super('myDatabase');
-    this.version(6).stores({
+    this.version(7).stores({
       bagItems: '++id',
       user: '++id,email',
       loginSession: '++id',
       order: '++id,userId',
-      review: '++id,productId'
+      reviews: '++id,productId'
     });
   }
 }
