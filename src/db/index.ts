@@ -39,6 +39,8 @@ export interface Reviews {
   productId: number;
   review: string;
   rating: number;
+  timestamp: number;
+  userName: string;
 }
 
 export class MainDatabase extends Dexie {
