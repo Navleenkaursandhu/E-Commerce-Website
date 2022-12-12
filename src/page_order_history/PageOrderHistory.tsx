@@ -4,23 +4,11 @@ import { db } from "../db"
 import { useLiveQuery } from "dexie-react-hooks"
 import { useLoggedInUser } from "../hooks/use_logged_in_user"
 import { CURRENCY, product } from "../models/product"
+import { useLoggedInUserOrderHistory } from "../hooks/use_logged_in_user_order_history"
 
 export const PageOrderHistory = () => {
 
-  const loggedInUserId = useLoggedInUser()?.id
-
-  const orderPlacedData = useLiveQuery(async () => await db.order.where({ userId: loggedInUserId || -1 }).toArray(), [loggedInUserId])
-    ?.map((order) => {
-      return {
-        ...order,
-        products: order.products.map((productInfo) => {
-          return {
-            ...productInfo,
-            product: product.read().filter((object, i) => object.id === productInfo.productId)[0]
-          }
-        })
-      }
-    })
+  const orderPlacedData = useLoggedInUserOrderHistory()
 
   return (
     <>
