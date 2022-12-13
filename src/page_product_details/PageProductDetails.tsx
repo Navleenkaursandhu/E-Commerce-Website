@@ -107,16 +107,21 @@ export const PageProductDetails = () => {
           </div>
 
           <div>What would you tell others about your experience?</div>
-          <textarea className='p-4 h-[10rem]' onChange={(e) => setReviewByLoggedInUser(e.target.value)}></textarea>
+          <textarea className='p-4 h-[10rem]' onChange={(e) => setReviewByLoggedInUser(e.target.value)} value={reviewByLoggedInUser}></textarea>
 
-          <button onClick={() => db.reviews.add({
-            userId: ordersWithProduct[0].userId,
-            productId: id,
-            review: reviewByLoggedInUser,
-            rating: starIndex + 1,
-            timestamp: new Date().getTime(),
-            userName: !!userLoginSessionData && userLoginSessionData.firstName,
-          })} className={`${buttonShadowEffect} w-1/5 flex items-center justify-center gap-2 font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}>Submit Review</button>
+          <button onClick={() => {
+            db.reviews.add({
+              userId: ordersWithProduct[0].userId,
+              productId: id,
+              review: reviewByLoggedInUser,
+              rating: starIndex + 1,
+              timestamp: new Date().getTime(),
+              userName: !!userLoginSessionData && userLoginSessionData.firstName,
+            })
+
+            setReviewByLoggedInUser('')
+          }
+          } className={`${buttonShadowEffect} w-1/5 flex items-center justify-center gap-2 font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}>Submit Review</button>
         </div>}
 
         {!ordersWithProduct?.length && <div className='mt-10 flex items-center gap-2'><span className="material-symbols-outlined">
@@ -127,6 +132,7 @@ export const PageProductDetails = () => {
           <div className='flex flex-row gap-6'>
             <div className='p-2 '>
               <div>CUSTOMER REVIEWS</div>
+              <div>{!!reviewData?.length && reviewData.length} Reviews</div>
               <div className='mt-6'>{new Array(5).fill(0).map((element, i) => <button key={i} className={i < Math.floor(averageStars) ? 'text-yellow-400' : ''}><span className="material-symbols-outlined cursor-none">
                 grade
               </span></button>)}</div>
