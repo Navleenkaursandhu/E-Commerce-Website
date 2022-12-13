@@ -120,6 +120,7 @@ export const PageProductDetails = () => {
             })
 
             setReviewByLoggedInUser('')
+            setStarIndex(-1)
           }
           } className={`${buttonShadowEffect} lg:w-1/5 md:w-2/5 sm:w-1/2 flex items-center justify-center gap-2 font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}>Submit Review</button>
         </div>}
