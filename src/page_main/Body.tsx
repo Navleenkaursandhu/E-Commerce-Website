@@ -1,8 +1,21 @@
+import { useState } from 'react'
 import img1 from '../assets/img1.jpg'
 import img2 from '../assets/img2.jpg'
 import img3 from '../assets/img3.jpg'
 import { CURRENCY, product } from '../models/product'
 export const Body = () => {
+
+  const [sortOptionSelected, setSortOptionSelected] = useState('')
+
+  console.log(sortOptionSelected)
+
+  const sortedProducts = product.read()
+  if (sortOptionSelected === 'lowest-price') {
+    sortedProducts.sort((a, b) => a.price - b.price)
+  }
+  else if (sortOptionSelected === 'highest-price') {
+    sortedProducts.sort((a, b) => b.price - a.price)
+  }
 
   return (
     <div className='bg-[#F3EBF1]'>
@@ -28,26 +41,26 @@ export const Body = () => {
             </span>
           </div>
           <div className='px-3 py-1 bg-[#F4DADB] rounded-md flex sm:gap-2 gap-0.5'>Sort By
-            <select className='bg-[#F4DADB]'>
-              <option value='price'>Price</option>
-              <option value='lowest-price'>Lowest</option>
-              <option value='highest-price'>Highest</option>
+            <select onChange={(e) => setSortOptionSelected(e.target.value)} className='bg-[#F4DADB]'>
+              <option value='price'>Recommended</option>
+              <option value='lowest-price'>Lowest Price</option>
+              <option value='highest-price'>Highest Price</option>
             </select>
           </div>
         </div>
       </div>
 
-        <div className='flex flex-wrap px-6 py-16 gap-10 justify-evenly'>
-          {product.read().map((obj, i) => {
-            return <a href={`/product-details/${obj.id}`} key={obj.id} className='flex flex-col gap-1.5 md:[24rem] sm:w-[16rem] w-[9rem]'>
-              <img className='rounded-md' src={obj.image}></img>
-              <div>{obj.name}</div>
-              <div>{CURRENCY} {obj.price.toFixed(2)}</div>
-              {obj.hasFreeDelivery && <div className='bg-[#F4DADB] sm:px-3 sm:py-1 p-1 rounded-md sm:w-1/2 w-full text-center'>Free Delivery</div>
-              }
-            </a>
-          })}
-        </div>
+      <div className='flex flex-wrap px-6 py-16 gap-10 justify-evenly'>
+        {sortedProducts.map((obj, i) => {
+          return <a href={`/product-details/${obj.id}`} key={obj.id} className='flex flex-col gap-1.5 md:[24rem] sm:w-[16rem] w-[9rem]'>
+            <img className='rounded-md' src={obj.image}></img>
+            <div>{obj.name}</div>
+            <div>{CURRENCY} {obj.price.toFixed(2)}</div>
+            {obj.hasFreeDelivery && <div className='bg-[#F4DADB] sm:px-3 sm:py-1 p-1 rounded-md sm:w-1/2 w-full text-center'>Free Delivery</div>
+            }
+          </a>
+        })}
+      </div>
     </div>
   )
 }
