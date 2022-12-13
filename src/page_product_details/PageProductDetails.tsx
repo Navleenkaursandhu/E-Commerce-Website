@@ -39,7 +39,7 @@ export const PageProductDetails = () => {
   return (
     <div className='text-[#7D515E] flex flex-col min-h-screen'>
       <Header />
-      <div className="bg-[#F3EBF1] py-16 xl:px-32 lg:px-20 text-2xl flex-1">
+      <div className="bg-[#F3EBF1] py-16 xl:px-32 lg:px-20 flex-1 lg:text-2xl md:text-xl text-lg">
         <div className="flex lg:flex-row flex-col items-center gap-16 xl:gap-32 lg:gap-20">
           <img className="w-[32rem] rounded-md sm:p-0 p-4" src={productObject.image}></img>
 
@@ -100,7 +100,8 @@ export const PageProductDetails = () => {
 
         {!!ordersWithProduct?.length && <div className='flex flex-col gap-4 p-2'>
           <div className='mt-10'>
-            <div>Please give us a star rating:</div>
+            <div className='text-center border border-b-[#7D515E]'>RATE US</div>
+            <div className='mt-2'>Please give us a star rating:</div>
             {new Array(5).fill(0).map((element, i) => <button key={i} onClick={() => setStarIndex(i)} className={i <= starIndex ? 'text-yellow-400' : ''}><span className="material-symbols-outlined">
               grade
             </span></button>)}
@@ -130,9 +131,9 @@ export const PageProductDetails = () => {
         </span>Only logged in users who have purchased this product can add a review</div>}
 
         {!!reviewData?.length && <div className='mt-16 p-2'>
+          <div className='text-center border border-b-[#7D515E] mb-6'>CUSTOMER REVIEWS</div>
           <div className='flex md:flex-row flex-col gap-6'>
             <div className='p-2 '>
-              <div>CUSTOMER REVIEWS</div>
               <div>{!!reviewData?.length && reviewData.length} Reviews</div>
               <div className='mt-4'>{new Array(5).fill(0).map((element, i) => <button key={i} className={i < Math.floor(averageStars) ? 'text-yellow-400' : ''}><span className="material-symbols-outlined cursor-none">
                 grade
@@ -140,10 +141,6 @@ export const PageProductDetails = () => {
               <div> {averageStars.toFixed(1)} out of 5</div>
             </div>
             <div className='flex flex-col flex-1 gap-10 bg-[#F4DADB] p-2 rounded-md'>
-              <div>
-                <div className='text-center'>REVIEWS</div>
-                <hr className='border-1 border-[#7D515E]'></hr>
-              </div>
               {reviewData.map((reviewObj, i) => {
                 return <div key={i}>
                   <div className='flex sm:flex-row flex-col sm:items-center gap-2'>
