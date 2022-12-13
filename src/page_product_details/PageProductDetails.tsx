@@ -43,7 +43,7 @@ export const PageProductDetails = () => {
         <div className="flex lg:flex-row flex-col items-center gap-16 xl:gap-32 lg:gap-20">
           <img className="w-[32rem] rounded-md sm:p-0 p-4" src={productObject.image}></img>
 
-          <div className="flex flex-col md:w-3/5 sm:w-4/5 w-full gap-4 p-4">
+          <div className="flex flex-col md:w-3/5 sm:w-4/5 w-full gap-4 p-2">
             <div>
               <div className="text-3xl font-semibold">{productObject.name}</div>
               <hr className="border-1 border-[#7D515E]"></hr>
@@ -98,7 +98,7 @@ export const PageProductDetails = () => {
           </div>
         </div>
 
-        {!!ordersWithProduct?.length && <div className='flex flex-col gap-4'>
+        {!!ordersWithProduct?.length && <div className='flex flex-col gap-4 p-2'>
           <div className='mt-10'>
             <div>Please give us a star rating:</div>
             {new Array(5).fill(0).map((element, i) => <button key={i} onClick={() => setStarIndex(i)} className={i <= starIndex ? 'text-yellow-400' : ''}><span className="material-symbols-outlined">
@@ -121,19 +121,19 @@ export const PageProductDetails = () => {
 
             setReviewByLoggedInUser('')
           }
-          } className={`${buttonShadowEffect} w-1/5 flex items-center justify-center gap-2 font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}>Submit Review</button>
+          } className={`${buttonShadowEffect} lg:w-1/5 md:w-2/5 sm:w-1/2 flex items-center justify-center gap-2 font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}>Submit Review</button>
         </div>}
 
         {!ordersWithProduct?.length && <div className='mt-10 flex items-center gap-2'><span className="material-symbols-outlined">
           warning
         </span>Only logged in users who have purchased this product can add a review</div>}
 
-        {!!reviewData?.length && <div className='mt-16'>
-          <div className='flex flex-row gap-6'>
+        {!!reviewData?.length && <div className='mt-16 p-2'>
+          <div className='flex md:flex-row flex-col gap-6'>
             <div className='p-2 '>
               <div>CUSTOMER REVIEWS</div>
               <div>{!!reviewData?.length && reviewData.length} Reviews</div>
-              <div className='mt-6'>{new Array(5).fill(0).map((element, i) => <button key={i} className={i < Math.floor(averageStars) ? 'text-yellow-400' : ''}><span className="material-symbols-outlined cursor-none">
+              <div className='mt-4'>{new Array(5).fill(0).map((element, i) => <button key={i} className={i < Math.floor(averageStars) ? 'text-yellow-400' : ''}><span className="material-symbols-outlined cursor-none">
                 grade
               </span></button>)}</div>
               <div> {averageStars.toFixed(1)} out of 5</div>
@@ -145,10 +145,9 @@ export const PageProductDetails = () => {
               </div>
               {reviewData.map((reviewObj, i) => {
                 return <div key={i}>
-                  <div className='flex items-center gap-2'>
-                    <span className="material-symbols-outlined">account_circle</span>
-                    <div>{reviewObj.userName} </div>
-                    <div>{new Date(reviewObj.timestamp).toLocaleString()}</div>
+                  <div className='flex sm:flex-row flex-col sm:items-center gap-2'>
+                    <div className='flex items-center'><span className="material-symbols-outlined">account_circle</span>{reviewObj.userName} </div>
+                    <div className='sm:text-md text-[18px]'>{new Date(reviewObj.timestamp).toLocaleString()}</div>
                   </div>
                   <div>{new Array(5).fill(0).map((element, i) => <button key={i} className={i < reviewObj.rating ? 'text-yellow-400' : ''}><span className="material-symbols-outlined cursor-none">
                     grade
