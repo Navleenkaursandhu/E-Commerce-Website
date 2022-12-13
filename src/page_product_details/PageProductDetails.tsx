@@ -122,7 +122,7 @@ export const PageProductDetails = () => {
           <div className='text-center border border-b-[#7D515E] mb-6'>CUSTOMER REVIEWS</div>
           <div className='flex md:flex-row flex-col gap-6'>
             <div className='px-2'>
-              <div>{!!reviewData?.length && reviewData.length} Reviews</div>
+              <div>{!!reviewData?.length && reviewData.length} {reviewData.length === 1? 'Review' : 'Reviews'}</div>
               <div className='mt-4'>{new Array(5).fill(0).map((element, i) => <button key={i} className={i < Math.floor(averageStars) ? 'text-yellow-400' : ''}><span className="material-symbols-outlined cursor-none">
                 grade
               </span></button>)}</div>
