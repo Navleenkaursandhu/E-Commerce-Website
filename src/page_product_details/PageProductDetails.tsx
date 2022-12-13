@@ -91,7 +91,9 @@ export const PageProductDetails = () => {
 
             <div className='mt-6 flex flex-col gap-2'>
               <div>{totalItems} {totalItems === 1 ? 'Item' : 'Items'} in Bag </div>
-              <div className={`${buttonShadowEffect} flex items-center justify-center gap-2 w-full font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}> Proceed to Checkout</div>
+              <a href='/start-checkout'>
+                <div className={`${buttonShadowEffect} flex items-center justify-center gap-2 w-full font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}> Proceed to Checkout</div>
+              </a>
             </div>
           </div>
         </div>
