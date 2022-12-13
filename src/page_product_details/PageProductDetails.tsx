@@ -133,7 +133,7 @@ export const PageProductDetails = () => {
         {!!reviewData?.length && <div className='mt-16 p-2'>
           <div className='text-center border border-b-[#7D515E] mb-6'>CUSTOMER REVIEWS</div>
           <div className='flex md:flex-row flex-col gap-6'>
-            <div className='p-2 '>
+            <div className='px-2'>
               <div>{!!reviewData?.length && reviewData.length} Reviews</div>
               <div className='mt-4'>{new Array(5).fill(0).map((element, i) => <button key={i} className={i < Math.floor(averageStars) ? 'text-yellow-400' : ''}><span className="material-symbols-outlined cursor-none">
                 grade
