@@ -24,6 +24,11 @@ export const PageProductDetails = () => {
   const userLoginSessionData = useLoggedInUser()
   const averageStars = !!reviewData?.length && reviewData.reduce((prevReviewObj, currReviewObj, i) => prevReviewObj + currReviewObj.rating, 0) / reviewData.length
 
+  const bagItems = useLiveQuery(() => db.bagItems.toArray())
+  const totalItems = bagItems?.reduce((prev, curr, i) => prev + curr.qty, 0)
+
+  console.log(totalItems)
+
   return (
     <div className='text-[#7D515E] flex flex-col min-h-screen'>
       <Header />
@@ -83,6 +88,11 @@ export const PageProductDetails = () => {
             </div>
 
             <div className='text-lg'>*Return Policy: Returnable after 30 days of purchase</div>
+
+            <div className='mt-6 flex flex-col gap-2'>
+              <div>{totalItems} {totalItems === 1 ? 'Item' : 'Items'} in Bag </div>
+              <div className={`${buttonShadowEffect} flex items-center justify-center gap-2 w-full font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}> Proceed to Checkout</div>
+            </div>
           </div>
         </div>
 
@@ -122,7 +132,7 @@ export const PageProductDetails = () => {
           <div className='text-center border border-b-[#7D515E] mb-6'>CUSTOMER REVIEWS</div>
           <div className='flex md:flex-row flex-col gap-6'>
             <div className='px-2'>
-              <div>{!!reviewData?.length && reviewData.length} {reviewData.length === 1? 'Review' : 'Reviews'}</div>
+              <div>{!!reviewData?.length && reviewData.length} {reviewData.length === 1 ? 'Review' : 'Reviews'}</div>
               <div className='mt-4'>{new Array(5).fill(0).map((element, i) => <button key={i} className={i < Math.floor(averageStars) ? 'text-yellow-400' : 'text-[#a3838ea3]'}><span className="material-symbols-outlined cursor-none">
                 grade
               </span></button>)}</div>
