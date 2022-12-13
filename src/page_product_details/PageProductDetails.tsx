@@ -33,7 +33,7 @@ export const PageProductDetails = () => {
   const userLoginSessionData = useLoggedInUser()
   console.log(!!userLoginSessionData && userLoginSessionData.firstName)
 
-
+  const averageStars = !!reviewData?.length && reviewData.reduce((prevReviewObj, currReviewObj, i) => prevReviewObj + currReviewObj.rating, 0) / reviewData.length
   console.log(!!reviewData?.length && reviewData)
 
   return (
@@ -59,7 +59,7 @@ export const PageProductDetails = () => {
             <div className="flex gap-6">
               <div>Sizes: </div>
               <div className="flex sm:gap-12 gap-2">
-                {productObject.sizes.map((str, i) => <button className={` ${buttonShadowEffect} w-[2.5rem] rounded-md bg-[#F4DADB]`} onClick={() => setSizeSelected(str)} key={i}>{str}</button>)}
+                {productObject.sizes.map((str, i) => <button key={i} className={` ${buttonShadowEffect} w-[2.5rem] rounded-md bg-[#F4DADB]`} onClick={() => setSizeSelected(str)}>{str}</button>)}
               </div>
             </div>
 
@@ -125,22 +125,26 @@ export const PageProductDetails = () => {
 
         {!!reviewData?.length && <div className='mt-16'>
           <div className='flex flex-row gap-6'>
-            <div className='border border-black'>
-              CUSTOMER REVIEWS
+            <div className='p-2 '>
+              <div>CUSTOMER REVIEWS</div>
+              <div className='mt-6'>{new Array(5).fill(0).map((element, i) => <button key={i} className={i < Math.floor(averageStars) ? 'text-yellow-400' : ''}><span className="material-symbols-outlined cursor-none">
+                grade
+              </span></button>)}</div>
+              <div> {averageStars.toFixed(1)} out of 5</div>
             </div>
-            <div className='flex flex-col flex-1 border border-black gap-10'>
+            <div className='flex flex-col flex-1 gap-10 bg-[#F4DADB] p-2 rounded-md'>
               <div>
                 <div className='text-center'>REVIEWS</div>
                 <hr className='border-1 border-[#7D515E]'></hr>
               </div>
               {reviewData.map((reviewObj, i) => {
-                return <div>
+                return <div key={i}>
                   <div className='flex items-center gap-2'>
                     <span className="material-symbols-outlined">account_circle</span>
                     <div>{reviewObj.userName} </div>
                     <div>{new Date(reviewObj.timestamp).toLocaleString()}</div>
                   </div>
-                  <div>{new Array(5).fill(0).map((element, i) => <button key={i} className={i < reviewObj.rating ? 'text-yellow-400' : ''}><span className="material-symbols-outlined cursor-default">
+                  <div>{new Array(5).fill(0).map((element, i) => <button key={i} className={i < reviewObj.rating ? 'text-yellow-400' : ''}><span className="material-symbols-outlined cursor-none">
                     grade
                   </span></button>)}</div>
                   <div>{reviewObj.review}</div>
