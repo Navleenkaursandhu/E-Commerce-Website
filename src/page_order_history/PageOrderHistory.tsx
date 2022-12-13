@@ -9,7 +9,6 @@ import { useLoggedInUserOrderHistory } from "../hooks/use_logged_in_user_order_h
 export const PageOrderHistory = () => {
 
   const orderPlacedData = useLoggedInUserOrderHistory()
-  // console.log(!!orderPlacedData.length)
 
   return (
     <>
