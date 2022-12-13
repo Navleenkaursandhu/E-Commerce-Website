@@ -90,7 +90,7 @@ export const PageProductDetails = () => {
           <div className='mt-10'>
             <div className='text-center border border-b-[#7D515E]'>RATE US</div>
             <div className='mt-2'>Please give us a star rating:</div>
-            {new Array(5).fill(0).map((element, i) => <button key={i} onClick={() => setStarIndex(i)} className={i <= starIndex ? 'text-yellow-400' : ''}><span className="material-symbols-outlined">
+            {new Array(5).fill(0).map((element, i) => <button key={i} onClick={() => setStarIndex(i)} className={i <= starIndex ? 'text-yellow-400' : 'text-[#a3838ea3]'}><span className="material-symbols-outlined">
               grade
             </span></button>)}
           </div>
@@ -123,7 +123,7 @@ export const PageProductDetails = () => {
           <div className='flex md:flex-row flex-col gap-6'>
             <div className='px-2'>
               <div>{!!reviewData?.length && reviewData.length} {reviewData.length === 1? 'Review' : 'Reviews'}</div>
-              <div className='mt-4'>{new Array(5).fill(0).map((element, i) => <button key={i} className={i < Math.floor(averageStars) ? 'text-yellow-400' : ''}><span className="material-symbols-outlined cursor-none">
+              <div className='mt-4'>{new Array(5).fill(0).map((element, i) => <button key={i} className={i < Math.floor(averageStars) ? 'text-yellow-400' : 'text-[#a3838ea3]'}><span className="material-symbols-outlined cursor-none">
                 grade
               </span></button>)}</div>
               <div> {averageStars.toFixed(1)} out of 5</div>
@@ -135,7 +135,7 @@ export const PageProductDetails = () => {
                     <div className='flex items-center'><span className="material-symbols-outlined">account_circle</span>{reviewObj.userName} </div>
                     <div>{new Date(reviewObj.timestamp).toLocaleString()}</div>
                   </div>
-                  <div>{new Array(5).fill(0).map((element, i) => <button key={i} className={i < reviewObj.rating ? 'text-yellow-400' : ''}><span className="material-symbols-outlined cursor-none">
+                  <div>{new Array(5).fill(0).map((element, i) => <button key={i} className={i < reviewObj.rating ? 'text-yellow-400' : 'text-[#a3838ea3]'}><span className="material-symbols-outlined cursor-none">
                     grade
                   </span></button>)}</div>
                   <div>{reviewObj.review}</div>
