@@ -22,6 +22,7 @@ export const PageOrderSummary = (prop) => {
     return newSum
   }, 0)
 
+  const displayCreditCardNum = prop.payment.slice(0, prop.payment.length - 4).replace(/[0-9]/g, '*').concat(prop.payment.slice(prop.payment.length - 4))
 
   return (
     <>
@@ -37,7 +38,7 @@ export const PageOrderSummary = (prop) => {
             <div>
               <div>PAYMENT DETAILS:</div>
               <div>Credit Card Number</div>
-              <div className="w-full p-3 rounded-md bg-[#F4DADB]">{prop.payment}</div>
+              <div className="w-full p-3 rounded-md bg-[#F4DADB]">{displayCreditCardNum}</div>
             </div>
           </div>
 
@@ -61,7 +62,7 @@ export const PageOrderSummary = (prop) => {
                 <div className="pt-8 text-2xl">TOTAL: {CURRENCY} {(total * 1.12).toFixed(2)}</div>
               </div>
 
-              <button onClick={async() => {
+              <button onClick={async () => {
                 const orderId = await db.order.add({
                   userId: loggedInUser.id,
                   timestamp: new Date().getTime(),

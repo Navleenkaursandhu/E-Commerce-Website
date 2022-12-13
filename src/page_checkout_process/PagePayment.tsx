@@ -32,7 +32,7 @@ export const PagePayment = (prop) => {
           <div className="flex flex-col gap-6 md:w-auto w-full md:p-0 p-4 ">
             <div>
               <div>Credit Card Number</div>
-              <input onChange={(e) => setInputCreditCardNum(e.target.value)} className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder="Type your credit card number"></input>
+              <input type='number' onChange={(e) => setInputCreditCardNum(e.target.value)} className='w-full px-4 py-2 rounded-md bg-[#F4DADB]' placeholder="Type your credit card number"></input>
             </div>
 
             <div className="flex md:flex-row flex-col gap-2">
