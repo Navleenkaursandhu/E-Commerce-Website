@@ -20,6 +20,7 @@ export const PageProductDetails = () => {
 
   // const loginData = useLiveQuery(async () => await db.loginSession.toArray())
   // console.log(!!loginData?.length && loginData[0].userId)
+  console.log(id)
 
   console.log(reviewByLoggedInUser)
 
@@ -28,7 +29,7 @@ export const PageProductDetails = () => {
 
   const ordersWithProduct = loggedInUserOrderHistoryData?.filter((order, i) => order.products.filter((product, i) => product.productId === id).length > 0)
 
-  const reviewData = useLiveQuery(async () => await db.reviews.toArray())
+  const reviewData = useLiveQuery(async () => await db.reviews.where({productId: id}).toArray())
 
   const userLoginSessionData = useLoggedInUser()
   console.log(!!userLoginSessionData && userLoginSessionData.firstName)
@@ -130,7 +131,7 @@ export const PageProductDetails = () => {
           warning
         </span>Only logged in users who have purchased this product can add a review</div>}
 
-        {!!reviewData?.length && <div className='mt-16 p-2'>
+        {!!ordersWithProduct?.length && !!reviewData?.length && <div className='mt-16 p-2'>
           <div className='text-center border border-b-[#7D515E] mb-6'>CUSTOMER REVIEWS</div>
           <div className='flex md:flex-row flex-col gap-6'>
             <div className='px-2'>
@@ -141,7 +142,7 @@ export const PageProductDetails = () => {
               <div> {averageStars.toFixed(1)} out of 5</div>
             </div>
             <div className='flex flex-col flex-1 gap-10 bg-[#F4DADB] p-2 rounded-md'>
-              {reviewData.map((reviewObj, i) => {
+              { reviewData.map((reviewObj, i) => {
                 return <div key={i}>
                   <div className='flex sm:flex-row flex-col sm:items-center gap-2'>
                     <div className='flex items-center'><span className="material-symbols-outlined">account_circle</span>{reviewObj.userName} </div>
