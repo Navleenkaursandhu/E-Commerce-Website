@@ -1,13 +1,13 @@
+import { useLiveQuery } from 'dexie-react-hooks'
 import { useState } from 'react'
 import img1 from '../assets/img1.jpg'
 import img2 from '../assets/img2.jpg'
 import img3 from '../assets/img3.jpg'
+import { db } from '../db'
 import { CURRENCY, product } from '../models/product'
 export const Body = () => {
 
   const [sortOptionSelected, setSortOptionSelected] = useState('')
-
-  console.log(sortOptionSelected)
 
   const sortedProducts = product.read()
   if (sortOptionSelected === 'lowest-price') {
@@ -16,6 +16,10 @@ export const Body = () => {
   else if (sortOptionSelected === 'highest-price') {
     sortedProducts.sort((a, b) => b.price - a.price)
   }
+
+  const reviewsData = useLiveQuery(async () => await db.reviews.toArray())
+
+  console.log(!!reviewsData?.length && reviewsData)
 
   return (
     <div className='bg-[#F3EBF1]'>
@@ -47,8 +51,24 @@ export const Body = () => {
 
       <div className='flex flex-wrap px-6 py-16 gap-10 justify-evenly'>
         {sortedProducts.map((obj, i) => {
+          const productReviews = !!reviewsData?.length && reviewsData.filter((productReview, i) => productReview.productId === obj.id)
+          console.log(productReviews)
+
+          const productReviewsAverage = !!productReviews.length && Math.floor(productReviews.reduce((prevReview, currReview) => prevReview + currReview.rating, 0) / productReviews.length)
+          console.log(productReviewsAverage)
           return <a href={`/product-details/${obj.id}`} key={obj.id} className='flex flex-col gap-1.5 md:[24rem] sm:w-[16rem] w-[9rem]'>
             <img className='rounded-md' src={obj.image}></img>
+            <div>
+              {!!productReviewsAverage
+                ? new Array(5).fill(0).map((element, i) => <button key={i} className={i < productReviewsAverage ? 'text-yellow-400' : 'text-[#a3838ea3]'}><span className="material-symbols-outlined">
+                  grade
+                </span></button>)
+
+                : new Array(5).fill(0).map((element, i) => <button key={i} className='text-[#a3838ea3]'><span className="material-symbols-outlined">
+                  grade
+                </span></button>)
+              }
+            </div>
             <div>{obj.name}</div>
             <div>{CURRENCY} {obj.price.toFixed(2)}</div>
             {obj.hasFreeDelivery && <div className='bg-[#F4DADB] sm:px-3 sm:py-1 p-1 rounded-md sm:w-1/2 w-full text-center'>Free Delivery</div>
