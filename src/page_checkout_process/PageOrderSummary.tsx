@@ -75,6 +75,7 @@ export const PageOrderSummary = (prop) => {
                   })
                 })
                 prop.onNext(orderId)
+                db.bagItems.clear()
               }} className={`${buttonShadowEffect} font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>PLACE ORDER</button>
             </div>
           </div>
