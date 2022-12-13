@@ -35,11 +35,6 @@ export const Body = () => {
       <div className='flex md:justify-between justify-evenly flex-wrap px-6 pt-16 items-center md:gap-0 gap-12'>
         <div className='xl:text-3xl lg:text-2xl text-lg font-medium'>Find Something Classy!</div>
         <div className='flex sm:gap-10 gap-4 items-center sm:text-lg text-sm'>
-          <div className='px-3 py-1 bg-[#F4DADB] rounded-md flex flex-row items-center gap-2'>Filter
-            <span className="material-symbols-outlined sm:text-xl text-sm">
-              tune
-            </span>
-          </div>
           <div className='px-3 py-1 bg-[#F4DADB] rounded-md flex sm:gap-2 gap-0.5'>Sort By
             <select onChange={(e) => setSortOptionSelected(e.target.value)} className='bg-[#F4DADB]'>
               <option value='price'>Recommended</option>
