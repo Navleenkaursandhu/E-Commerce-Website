@@ -147,7 +147,7 @@ export const PageProductDetails = () => {
                 return <div key={i}>
                   <div className='flex sm:flex-row flex-col sm:items-center gap-2'>
                     <div className='flex items-center'><span className="material-symbols-outlined">account_circle</span>{reviewObj.userName} </div>
-                    <div className='sm:text-md text-[18px]'>{new Date(reviewObj.timestamp).toLocaleString()}</div>
+                    <div>{new Date(reviewObj.timestamp).toLocaleString()}</div>
                   </div>
                   <div>{new Array(5).fill(0).map((element, i) => <button key={i} className={i < reviewObj.rating ? 'text-yellow-400' : ''}><span className="material-symbols-outlined cursor-none">
                     grade
