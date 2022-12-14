@@ -8,6 +8,7 @@ import { db } from '../db';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { useLoggedInUserOrderHistory } from '../hooks/use_logged_in_user_order_history';
 import { useLoggedInUser } from '../hooks/use_logged_in_user';
+import { format } from 'date-fns';
 
 export const PageProductDetails = () => {
   const params = useParams()
@@ -17,6 +18,7 @@ export const PageProductDetails = () => {
   const [quantitySelected, setQuantitySelected] = useState('1')
   const [starIndex, setStarIndex] = useState(-1)
   const [reviewByLoggedInUser, setReviewByLoggedInUser] = useState('')
+  const [sizeButtonClicked, setSizeButtonClicked] = useState(-1)
 
   const loggedInUserOrderHistoryData = useLoggedInUserOrderHistory()
   const ordersWithProduct = loggedInUserOrderHistoryData?.filter((order, i) => order.products.filter((product, i) => product.productId === id).length > 0)
@@ -26,8 +28,6 @@ export const PageProductDetails = () => {
 
   const bagItems = useLiveQuery(() => db.bagItems.toArray())
   const totalItems = bagItems?.reduce((prev, curr, i) => prev + curr.qty, 0)
-
-  console.log(totalItems)
 
   return (
     <div className='text-[#7D515E] flex flex-col min-h-screen'>
@@ -51,8 +51,14 @@ export const PageProductDetails = () => {
 
             <div className="flex gap-6">
               <div>Sizes: </div>
-              <div className="flex sm:gap-12 gap-2">
-                {productObject.sizes.map((str, i) => <button key={i} className={` ${buttonShadowEffect} w-[2.5rem] rounded-md bg-[#F4DADB]`} onClick={() => setSizeSelected(str)}>{str}</button>)}
+              <div className="flex sm:gap-6 gap-2">
+                {productObject.sizes.map((str, i) => <button key={i} className={` ${buttonShadowEffect} ${sizeButtonClicked === i ? 'bg-white' : 'bg-[#F4DADB]'} w-[2.5rem] rounded-md bg-[#F4DADB]`}
+                  onClick={() => {
+                    setSizeSelected(str)
+                    setSizeButtonClicked(i)
+                  }}>
+                  {str}
+                </button>)}
               </div>
             </div>
 
@@ -75,11 +81,13 @@ export const PageProductDetails = () => {
             <div className='pt-10'>
               <button
                 className={`${buttonShadowEffect} flex items-center justify-center gap-2 w-full font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}
-                onClick={() => db.bagItems.add({
+                onClick={() => 
+                  db.bagItems.add({
                   productId: productObject.id,
                   size: sizeSelected,
                   qty: Number(quantitySelected)
-                })}
+                })
+              }
               >
                 Add To Bag<span className="material-symbols-outlined text-3xl ">
                   shopping_bag
@@ -140,12 +148,12 @@ export const PageProductDetails = () => {
               </span></button>)}</div>
               <div> {averageStars.toFixed(1)} out of 5</div>
             </div>
-            <div className='flex flex-col flex-1 gap-10 bg-[#F4DADB] p-2 rounded-md'>
+            <div className='flex flex-col flex-1 gap-10 rounded-md'>
               {reviewData.map((reviewObj, i) => {
-                return <div key={i}>
-                  <div className='flex sm:flex-row flex-col sm:items-center gap-2'>
-                    <div className='flex items-center'><span className="material-symbols-outlined">account_circle</span>{reviewObj.userName} </div>
-                    <div>{new Date(reviewObj.timestamp).toLocaleString()}</div>
+                return <div className='bg-[#F4DADB] p-4 rounded-md' key={i}>
+                  <div className='flex flex-col'>
+                    <div className='flex items-center gap-3.5'><span className="material-symbols-outlined md:text-4xl">account_circle</span>{reviewObj.userName} </div>
+                    <div className='sm:text-[16px] text-[12px]'>{format(new Date(reviewObj.timestamp),  "d MMMM yyyy")}</div>
                   </div>
                   <div>{new Array(5).fill(0).map((element, i) => <button key={i} className={i < reviewObj.rating ? 'text-yellow-400' : 'text-[#a3838ea3]'}><span className="material-symbols-outlined cursor-none">
                     grade
