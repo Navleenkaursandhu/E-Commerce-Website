@@ -14,11 +14,10 @@ export const PageProductDetails = () => {
   const params = useParams()
   const id = Number(params.id)
   const productObject = product.read().find((obj, i) => obj.id === id)
-  const [sizeSelected, setSizeSelected] = useState('M')
   const [quantitySelected, setQuantitySelected] = useState('1')
   const [starIndex, setStarIndex] = useState(-1)
   const [reviewByLoggedInUser, setReviewByLoggedInUser] = useState('')
-  const [sizeButtonClicked, setSizeButtonClicked] = useState(-1)
+  const [sizeButtonClicked, setSizeButtonClicked] = useState(1)
   const [addToBagButtonClicked, setAddToBagButtonClicked] = useState(false)
 
   const loggedInUserOrderHistoryData = useLoggedInUserOrderHistory()
@@ -55,7 +54,6 @@ export const PageProductDetails = () => {
               <div className="flex sm:gap-6 gap-2">
                 {productObject.sizes.map((str, i) => <button key={i} className={` ${buttonShadowEffect} ${sizeButtonClicked === i ? 'bg-white' : 'bg-[#F4DADB]'} w-[2.5rem] rounded-md bg-[#F4DADB]`}
                   onClick={() => {
-                    setSizeSelected(str)
                     setSizeButtonClicked(i)
                   }}>
                   {str}
@@ -85,7 +83,7 @@ export const PageProductDetails = () => {
                 onClick={() => {
                   db.bagItems.add({
                     productId: productObject.id,
-                    size: sizeSelected,
+                    size: productObject.sizes[sizeButtonClicked] ,
                     qty: Number(quantitySelected)
                   })
 
