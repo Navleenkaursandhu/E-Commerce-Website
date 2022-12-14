@@ -19,6 +19,7 @@ export const PageProductDetails = () => {
   const [starIndex, setStarIndex] = useState(-1)
   const [reviewByLoggedInUser, setReviewByLoggedInUser] = useState('')
   const [sizeButtonClicked, setSizeButtonClicked] = useState(-1)
+  const [addToBagButtonClicked, setAddToBagButtonClicked] = useState(false)
 
   const loggedInUserOrderHistoryData = useLoggedInUserOrderHistory()
   const ordersWithProduct = loggedInUserOrderHistoryData?.filter((order, i) => order.products.filter((product, i) => product.productId === id).length > 0)
@@ -81,27 +82,32 @@ export const PageProductDetails = () => {
             <div className='pt-10'>
               <button
                 className={`${buttonShadowEffect} flex items-center justify-center gap-2 w-full font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}
-                onClick={() => 
+                onClick={() => {
                   db.bagItems.add({
-                  productId: productObject.id,
-                  size: sizeSelected,
-                  qty: Number(quantitySelected)
-                })
-              }
+                    productId: productObject.id,
+                    size: sizeSelected,
+                    qty: Number(quantitySelected)
+                  })
+
+                  setAddToBagButtonClicked(true)
+                }
+                }
               >
                 Add To Bag<span className="material-symbols-outlined text-3xl ">
                   shopping_bag
                 </span>
               </button>
-            </div>
 
-            <div className='text-lg'>*Return Policy: Returnable after 30 days of purchase</div>
+              <div className='text-lg'>*Return Policy: Returnable after 30 days of purchase</div>
 
-            <div className='mt-6 flex flex-col gap-2'>
-              <div>{totalItems} {totalItems === 1 ? 'Item' : 'Items'} in Bag </div>
-              <a href='/start-checkout'>
-                <div className={`${buttonShadowEffect} flex items-center justify-center gap-2 w-full font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}> Proceed to Checkout</div>
-              </a>
+              {addToBagButtonClicked && <div className='mt-6 flex flex-col gap-2'>
+                <div>{totalItems} {totalItems === 1 ? 'Item' : 'Items'} in Bag </div>
+                <a href='/start-checkout'>
+                  <div className={`${buttonShadowEffect} flex items-center justify-center gap-2 w-full font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}> Proceed to Checkout</div>
+                </a>
+              </div>
+              }
+
             </div>
           </div>
         </div>
@@ -153,7 +159,7 @@ export const PageProductDetails = () => {
                 return <div className='bg-[#F4DADB] p-4 rounded-md' key={i}>
                   <div className='flex flex-col'>
                     <div className='flex items-center gap-3.5'><span className="material-symbols-outlined md:text-4xl">account_circle</span>{reviewObj.userName} </div>
-                    <div className='sm:text-[16px] text-[12px]'>{format(new Date(reviewObj.timestamp),  "d MMMM yyyy")}</div>
+                    <div className='sm:text-[16px] text-[12px]'>{format(new Date(reviewObj.timestamp), "d MMMM yyyy")}</div>
                   </div>
                   <div>{new Array(5).fill(0).map((element, i) => <button key={i} className={i < reviewObj.rating ? 'text-yellow-400' : 'text-[#a3838ea3]'}><span className="material-symbols-outlined cursor-none">
                     grade
