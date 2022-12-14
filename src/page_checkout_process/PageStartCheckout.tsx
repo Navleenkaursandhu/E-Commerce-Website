@@ -25,7 +25,7 @@ export const PageStartCheckout = (prop) => {
       <Header />
       <div className="bg-[#F3EBF1] sm:text-xl text-md flex-1">
         {bagItems?.length === 0 &&
-          <div className="p-6 mt-24 text-center font-semibold sm:text-5xl text-3xl">YOUR BAG IS EMPTY</div>
+          <div className="p-6 mt-48 text-center font-semibold sm:text-4xl text-xl">YOUR BAG IS EMPTY!</div>
         }
 
         {!!bagItems?.length && <div className="p-10">
