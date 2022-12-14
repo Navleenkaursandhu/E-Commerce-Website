@@ -18,7 +18,6 @@ export const PageProductDetails = () => {
   const [starIndex, setStarIndex] = useState(-1)
   const [reviewByLoggedInUser, setReviewByLoggedInUser] = useState('')
   const [sizeButtonClicked, setSizeButtonClicked] = useState(1)
-  const [addToBagButtonClicked, setAddToBagButtonClicked] = useState(false)
 
   const loggedInUserOrderHistoryData = useLoggedInUserOrderHistory()
   const ordersWithProduct = loggedInUserOrderHistoryData?.filter((order, i) => order.products.filter((product, i) => product.productId === id).length > 0)
@@ -80,15 +79,12 @@ export const PageProductDetails = () => {
             <div className='pt-10'>
               <button
                 className={`${buttonShadowEffect} flex items-center justify-center gap-2 w-full font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}
-                onClick={() => {
+                onClick={() =>
                   db.bagItems.add({
                     productId: productObject.id,
-                    size: productObject.sizes[sizeButtonClicked] ,
+                    size: productObject.sizes[sizeButtonClicked],
                     qty: Number(quantitySelected)
                   })
-
-                  setAddToBagButtonClicked(true)
-                }
                 }
               >
                 Add To Bag<span className="material-symbols-outlined text-3xl ">
@@ -98,7 +94,7 @@ export const PageProductDetails = () => {
 
               <div className='text-lg'>*Return Policy: Returnable after 30 days of purchase</div>
 
-              {addToBagButtonClicked && <div className='mt-6 flex flex-col gap-2'>
+              {!!totalItems && <div className='mt-6 flex flex-col gap-2'>
                 <div>{totalItems} {totalItems === 1 ? 'Item' : 'Items'} in Bag </div>
                 <a href='/start-checkout'>
                   <div className={`${buttonShadowEffect} flex items-center justify-center gap-2 w-full font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}> Proceed to Checkout</div>
