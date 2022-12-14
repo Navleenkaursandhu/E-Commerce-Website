@@ -1,7 +1,36 @@
+import { useState } from "react"
 import { Footer } from "../common/Footer"
 import { Header } from "../common/Header"
+import { buttonShadowEffect } from "../common/tailwind_constants"
 
 export const PageResetPassword = () => {
+
+  const [newPasswordTyped, setNewPasswordTyped] = useState('')
+  const [newPasswordRetyped, setNewPasswordRetyped] = useState('')
+  const [isResetPasswordButtonClicked, setIsResetPasswordButtonClicked] = useState(false)
+
+
+  const passwordMatched = () => {
+    console.log("valid")
+  }
+
+  const ResetPasswordButton = () => {
+    if (newPasswordTyped && newPasswordRetyped && newPasswordRetyped === newPasswordTyped) {
+      return <button onClick={() => {
+        passwordMatched()
+        setIsResetPasswordButtonClicked(true)
+      }}
+        className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>RESET PASSWORD</button>
+    }
+
+    else {
+      return <div>
+        <button onClick={() => setIsResetPasswordButtonClicked(true)} className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>RESET PASSWORD</button>
+        {isResetPasswordButtonClicked && <div>Please type in same password in both the above fields </div>}
+      </div>
+    }
+  }
+
   return (
     <>
       <div className='text-[#7D515E] min-h-screen flex flex-col'>
@@ -11,14 +40,14 @@ export const PageResetPassword = () => {
             <div className="font-semibold sm:text-3xl text-2xl">Reset Your Password</div>
             <div>
               <div>Enter your new Password</div>
-              <input className="px-4 py-2 w-full rounded-md bg-[#F4DADB]" placeholder="Type your new password"></input>
+              <input onChange={(e) => setNewPasswordTyped(e.target.value)} className="px-4 py-2 w-full rounded-md bg-[#F4DADB]" placeholder="Type your new password"></input>
             </div>
 
             <div>
               <div>Renter your new password</div>
-              <input className="px-4 py-2 w-full rounded-md bg-[#F4DADB]" placeholder="Retype your new password"></input>
+              <input onChange={(e) => setNewPasswordRetyped(e.target.value)} className="px-4 py-2 w-full rounded-md bg-[#F4DADB]" placeholder="Retype your new password"></input>
             </div>
-
+            <ResetPasswordButton />
           </div>
         </div>
         <Footer />
