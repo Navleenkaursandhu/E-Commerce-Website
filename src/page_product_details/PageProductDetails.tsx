@@ -134,7 +134,7 @@ export const PageProductDetails = () => {
           } className={`${buttonShadowEffect} lg:w-1/5 md:w-2/5 sm:w-1/2 flex items-center justify-center gap-2 font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}>Submit Review</button>
         </div>}
 
-        {!ordersWithProduct?.length && <div>
+        {!ordersWithProduct?.length && <div className='p-2'>
           <div className='text-center border border-r-0 border-l-0 border-t-0 border-b-[#7D515E]'>RATE US</div>
           <div className='mt-6 flex items-center gap-2'>
             <span className="material-symbols-outlined">
@@ -142,6 +142,12 @@ export const PageProductDetails = () => {
             </span>Only logged in users who have purchased this product can add a review</div>
         </div>
         }
+
+        {!reviewData?.length && <div className='mt-16 p-2'>
+          <div className='text-center border border-r-0 border-l-0 border-t-0 border-b-[#7D515E] mb-6'>CUSTOMER REVIEWS</div>
+          <div>No reviews yet!</div>
+
+        </div>}
 
         {!!reviewData?.length && <div className='mt-16 p-2'>
           <div className='text-center border border-r-0 border-l-0 border-t-0 border-b-[#7D515E] mb-6'>CUSTOMER REVIEWS</div>
