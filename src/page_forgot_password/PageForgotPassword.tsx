@@ -5,7 +5,7 @@ import { db } from '../db'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { useState } from 'react'
 
-export const PageForgotPassword = () => {
+export const PageForgotPassword = (prop) => {
 
   const [enteredEmail, setEnteredEmail] = useState('')
   const [isValidEmail, setIsValidEmail] = useState(false)
@@ -21,7 +21,7 @@ export const PageForgotPassword = () => {
     if (!!accountHolderUsersData?.length) {
       let validUserAccount = accountHolderUsersData.filter((userAccount) => userAccount.email === enteredEmail)
       if (!!validUserAccount.length) {
-        setIsValidEmail(true)
+        prop.onNext()
       }
       else {
         setIsValidEmail(false)
@@ -42,8 +42,16 @@ export const PageForgotPassword = () => {
             <div className="font-bold">E-mail</div>
             <input onChange={(e) => setEnteredEmail(e.target.value)} className='px-4 py-2 w-full rounded-md bg-[#F4DADB]'></input>
           </div>
-          <button onClick={() => isEmailValid()} className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>RECOVER</button>
-          {!isValidEmail && recoverButtonClicked && <div className='sm:text-xl text-md'>The E-mail address you've entered doesn't match any account. <span className='font-semibold'>Sign Up for an Account</span></div>}
+
+        <button onClick={() => 
+          isEmailValid()
+        } 
+          
+          className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>RECOVER</button>
+          {!isValidEmail && recoverButtonClicked && 
+          <div className='sm:text-xl text-md'>The E-mail address you've entered doesn't match any account. <span className='font-semibold'>Sign Up for an Account</span></div>}
+          
+          {/* {!!isValidEmail && recoverButtonClicked && } */}
         </div>
       </div>
       <Footer />
