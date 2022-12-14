@@ -21,7 +21,7 @@ export const PageForgotPassword = (prop) => {
     if (!!accountHolderUsersData?.length) {
       let validUserAccount = accountHolderUsersData.filter((userAccount) => userAccount.email === enteredEmail)
       if (!!validUserAccount.length) {
-        prop.onNext()
+        prop.onNext(enteredEmail)
       }
       else {
         setIsValidEmail(false)

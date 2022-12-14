@@ -1,17 +1,22 @@
-import { useState } from "react"
+import { useReducer, useState } from "react"
 import { Footer } from "../common/Footer"
 import { Header } from "../common/Header"
 import { buttonShadowEffect } from "../common/tailwind_constants"
+import { db } from "../db"
+import bcrypt from 'bcryptjs'
 
-export const PageResetPassword = () => {
+export const PageResetPassword = (prop) => {
 
   const [newPasswordTyped, setNewPasswordTyped] = useState('')
   const [newPasswordRetyped, setNewPasswordRetyped] = useState('')
   const [isResetPasswordButtonClicked, setIsResetPasswordButtonClicked] = useState(false)
 
+  console.log(prop.emailEntered)
 
-  const passwordMatched = () => {
-    console.log("valid")
+  const passwordMatched = async() => {
+    const getUserAccount = await db.user.where({email: prop.emailEntered}).toArray()
+    db.user.update(getUserAccount[0].id, {passwordHash: bcrypt.hashSync(newPasswordTyped, 10)})
+    prop.onNext()
   }
 
   const ResetPasswordButton = () => {
@@ -40,12 +45,12 @@ export const PageResetPassword = () => {
             <div className="font-semibold sm:text-3xl text-2xl">Reset Your Password</div>
             <div>
               <div>Enter your new Password</div>
-              <input onChange={(e) => setNewPasswordTyped(e.target.value)} className="px-4 py-2 w-full rounded-md bg-[#F4DADB]" placeholder="Type your new password"></input>
+              <input type='password' onChange={(e) => setNewPasswordTyped(e.target.value)} className="px-4 py-2 w-full rounded-md bg-[#F4DADB]" placeholder="Type your new password"></input>
             </div>
 
             <div>
               <div>Renter your new password</div>
-              <input onChange={(e) => setNewPasswordRetyped(e.target.value)} className="px-4 py-2 w-full rounded-md bg-[#F4DADB]" placeholder="Retype your new password"></input>
+              <input type='password' onChange={(e) => setNewPasswordRetyped(e.target.value)} className="px-4 py-2 w-full rounded-md bg-[#F4DADB]" placeholder="Retype your new password"></input>
             </div>
             <ResetPasswordButton />
           </div>
