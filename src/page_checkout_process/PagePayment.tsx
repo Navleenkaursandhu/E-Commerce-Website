@@ -19,7 +19,7 @@ export const PagePayment = (prop) => {
         <button onClick={() => setIsOrderSummaryButtonClicked(true)} className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>REVIEW ORDER SUMMARY</button>
         {isOrderSummaryButtonClicked && <div className="flex items-center justify-center gap-1.5 text-red-800 text-lg p-4"><span className="material-symbols-outlined">
           warning
-        </span>Please type your credit card details to proceed</div>}
+        </span>Please enter all the fields to proceed!</div>}
       </div>
     }
   }
