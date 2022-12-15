@@ -44,21 +44,21 @@ export const PageOrderSummary = (prop) => {
           <div className="flex-1 md:p-16 p-4">
             <div className="flex flex-col gap-16">
               <div>
-                <div className="flex-1 text-center sm:text-2xl text-lg">Total Items: {!!bagItems && bagItems.reduce((prev, curr, i) => prev + curr.qty, 0)}</div>
-                <div className="h-0.5 bg-[#7D515E]"></div>
+                <div className="flex-1 text-center sm:text-2xl text-lg md:mt-0 mt-6">Total Items: {!!bagItems && bagItems.reduce((prev, curr, i) => prev + curr.qty, 0)}</div>
+                <hr className="border border-b-[#7D515E]"></hr>
               </div>
               <BagItemsSummary />
 
               <div className="flex flex-col gap-4">
                 <div>
                   <div>ORDER SUMMARY</div>
-                  <div className="h-0.5 bg-[#7D515E]"></div>
+                  <hr className="border border-b-[#7D515E]"></hr>
                 </div>
 
                 <div>Subtotal: {CURRENCY} {total}</div>
                 <div>Shipping: {CURRENCY} 0.00</div>
                 <div>Sales Tax: {CURRENCY} {(total * 0.12).toFixed(2)}</div>
-                <div className="pt-8 text-2xl">TOTAL: {CURRENCY} {(total * 1.12).toFixed(2)}</div>
+                <div className="pt-8 text-2xl font-semibold">TOTAL: {CURRENCY} {(total * 1.12).toFixed(2)}</div>
               </div>
 
               <button onClick={async () => {

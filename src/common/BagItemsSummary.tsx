@@ -29,7 +29,7 @@ export const BagItemsSummary = () => {
                 </div>
               </div>
             </div>
-            <div className="sm:hidden h-0.5 bg-[#7D515E]"></div>
+            <hr className="border border-b-[#7D515E] mt-16"></hr>
           </div>
         )
       })}

@@ -37,7 +37,7 @@ export const PageProductDetails = () => {
 
           <div className="flex flex-col md:w-3/5 sm:w-4/5 w-full gap-4 p-2">
             <div>
-              <div className="text-3xl font-semibold">{productObject.name}</div>
+              <div className="lg:text-3xl text-2xl font-semibold">{productObject.name}</div>
               <hr className="border-1 border-[#7D515E]"></hr>
               <div>{productObject.description}</div>
             </div>
@@ -108,7 +108,7 @@ export const PageProductDetails = () => {
 
         {!!ordersWithProduct?.length && <div className='flex flex-col gap-4 p-2'>
           <div className='mt-10'>
-            <div className='text-center border border-r-0 border-l-0 border-t-0 border-b-[#7D515E]'>RATE US</div>
+            <div className='text-center border border-r-0 border-l-0 border-t-0 border-b-[#7D515E] font-semibold'>RATE US</div>
             <div className='mt-2'>Please give us a star rating:</div>
             {new Array(5).fill(0).map((element, i) => <button key={i} onClick={() => setStarIndex(i)} className={i <= starIndex ? 'text-yellow-400' : 'text-[#a3838ea3]'}><span className="material-symbols-outlined">
               grade
@@ -135,7 +135,7 @@ export const PageProductDetails = () => {
         </div>}
 
         {!ordersWithProduct?.length && <div className='p-2 mt-10'>
-          <div className='text-center border border-r-0 border-l-0 border-t-0 border-b-[#7D515E]'>RATE US</div>
+          <div className='text-center border border-r-0 border-l-0 border-t-0 border-b-[#7D515E] font-semibold'>RATE US</div>
           <div className='mt-6 flex items-center gap-2'>
             <span className="material-symbols-outlined">
               warning
@@ -144,13 +144,13 @@ export const PageProductDetails = () => {
         }
 
         {!reviewData?.length && <div className='mt-16 p-2'>
-          <div className='text-center border border-r-0 border-l-0 border-t-0 border-b-[#7D515E] mb-6'>CUSTOMER REVIEWS</div>
+          <div className='text-center border border-r-0 border-l-0 border-t-0 border-b-[#7D515E] mb-6 font-semibold'>CUSTOMER REVIEWS</div>
           <div>No reviews yet!</div>
 
         </div>}
 
         {!!reviewData?.length && <div className='mt-16 p-2'>
-          <div className='text-center border border-r-0 border-l-0 border-t-0 border-b-[#7D515E] mb-6'>CUSTOMER REVIEWS</div>
+          <div className='text-center border border-r-0 border-l-0 border-t-0 border-b-[#7D515E] mb-6 font-semibold'>CUSTOMER REVIEWS</div>
           <div className='flex md:flex-row flex-col gap-6'>
             <div className='px-2'>
               <div>{!!reviewData?.length && reviewData.length} {reviewData.length === 1 ? 'Review' : 'Reviews'}</div>
