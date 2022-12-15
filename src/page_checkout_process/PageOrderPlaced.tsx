@@ -14,7 +14,7 @@ export const PageOrderPlaced = (prop) => {
             </span>
             <div className="sm:text-4xl text-xl font-semibold" >ORDER SUCCESSFULLY PLACED</div>
             <div className="sm:text-3xl text-lg">Your Order ID: {orderIdString}</div>
-            <div className="flex gap-2 p-2">
+            <div className="flex gap-2 p-2 text-red-800">
               <span className="material-symbols-outlined">
                 warning
               </span>
