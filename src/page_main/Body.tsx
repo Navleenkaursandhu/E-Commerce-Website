@@ -36,10 +36,11 @@ export const Body = () => {
         </div>
       </div>
 
-      <div className='flex md:justify-between justify-evenly flex-wrap px-6 pt-16 items-center md:gap-0 gap-12'>
+      <div className='w-full flex sm:flex-row flex-col sm:gap-0 gap-4 sm:pt-14 px-2 pt-4 sm:justify-between items-center'>
         <div className='xl:text-3xl lg:text-2xl text-lg font-medium'>Find Something Classy!</div>
-        <div className='flex sm:gap-10 gap-4 items-center sm:text-lg text-sm'>
-          <div className='px-3 py-1 bg-[#F4DADB] rounded-md flex sm:gap-2 gap-0.5'>Sort By
+        <div className='flex sm:gap-10 gap-4 sm:text-lg text-sm'>
+          <div className='px-3 py-1 bg-[#F4DADB] rounded-md flex items-center sm:gap-2 gap-0.5'>
+            <div>Sort By</div>
             <select onChange={(e) => setSortOptionSelected(e.target.value)} className='bg-[#F4DADB]'>
               <option value='price'>Recommended</option>
               <option value='lowest-price'>Lowest Price</option>
@@ -49,12 +50,10 @@ export const Body = () => {
         </div>
       </div>
 
-      <div className='flex flex-wrap px-6 py-16 gap-10 justify-evenly'>
+      <div className='flex flex-wrap px-6 sm:py-14 py-8 gap-8 justify-evenly'>
         {sortedProducts.map((obj, i) => {
           const productReviews = !!reviewsData?.length && reviewsData.filter((productReview, i) => productReview.productId === obj.id)
-
           const productReviewsAverage = !!productReviews.length && Math.floor(productReviews.reduce((prevReview, currReview) => prevReview + currReview.rating, 0) / productReviews.length)
-
 
           return <div className='hover:shadow-md hover:shadow-rose-200 rounded-md p-2'>
             <a href={`/product-details/${obj.id}`} key={obj.id} className='flex flex-col gap-1.5 md:[24rem] sm:w-[16rem] w-[9rem]'>
@@ -76,7 +75,6 @@ export const Body = () => {
               }
             </a>
           </div>
-
         })}
       </div>
     </div>
