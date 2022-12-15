@@ -58,7 +58,7 @@ export const PageOrderSummary = (prop) => {
 
                 <div>Subtotal: {CURRENCY} {total}</div>
                 <div>Shipping: {CURRENCY} 0.00</div>
-                <div>Sales Tax: {CURRENCY} {total * 0.12}</div>
+                <div>Sales Tax: {CURRENCY} {(total * 0.12).toFixed(2)}</div>
                 <div className="pt-8 text-2xl">TOTAL: {CURRENCY} {(total * 1.12).toFixed(2)}</div>
               </div>
 
