@@ -17,14 +17,12 @@ import product_img_15 from '../assets/product_img_15.jpg'
 import product_img_16 from '../assets/product_img_16.jpg'
 import product_img_17 from '../assets/product_img_17.jpg'
 
-
 class Product {
-
-  create() {
-    // TODO  
+  create () {
+    // TODO
   }
 
-  read() {
+  read () {
     return [
       {
         id: 0,
@@ -34,9 +32,9 @@ class Product {
         hasFreeDelivery: true,
         sizes: ['S', 'M', 'L', 'XL'],
         description: 'Soft cotton summer wear with smart look',
-        color: 'Peach',
-        //reviews: TODO
-      }, 
+        color: 'Peach'
+        // reviews: TODO
+      },
       {
         id: 1,
         image: product_img_1,
@@ -45,8 +43,8 @@ class Product {
         hasFreeDelivery: true,
         sizes: ['S', 'M', 'L', 'XL'],
         description: 'Soft cotton summer wear with smart look',
-        color: 'White',
-        //reviews: TODO
+        color: 'White'
+        // reviews: TODO
       },
       {
         id: 2,
@@ -56,8 +54,8 @@ class Product {
         hasFreeDelivery: true,
         sizes: ['S', 'M', 'L', 'XL'],
         description: 'Soft cotton summer wear with smart look',
-        color: 'Navy Blue',
-        //reviews: TODO
+        color: 'Navy Blue'
+        // reviews: TODO
       },
       {
         id: 3,
@@ -67,9 +65,9 @@ class Product {
         hasFreeDelivery: true,
         sizes: ['S', 'M', 'L', 'XL'],
         description: 'Soft cotton summer wear with smart look',
-        color: 'Grey',
-        //reviews: TODO
-      },{
+        color: 'Grey'
+        // reviews: TODO
+      }, {
         id: 4,
         image: product_img_4,
         name: 'Wildflower T-Shirt',
@@ -77,8 +75,8 @@ class Product {
         hasFreeDelivery: true,
         sizes: ['S', 'M', 'L', 'XL'],
         description: 'Soft cotton summer wear with smart look',
-        color: 'Black',
-        //reviews: TODO
+        color: 'Black'
+        // reviews: TODO
       },
       {
         id: 5,
@@ -88,8 +86,8 @@ class Product {
         hasFreeDelivery: true,
         sizes: ['S', 'M', 'L', 'XL'],
         description: 'Soft cotton summer wear with smart look',
-        color: 'Peachy Orange',
-        //reviews: TODO
+        color: 'Peachy Orange'
+        // reviews: TODO
       },
       {
         id: 6,
@@ -99,8 +97,8 @@ class Product {
         hasFreeDelivery: true,
         sizes: ['S', 'M', 'L', 'XL'],
         description: 'Soft cotton summer wear with smart look',
-        color: 'Brown',
-        //reviews: TODO
+        color: 'Brown'
+        // reviews: TODO
       },
       {
         id: 7,
@@ -110,8 +108,8 @@ class Product {
         hasFreeDelivery: true,
         sizes: ['S', 'M', 'L', 'XL'],
         description: 'Soft cotton summer wear with smart look',
-        color: 'pink',
-        //reviews: TODO
+        color: 'pink'
+        // reviews: TODO
       },
       {
         id: 8,
@@ -121,8 +119,8 @@ class Product {
         hasFreeDelivery: true,
         sizes: ['S', 'M', 'L', 'XL'],
         description: 'Soft cotton summer wear with smart look',
-        color: 'Red',
-        //reviews: TODO
+        color: 'Red'
+        // reviews: TODO
       },
       {
         id: 9,
@@ -132,8 +130,8 @@ class Product {
         hasFreeDelivery: true,
         sizes: ['S', 'M', 'L', 'XL'],
         description: 'Soft cotton summer wear with smart look',
-        color: 'Pinkish Brown',
-        //reviews: TODO
+        color: 'Pinkish Brown'
+        // reviews: TODO
       },
       {
         id: 10,
@@ -143,8 +141,8 @@ class Product {
         hasFreeDelivery: true,
         sizes: ['S', 'M', 'L', 'XL'],
         description: 'Soft cotton summer wear with smart look',
-        color: 'Black',
-        //reviews: TODO
+        color: 'Black'
+        // reviews: TODO
       },
       {
         id: 11,
@@ -154,8 +152,8 @@ class Product {
         hasFreeDelivery: true,
         sizes: ['S', 'M', 'L', 'XL'],
         description: 'Soft cotton summer wear with smart look',
-        color: 'Bottle Green',
-        //reviews: TODO
+        color: 'Bottle Green'
+        // reviews: TODO
       },
       {
         id: 12,
@@ -165,8 +163,8 @@ class Product {
         hasFreeDelivery: true,
         sizes: ['S', 'M', 'L', 'XL'],
         description: 'Soft cotton summer wear with smart look',
-        color: 'Red',
-        //reviews: TODO
+        color: 'Red'
+        // reviews: TODO
       },
       {
         id: 13,
@@ -176,8 +174,8 @@ class Product {
         hasFreeDelivery: true,
         sizes: ['S', 'M', 'L', 'XL'],
         description: 'Soft cotton summer wear with smart look',
-        color: 'White',
-        //reviews: TODO
+        color: 'White'
+        // reviews: TODO
       },
       {
         id: 14,
@@ -187,8 +185,8 @@ class Product {
         hasFreeDelivery: true,
         sizes: ['S', 'M', 'L', 'XL'],
         description: 'Soft cotton summer wear with smart look',
-        color: 'Yellow',
-        //reviews: TODO
+        color: 'Yellow'
+        // reviews: TODO
       },
       {
         id: 15,
@@ -198,8 +196,8 @@ class Product {
         hasFreeDelivery: true,
         sizes: ['S', 'M', 'L', 'XL'],
         description: 'Soft cotton summer wear with smart look',
-        color: 'Pink',
-        //reviews: TODO
+        color: 'Pink'
+        // reviews: TODO
       },
       {
         id: 16,
@@ -209,8 +207,8 @@ class Product {
         hasFreeDelivery: true,
         sizes: ['S', 'M', 'L', 'XL'],
         description: 'Soft cotton summer wear with smart look',
-        color: 'Light Pink',
-        //reviews: TODO
+        color: 'Light Pink'
+        // reviews: TODO
       },
       {
         id: 17,
@@ -220,22 +218,20 @@ class Product {
         hasFreeDelivery: true,
         sizes: ['S', 'M', 'L', 'XL'],
         description: 'Soft cotton summer wear with smart look',
-        color: 'Sky Blue',
-        //reviews: TODO
-      },
+        color: 'Sky Blue'
+        // reviews: TODO
+      }
     ]
   }
 
-  update() {
-    //TODO
-  }
-
-  delete() {
+  update () {
     // TODO
   }
 
-
+  delete () {
+    // TODO
+  }
 }
 
-export const product = new Product();
-export const CURRENCY = 'CAD';
+export const product = new Product()
+export const CURRENCY = 'CAD'

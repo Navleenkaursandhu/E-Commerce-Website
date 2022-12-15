@@ -1,5 +1,5 @@
-import { Footer } from "../common/Footer"
-import { Header } from "../common/Header"
+import { Footer } from '../common/Footer'
+import { Header } from '../common/Header'
 
 export const PageOrderPlaced = (prop) => {
   const orderIdString = prop.orderIdNum.toString().padStart(5, 0)

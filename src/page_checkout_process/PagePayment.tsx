@@ -1,7 +1,7 @@
-import { useState } from "react"
-import { Footer } from "../common/Footer"
-import { Header } from "../common/Header"
-import { buttonShadowEffect } from "../common/tailwind_constants"
+import { useState } from 'react'
+import { Footer } from '../common/Footer'
+import { Header } from '../common/Header'
+import { buttonShadowEffect } from '../common/tailwind_constants'
 
 export const PagePayment = (prop) => {
   const [inputCreditCardNum, setInputCreditCardNum] = useState('')
@@ -13,8 +13,7 @@ export const PagePayment = (prop) => {
   const ReviewOrderSummaryButton = () => {
     if (inputCreditCardNum && inputExpiryMonth && inputExpiryYear && inputCvv) {
       return <button onClick={() => prop.onNext(inputCreditCardNum, inputExpiryMonth, inputExpiryYear, inputCvv)} className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>REVIEW ORDER SUMMARY</button>
-    }
-    else {
+    } else {
       return <div>
         <button onClick={() => setIsOrderSummaryButtonClicked(true)} className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>REVIEW ORDER SUMMARY</button>
         {isOrderSummaryButtonClicked && <div className="flex items-center justify-center gap-1.5 text-red-800 text-lg p-4"><span className="material-symbols-outlined">

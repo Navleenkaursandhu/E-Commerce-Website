@@ -1,5 +1,5 @@
-import { useLiveQuery } from "dexie-react-hooks"
-import { db } from "../db"
+import { useLiveQuery } from 'dexie-react-hooks'
+import { db } from '../db'
 
 export const useLoggedInUser = () => {
   return useLiveQuery(async () => {

@@ -1,7 +1,7 @@
-import { useLiveQuery } from 'dexie-react-hooks';
-import { db } from '../db';
-import { product } from '../models/product';
-import { useLoggedInUser } from './use_logged_in_user';
+import { useLiveQuery } from 'dexie-react-hooks'
+import { db } from '../db'
+import { product } from '../models/product'
+import { useLoggedInUser } from './use_logged_in_user'
 
 export const useLoggedInUserOrderHistory = () => {
   const loggedInUserId = useLoggedInUser()?.id

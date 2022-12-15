@@ -6,7 +6,6 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import { useState } from 'react'
 
 export const PageForgotPassword = (prop) => {
-
   const [enteredEmail, setEnteredEmail] = useState('')
   const [isValidEmail, setIsValidEmail] = useState(false)
   const [recoverButtonClicked, setRecoverButtonClicked] = useState(false)
@@ -14,12 +13,11 @@ export const PageForgotPassword = (prop) => {
 
   const isEmailValid = () => {
     setRecoverButtonClicked(true)
-    if (!!accountHolderUsersData?.length) {
-      let validUserAccount = accountHolderUsersData.filter((userAccount) => userAccount.email === enteredEmail)
-      if (!!validUserAccount.length) {
+    if (accountHolderUsersData?.length) {
+      const validUserAccount = accountHolderUsersData.filter((userAccount) => userAccount.email === enteredEmail)
+      if (validUserAccount.length) {
         prop.onNext(enteredEmail)
-      }
-      else {
+      } else {
         setIsValidEmail(false)
       }
     }

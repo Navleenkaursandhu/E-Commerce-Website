@@ -6,14 +6,12 @@ import img3 from '../assets/img3.jpg'
 import { db } from '../db'
 import { CURRENCY, product } from '../models/product'
 export const Body = () => {
-
   const [sortOptionSelected, setSortOptionSelected] = useState('')
 
   const sortedProducts = product.read()
   if (sortOptionSelected === 'lowest-price') {
     sortedProducts.sort((a, b) => a.price - b.price)
-  }
-  else if (sortOptionSelected === 'highest-price') {
+  } else if (sortOptionSelected === 'highest-price') {
     sortedProducts.sort((a, b) => b.price - a.price)
   }
 
@@ -57,7 +55,7 @@ export const Body = () => {
             <a href={`/product-details/${obj.id}`} key={obj.id} className='flex flex-col gap-1.5 md:[24rem] sm:w-[16rem] w-[9rem]'>
               <img className='rounded-md' src={obj.image}></img>
               <div>
-                {!!productReviewsAverage
+                {productReviewsAverage
                   ? new Array(5).fill(0).map((element, i) => <button key={i} className={i < productReviewsAverage ? 'text-yellow-400' : 'text-[#a3838ea3]'}><span className="material-symbols-outlined">
                     grade
                   </span></button>)

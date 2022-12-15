@@ -1,9 +1,8 @@
-import { db } from "../db"
-import { useLiveQuery } from "dexie-react-hooks"
-import { buttonShadowEffect } from "./tailwind_constants"
+import { db } from '../db'
+import { useLiveQuery } from 'dexie-react-hooks'
+import { buttonShadowEffect } from './tailwind_constants'
 export const ShoppingBag = () => {
-
-  const bagItems = useLiveQuery(() => db.bagItems.toArray())
+  const bagItems = useLiveQuery(async () => await db.bagItems.toArray())
 
   const totalItems = bagItems?.reduce((prev, curr, i) => prev + curr.qty, 0)
 

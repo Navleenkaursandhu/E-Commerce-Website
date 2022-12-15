@@ -1,21 +1,20 @@
-import { Footer } from "../common/Footer"
-import { Header } from "../common/Header"
-import { db } from "../db"
-import { useLiveQuery } from "dexie-react-hooks"
-import { CURRENCY, product } from "../models/product"
-import { BagItemsSummary } from "../common/BagItemsSummary"
-import { buttonShadowEffect } from "../common/tailwind_constants"
-import { useLoggedInUser } from "../hooks/use_logged_in_user"
+import { Footer } from '../common/Footer'
+import { Header } from '../common/Header'
+import { db } from '../db'
+import { useLiveQuery } from 'dexie-react-hooks'
+import { CURRENCY, product } from '../models/product'
+import { BagItemsSummary } from '../common/BagItemsSummary'
+import { buttonShadowEffect } from '../common/tailwind_constants'
+import { useLoggedInUser } from '../hooks/use_logged_in_user'
 
 export const PageOrderSummary = (prop) => {
-
   const loggedInUser = useLoggedInUser()
 
-  const bagItems = useLiveQuery(() => db.bagItems.toArray())
+  const bagItems = useLiveQuery(async () => await db.bagItems.toArray())
     ?.map(item => ({
       ...item,
       product: product.read().filter((object, i) => object.id === item.productId)[0]
-    }));
+    }))
 
   const total = bagItems && bagItems.reduce((prev, curr, i) => {
     const newSum = (curr.qty * curr.product.price) + prev

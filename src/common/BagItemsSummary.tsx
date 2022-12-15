@@ -1,13 +1,13 @@
-import { db } from "../db"
-import { CURRENCY, product } from "../models/product"
-import { useLiveQuery } from "dexie-react-hooks"
+import { db } from '../db'
+import { CURRENCY, product } from '../models/product'
+import { useLiveQuery } from 'dexie-react-hooks'
 
 export const BagItemsSummary = () => {
-  const bagItems = useLiveQuery(() => db.bagItems.toArray())
+  const bagItems = useLiveQuery(async () => await db.bagItems.toArray())
     ?.map(item => ({
       ...item,
       product: product.read().filter((object, i) => object.id === item.productId)[0]
-    }));
+    }))
   return (
     <>
       {bagItems && bagItems.map((bagObj, i) => {
@@ -25,7 +25,7 @@ export const BagItemsSummary = () => {
                   <div>Total: {CURRENCY} {bagObj.qty * bagObj.product.price}</div>
                 </div>
                 <div>
-                  <button><span onClick={() => db.bagItems.delete(bagObj.id)} className="material-symbols-outlined">close</span></button>
+                  <button><span onClick={async () => await db.bagItems.delete(bagObj.id)} className="material-symbols-outlined">close</span></button>
                 </div>
               </div>
             </div>

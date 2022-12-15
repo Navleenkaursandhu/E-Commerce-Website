@@ -1,9 +1,9 @@
-import { useState } from "react"
-import { PageAddress } from "./PageAddress"
-import { PageStartCheckout } from "./PageStartCheckout"
-import { PagePayment } from "./PagePayment"
-import { PageOrderSummary } from "./PageOrderSummary"
-import { PageOrderPlaced } from "./PageOrderPlaced"
+import { useState } from 'react'
+import { PageAddress } from './PageAddress'
+import { PageStartCheckout } from './PageStartCheckout'
+import { PagePayment } from './PagePayment'
+import { PageOrderSummary } from './PageOrderSummary'
+import { PageOrderPlaced } from './PageOrderPlaced'
 
 export const CheckoutProcess = () => {
   const [page, setPage] = useState(0)
@@ -24,7 +24,7 @@ export const CheckoutProcess = () => {
         setPage(prev => prev + 1)
         setCreditCardNum(inputCreditCardNum)
       }} />}
-      
+
       {page === 3 && <PageOrderSummary onNext={(orderId) => {
         setOrderId(orderId)
         setPage(prev => prev + 1)
@@ -36,5 +36,4 @@ export const CheckoutProcess = () => {
       {page === 4 && <PageOrderPlaced orderIdNum={orderId} />}
     </>
   )
-
 }

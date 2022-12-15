@@ -1,22 +1,20 @@
-import { useLiveQuery } from "dexie-react-hooks"
-import { Footer } from "../common/Footer"
-import { Header } from "../common/Header"
-import { db } from "../db"
-import { CURRENCY, product } from "../models/product"
-import { buttonShadowEffect } from "../common/tailwind_constants"
-import { BagItemsSummary } from "../common/BagItemsSummary"
-import { useLoggedInUser } from "../hooks/use_logged_in_user"
+import { useLiveQuery } from 'dexie-react-hooks'
+import { Footer } from '../common/Footer'
+import { Header } from '../common/Header'
+import { db } from '../db'
+import { CURRENCY, product } from '../models/product'
+import { buttonShadowEffect } from '../common/tailwind_constants'
+import { BagItemsSummary } from '../common/BagItemsSummary'
+import { useLoggedInUser } from '../hooks/use_logged_in_user'
 
 export const PageStartCheckout = (prop) => {
-
   const loggedInUser = useLoggedInUser()
 
-  const bagItems = useLiveQuery(() => db.bagItems.toArray())
+  const bagItems = useLiveQuery(async () => await db.bagItems.toArray())
     ?.map(item => ({
       ...item,
       product: product.read().filter((object, i) => object.id === item.productId)[0]
-    }));
-
+    }))
 
   return (
     <div className="text-[#7D515E] flex flex-col min-h-screen">
@@ -56,4 +54,3 @@ export const PageStartCheckout = (prop) => {
     </div>
   )
 }
-

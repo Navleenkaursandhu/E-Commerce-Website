@@ -1,10 +1,9 @@
-import { useState } from "react"
-import { PageUserSignedUp } from "./PageUserSignedUp"
-import { PageSignUp } from "./PageSignUp"
-import { PageLogin } from "../page_login/PageLogin"
+import { useState } from 'react'
+import { PageUserSignedUp } from './PageUserSignedUp'
+import { PageSignUp } from './PageSignUp'
+import { PageLogin } from '../page_login/PageLogin'
 
 export const SignUpProcess = () => {
-
   const [page, setPage] = useState(0)
 
   return (

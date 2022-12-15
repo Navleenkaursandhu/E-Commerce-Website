@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
-import { ShoppingBag } from "./ShoppingBag"
-import { buttonShadowEffect } from "./tailwind_constants"
-import { db } from "../db"
-import { useLoggedInUser } from "../hooks/use_logged_in_user"
+import { useEffect, useState } from 'react'
+import { ShoppingBag } from './ShoppingBag'
+import { buttonShadowEffect } from './tailwind_constants'
+import { db } from '../db'
+import { useLoggedInUser } from '../hooks/use_logged_in_user'
 
 export const Header = () => {
   const [isMenuClicked, setIsMenuClicked] = useState(false)
@@ -15,7 +15,6 @@ export const Header = () => {
   }
 
   useEffect(() => {
-
     const closeMenu = (e) => {
       setIsMenuClicked(false)
     }
@@ -29,8 +28,8 @@ export const Header = () => {
       <div className="flex flex-row bg-[#7D515E] justify-between sm:p-6 p-4 text-lg font-medium">
         <div className="flex flex-row items-center md:gap-10 gap-4">
           <span onClick={e => {
-            setIsMenuClicked(prev => !prev);
-            e.stopPropagation();
+            setIsMenuClicked(prev => !prev)
+            e.stopPropagation()
           }} className="sm:hidden inline text-[#F4DADB] material-symbols-outlined">
             menu
           </span>
@@ -49,7 +48,7 @@ export const Header = () => {
             <button className={`${buttonShadowEffect} px-1.5 py-1 bg-[#F4DADB] rounded-md`}><a href='./sign-up'>SIGN UP</a></button>
           </div>}
           {userLoginSessionData && <div>
-            <button onClick={() => logOutUser()} className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md`}>LOG OUT</button>
+            <button onClick={async () => await logOutUser()} className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md`}>LOG OUT</button>
           </div>}
           <div className="text-[#F4DADB]"><ShoppingBag /></div>
         </div>}
@@ -58,7 +57,7 @@ export const Header = () => {
           {userLoginSessionData && <div className="text-[#F4DADB] text-center ml-6 lg:text-lg sm:text-md text-sm">Welcome {userLoginSessionData.firstName}</div>}
           {!userLoginSessionData && <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md sm:inline hidden`}><a href='/login'>LOGIN</a></button>}
           {!userLoginSessionData && <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md sm:inline hidden`}><a href='./sign-up'>SIGN UP</a></button>}
-          {userLoginSessionData && <button onClick={() => logOutUser()} className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md sm:inline hidden`}>LOG OUT</button>}
+          {userLoginSessionData && <button onClick={async () => await logOutUser()} className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md sm:inline hidden`}>LOG OUT</button>}
           <div className=" sm:inline hidden"><ShoppingBag /></div>
         </div>
       </div>

@@ -1,15 +1,14 @@
-import { Footer } from "../common/Footer"
-import { Header } from "../common/Header"
-import { db } from "../db"
-import { useLiveQuery } from "dexie-react-hooks"
-import { useLoggedInUser } from "../hooks/use_logged_in_user"
-import { CURRENCY, product } from "../models/product"
-import { useLoggedInUserOrderHistory } from "../hooks/use_logged_in_user_order_history"
-import { buttonShadowEffect } from "../common/tailwind_constants"
-import { format } from "date-fns"
+import { Footer } from '../common/Footer'
+import { Header } from '../common/Header'
+import { db } from '../db'
+import { useLiveQuery } from 'dexie-react-hooks'
+import { useLoggedInUser } from '../hooks/use_logged_in_user'
+import { CURRENCY, product } from '../models/product'
+import { useLoggedInUserOrderHistory } from '../hooks/use_logged_in_user_order_history'
+import { buttonShadowEffect } from '../common/tailwind_constants'
+import { format } from 'date-fns'
 
 export const PageOrderHistory = () => {
-
   const orderPlacedData = useLoggedInUserOrderHistory()
 
   return (
@@ -27,7 +26,7 @@ export const PageOrderHistory = () => {
               return <div key={order.id} className="rounded-md bg-[#F4DADB] flex flex-col lg:gap-6 gap-12 p-4">
                 <div className="font-semibold" key={order.id}>
                   <div>OrderId: {order.id.toString().padStart(5, '0')}</div>
-                  <div>Date: {format (new Date(order.timestamp), "d MMMM, yyyy")}</div>
+                  <div>Date: {format(new Date(order.timestamp), 'd MMMM, yyyy')}</div>
                   <div>Total: {CURRENCY} {order.products.map((product) => product.price * product.qty).reduce((prev, curr) => prev + curr)}</div>
                 </div>
 
@@ -55,7 +54,6 @@ export const PageOrderHistory = () => {
                 })}
 
               </div>
-
             })}
           </div>
         </div>

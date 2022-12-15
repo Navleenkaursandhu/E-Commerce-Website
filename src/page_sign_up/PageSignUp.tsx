@@ -8,7 +8,6 @@ import bcrypt from 'bcryptjs'
 import { useLiveQuery } from 'dexie-react-hooks'
 
 export const PageSignUp = (prop) => {
-
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -18,21 +17,20 @@ export const PageSignUp = (prop) => {
 
   const accountsData = useLiveQuery(async () => await db?.user.toArray())
   const emailAlreadyExists = accountsData?.filter((account, i) => account.email === email)
-  
+
   const ContinueToAccountConfirmationPage = () => {
     if (firstName && lastName && email && password && confirmPassword && password === confirmPassword && !emailAlreadyExists.length) {
       return <button onClick={(event) => {
         prop.onNext()
         db.user.add({
-          email: email,
-          lastName: lastName,
-          firstName: firstName,
+          email,
+          lastName,
+          firstName,
           passwordHash: bcrypt.hashSync(password, 10)
         })
       }}
         className={`${buttonShadowEffect} p-2 font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] w-full rounded-md`}>CONTINUE</button>
-    }
-    else {
+    } else {
       return <div>
         <button onClick={() => setIsContinueButtonClicked(true)} className={`${buttonShadowEffect} p-2 font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] w-full rounded-md`}>CONTINUE</button>
         {isContinueButtonClicked && <div className='mt-4 text-red-800 flex items-center gap-1.5'><span className="material-symbols-outlined">

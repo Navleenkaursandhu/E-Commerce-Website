@@ -1,14 +1,14 @@
 import { buttonShadowEffect } from '../common/tailwind_constants'
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom'
 import { CURRENCY, product } from '../models/product'
-import { Header } from '../common/Header';
-import { Footer } from '../common/Footer';
-import { useState } from 'react';
-import { db } from '../db';
-import { useLiveQuery } from 'dexie-react-hooks';
-import { useLoggedInUserOrderHistory } from '../hooks/use_logged_in_user_order_history';
-import { useLoggedInUser } from '../hooks/use_logged_in_user';
-import { format } from 'date-fns';
+import { Header } from '../common/Header'
+import { Footer } from '../common/Footer'
+import { useState } from 'react'
+import { db } from '../db'
+import { useLiveQuery } from 'dexie-react-hooks'
+import { useLoggedInUserOrderHistory } from '../hooks/use_logged_in_user_order_history'
+import { useLoggedInUser } from '../hooks/use_logged_in_user'
+import { format } from 'date-fns'
 
 export const PageProductDetails = () => {
   const params = useParams()
@@ -25,7 +25,7 @@ export const PageProductDetails = () => {
   const userLoginSessionData = useLoggedInUser()
   const averageStars = !!reviewData?.length && reviewData.reduce((prevReviewObj, currReviewObj, i) => prevReviewObj + currReviewObj.rating, 0) / reviewData.length
 
-  const bagItems = useLiveQuery(() => db.bagItems.toArray())
+  const bagItems = useLiveQuery(async () => await db.bagItems.toArray())
   const totalItems = bagItems?.reduce((prev, curr, i) => prev + curr.qty, 0)
 
   return (
@@ -79,8 +79,8 @@ export const PageProductDetails = () => {
             <div className='pt-10'>
               <button
                 className={`${buttonShadowEffect} flex items-center justify-center gap-2 w-full font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}
-                onClick={() =>
-                  db.bagItems.add({
+                onClick={async () =>
+                  await db.bagItems.add({
                     productId: productObject.id,
                     size: productObject.sizes[sizeButtonClicked],
                     qty: Number(quantitySelected)
@@ -125,7 +125,7 @@ export const PageProductDetails = () => {
               review: reviewByLoggedInUser,
               rating: starIndex + 1,
               timestamp: new Date().getTime(),
-              userName: !!userLoginSessionData && userLoginSessionData.firstName,
+              userName: !!userLoginSessionData && userLoginSessionData.firstName
             })
 
             setReviewByLoggedInUser('')
@@ -164,7 +164,7 @@ export const PageProductDetails = () => {
                 return <div className='bg-[#F4DADB] p-4 rounded-md' key={i}>
                   <div className='flex flex-col'>
                     <div className='flex items-center gap-3.5'><span className="material-symbols-outlined md:text-4xl">account_circle</span>{reviewObj.userName} </div>
-                    <div className='sm:text-[16px] text-[12px]'>{format(new Date(reviewObj.timestamp), "d MMMM yyyy")}</div>
+                    <div className='sm:text-[16px] text-[12px]'>{format(new Date(reviewObj.timestamp), 'd MMMM yyyy')}</div>
                   </div>
                   <div>{new Array(5).fill(0).map((element, i) => <button key={i} className={i < reviewObj.rating ? 'text-yellow-400' : 'text-[#a3838ea3]'}><span className="material-symbols-outlined cursor-none">
                     grade

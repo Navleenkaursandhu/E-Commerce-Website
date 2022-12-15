@@ -1,19 +1,18 @@
-import { useReducer, useState } from "react"
-import { Footer } from "../common/Footer"
-import { Header } from "../common/Header"
-import { buttonShadowEffect } from "../common/tailwind_constants"
-import { db } from "../db"
+import { useReducer, useState } from 'react'
+import { Footer } from '../common/Footer'
+import { Header } from '../common/Header'
+import { buttonShadowEffect } from '../common/tailwind_constants'
+import { db } from '../db'
 import bcrypt from 'bcryptjs'
 
 export const PageResetPassword = (prop) => {
-
   const [newPasswordTyped, setNewPasswordTyped] = useState('')
   const [newPasswordRetyped, setNewPasswordRetyped] = useState('')
   const [isResetPasswordButtonClicked, setIsResetPasswordButtonClicked] = useState(false)
 
-  const passwordMatched = async() => {
-    const getUserAccount = await db.user.where({email: prop.emailEntered}).toArray()
-    db.user.update(getUserAccount[0].id, {passwordHash: bcrypt.hashSync(newPasswordTyped, 10)})
+  const passwordMatched = async () => {
+    const getUserAccount = await db.user.where({ email: prop.emailEntered }).toArray()
+    db.user.update(getUserAccount[0].id, { passwordHash: bcrypt.hashSync(newPasswordTyped, 10) })
     prop.onNext()
   }
 
@@ -24,9 +23,7 @@ export const PageResetPassword = (prop) => {
         setIsResetPasswordButtonClicked(true)
       }}
         className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>RESET PASSWORD</button>
-    }
-
-    else {
+    } else {
       return <div>
         <button onClick={() => setIsResetPasswordButtonClicked(true)} className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>RESET PASSWORD</button>
         {isResetPasswordButtonClicked && <div>Please type in same password in both the above fields </div>}

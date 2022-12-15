@@ -1,6 +1,6 @@
-import { Footer } from "../common/Footer"
-import { Header } from "../common/Header"
-import { buttonShadowEffect } from "../common/tailwind_constants"
+import { Footer } from '../common/Footer'
+import { Header } from '../common/Header'
+import { buttonShadowEffect } from '../common/tailwind_constants'
 
 export const PageUserSignedUp = (prop) => {
   return (
