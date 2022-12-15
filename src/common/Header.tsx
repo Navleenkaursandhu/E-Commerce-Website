@@ -50,7 +50,7 @@ export const Header = () => {
             <button className={`${buttonShadowEffect} px-1.5 py-1 bg-[#F4DADB] rounded-md`}><a href='./sign-up'>SIGN UP</a></button>
           </div>}
           {userLoginSessionData && <div>
-            <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md`}>LOG OUT</button>
+            <button onClick={() => logOutUser()} className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md`}>LOG OUT</button>
           </div>}
           <div className="text-[#F4DADB]"><ShoppingBag /></div>
         </div>}
