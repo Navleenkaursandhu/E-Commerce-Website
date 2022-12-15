@@ -37,17 +37,17 @@ export const PagePayment = (prop) => {
             <div className="flex md:flex-row flex-col gap-2">
               <div>
                 <div>Expiry Month*</div>
-                <input onChange={(e) => setInputExpiryMonth(e.target.value)} className='p-1.5 rounded-md bg-[#F4DADB]'></input>
+                <input type='number' onChange={(e) => setInputExpiryMonth(e.target.value)} className='p-1.5 rounded-md bg-[#F4DADB]'></input>
               </div>
 
               <div>
                 <div>Expiry Year*</div>
-                <input onChange={(e) => setInputExpiryYear(e.target.value)} className='p-1.5 rounded-md bg-[#F4DADB]'></input>
+                <input  type='number' onChange={(e) => setInputExpiryYear(e.target.value)} className='p-1.5 rounded-md bg-[#F4DADB]'></input>
               </div>
 
               <div>
                 <div>CVV*</div>
-                <input onChange={(e) => setInputCvv(e.target.value)} className='p-1.5 rounded-md bg-[#F4DADB]'></input>
+                <input  type='number' onChange={(e) => setInputCvv(e.target.value)} className='p-1.5 rounded-md bg-[#F4DADB]'></input>
               </div>
 
             </div>
