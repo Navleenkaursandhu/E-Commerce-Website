@@ -11,8 +11,6 @@ export const PageResetPassword = (prop) => {
   const [newPasswordRetyped, setNewPasswordRetyped] = useState('')
   const [isResetPasswordButtonClicked, setIsResetPasswordButtonClicked] = useState(false)
 
-  console.log(prop.emailEntered)
-
   const passwordMatched = async() => {
     const getUserAccount = await db.user.where({email: prop.emailEntered}).toArray()
     db.user.update(getUserAccount[0].id, {passwordHash: bcrypt.hashSync(newPasswordTyped, 10)})

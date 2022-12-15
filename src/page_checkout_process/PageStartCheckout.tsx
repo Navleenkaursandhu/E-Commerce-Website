@@ -11,8 +11,6 @@ export const PageStartCheckout = (prop) => {
 
   const loggedInUser = useLoggedInUser()
 
-  console.log(!!loggedInUser)
-
   const bagItems = useLiveQuery(() => db.bagItems.toArray())
     ?.map(item => ({
       ...item,

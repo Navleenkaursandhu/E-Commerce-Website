@@ -10,11 +10,7 @@ export const PageForgotPassword = (prop) => {
   const [enteredEmail, setEnteredEmail] = useState('')
   const [isValidEmail, setIsValidEmail] = useState(false)
   const [recoverButtonClicked, setRecoverButtonClicked] = useState(false)
-  console.log(enteredEmail)
-
   const accountHolderUsersData = useLiveQuery(async () => await db.user.toArray())
-
-  console.log(!!accountHolderUsersData?.length && accountHolderUsersData)
 
   const isEmailValid = () => {
     setRecoverButtonClicked(true)

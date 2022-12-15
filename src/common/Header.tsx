@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { ShoppingBag } from "./ShoppingBag"
 import { buttonShadowEffect } from "./tailwind_constants"
 import { db } from "../db"
-import { useLiveQuery } from "dexie-react-hooks"
 import { useLoggedInUser } from "../hooks/use_logged_in_user"
 
 export const Header = () => {

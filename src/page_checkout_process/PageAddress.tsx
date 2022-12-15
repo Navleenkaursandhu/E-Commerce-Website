@@ -6,8 +6,7 @@ import { buttonShadowEffect } from "../common/tailwind_constants"
 export const PageAddress = (prop) => {
   const [inputAddress, setInputAddress] = useState('')
   const [isPaymentButtonClicked, setIsPaymentButtonClicked] = useState(false)
-
-  console.log(inputAddress)
+  
   const ContinueToPaymentButton = () => {
     if (inputAddress) {
       return <button onClick={() => prop.onNext(inputAddress)} className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>CONTINUE TO PAYMENT</button>

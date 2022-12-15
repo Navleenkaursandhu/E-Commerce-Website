@@ -19,8 +19,6 @@ export const Body = () => {
 
   const reviewsData = useLiveQuery(async () => await db.reviews.toArray())
 
-  console.log(!!reviewsData?.length && reviewsData)
-
   return (
     <div className='bg-[#F3EBF1]'>
       <div className="flex md:h-[44rem] sm:h-[30rem] h-[18rem]">

@@ -7,16 +7,12 @@ import { useState } from 'react'
 import { db } from '../db'
 import bcrypt from 'bcryptjs'
 import addDays from 'date-fns/addDays'
-import addMinutes from 'date-fns/addMinutes'
 
 export const PageLogin = () => {
   const [userEmail, setUserEmail] = useState('')
   const [userPassword, setUserPassword] = useState('')
   const [loginSuccessful, setLoginSuccessful] = useState(false)
   const [loginFailed, setLoginFailed] = useState(false)
-
-
-  console.log(db.loginSession.count())
 
   const loginUser = async () => {
     setLoginSuccessful(false)
