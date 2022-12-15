@@ -1,4 +1,4 @@
-import { useReducer, useState } from 'react'
+import { useState } from 'react'
 import { Footer } from '../common/Footer'
 import { Header } from '../common/Header'
 import { buttonShadowEffect } from '../common/tailwind_constants'

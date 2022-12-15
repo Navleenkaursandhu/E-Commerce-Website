@@ -12,7 +12,6 @@ import { PageProductDetails } from './page_product_details/PageProductDetails'
 import { CheckoutProcess } from './page_checkout_process/CheckoutProcess'
 import { SignUpProcess } from './page_sign_up/SignUpProcess'
 import { PageOrderHistory } from './page_order_history/PageOrderHistory'
-import { PageResetPassword } from './page_forgot_password/PageResetPassword'
 
 export const App = () => {
   return (

@@ -74,7 +74,7 @@ export const PageSignUp = (prop) => {
                 <input type='password' onChange={(e) => setConfirmPassword(e.target.value)} className='w-full px-4 py-2 rounded-md bg-[#F4DADB]'></input>
                 {(password !== confirmPassword) && isContinueButtonClicked && <div className='text-red-800 flex items-center gap-1.5'><span className="material-symbols-outlined">
                   warning
-                </span>Password doesn't match!</div>}
+                </span>Password doesn&apos;t match!</div>}
               </div>
               <ContinueToAccountConfirmationPage />
               <div className='text-center'>*This will not create a real account</div>

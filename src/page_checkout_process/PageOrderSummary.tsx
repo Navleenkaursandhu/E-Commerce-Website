@@ -16,7 +16,7 @@ export const PageOrderSummary = (prop) => {
       product: product.read().filter((object, i) => object.id === item.productId)[0]
     }))
 
-  const total = bagItems && bagItems.reduce((prev, curr, i) => {
+  const total = !!bagItems && bagItems.reduce((prev, curr, i) => {
     const newSum = (curr.qty * curr.product.price) + prev
     return newSum
   }, 0)
@@ -44,7 +44,7 @@ export const PageOrderSummary = (prop) => {
           <div className="flex-1 md:p-16 p-4">
             <div className="flex flex-col gap-16">
               <div>
-                <div className="flex-1 text-center sm:text-2xl text-lg">Total Items: {bagItems && bagItems.reduce((prev, curr, i) => prev + curr.qty, 0)}</div>
+                <div className="flex-1 text-center sm:text-2xl text-lg">Total Items: {!!bagItems && bagItems.reduce((prev, curr, i) => prev + curr.qty, 0)}</div>
                 <div className="h-0.5 bg-[#7D515E]"></div>
               </div>
               <BagItemsSummary />

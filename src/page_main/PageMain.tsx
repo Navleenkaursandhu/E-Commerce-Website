@@ -6,7 +6,7 @@ export const PageMain = () => {
     <div className="text-[#7D515E]">
       <Header />
       <Body />
-      <Footer/>
+      <Footer />
     </div>
   )
 }

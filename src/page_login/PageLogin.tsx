@@ -1,4 +1,3 @@
-import { useLiveQuery } from 'dexie-react-hooks'
 import { buttonShadowEffect } from '../common/tailwind_constants'
 import girlLoginImage from '../assets/GirlLoginImage.svg'
 import { Header } from '../common/Header'
@@ -11,11 +10,9 @@ import addDays from 'date-fns/addDays'
 export const PageLogin = () => {
   const [userEmail, setUserEmail] = useState('')
   const [userPassword, setUserPassword] = useState('')
-  const [loginSuccessful, setLoginSuccessful] = useState(false)
   const [loginFailed, setLoginFailed] = useState(false)
 
   const loginUser = async () => {
-    setLoginSuccessful(false)
     setLoginFailed(false)
 
     const result = await db.user.where({ email: userEmail }).toArray()
@@ -28,8 +25,6 @@ export const PageLogin = () => {
     if (!isMatch) {
       setLoginFailed(true)
     } else {
-      setLoginSuccessful(true)
-
       await db.loginSession.clear()
 
       await db.loginSession.add({

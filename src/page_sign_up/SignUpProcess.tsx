@@ -10,7 +10,7 @@ export const SignUpProcess = () => {
     <>
       {page === 0 && <PageSignUp onNext={() => setPage(prev => prev + 1)} />}
       {page === 1 && <PageUserSignedUp onNext={() => setPage(prev => prev + 1)} />}
-      {page === 2 && <PageLogin/>}
+      {page === 2 && <PageLogin />}
 
     </>
   )

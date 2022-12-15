@@ -10,7 +10,7 @@ export const BagItemsSummary = () => {
     }))
   return (
     <>
-      {bagItems && bagItems.map((bagObj, i) => {
+      {!!bagItems && bagItems.map((bagObj, i) => {
         return (
           <div key={bagObj.id}>
             <div className="flex sm:flex-row flex-col lg:gap-12 gap-6 ">

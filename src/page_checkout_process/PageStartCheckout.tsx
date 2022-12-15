@@ -27,7 +27,7 @@ export const PageStartCheckout = (prop) => {
         {!!bagItems?.length && <div className="p-10">
           <div className="flex flex-row">
             <div className="sm:text-2xl text-lg">MY BAG</div>
-            <div className="flex-1 text-center sm:text-2xl text-lg">Total Items: {bagItems && bagItems.reduce((prev, curr, i) => prev + curr.qty, 0)}</div>
+            <div className="flex-1 text-center sm:text-2xl text-lg">Total Items: {!!bagItems && bagItems.reduce((prev, curr, i) => prev + curr.qty, 0)}</div>
           </div>
           <div className="h-0.5 bg-[#7D515E]"></div>
         </div>}
@@ -37,7 +37,7 @@ export const PageStartCheckout = (prop) => {
             <BagItemsSummary />
           </div>
           <div className="flex flex-col flex-1 items-center gap-4">
-            <div className="sm:text-2xl text-lg">Estimated Total: {CURRENCY} {bagItems && bagItems.reduce((prev, curr, i) => {
+            <div className="sm:text-2xl text-lg">Estimated Total: {CURRENCY} {!!bagItems && bagItems.reduce((prev, curr, i) => {
               const newSum = (curr.qty * curr.product.price) + prev
               return newSum
             }, 0)}</div>

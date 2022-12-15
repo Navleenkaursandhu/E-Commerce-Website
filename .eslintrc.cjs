@@ -1,3 +1,5 @@
+const { off } = require("process");
+
 module.exports = {
   env: {
     browser: true,
@@ -16,6 +18,7 @@ module.exports = {
         "react/prop-types": "off", // consider keeping it on
         "@typescript-eslint/strict-boolean-expressions": "off",
         "@typescript-eslint/restrict-template-expressions": "off",
+        "@typescript-eslint/prefer-nullish-coalescing": "off",
       }
     }
   ],
