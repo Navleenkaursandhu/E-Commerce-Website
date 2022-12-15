@@ -55,7 +55,7 @@ export const Body = () => {
           const productReviews = !!reviewsData?.length && reviewsData.filter((productReview, i) => productReview.productId === obj.id)
           const productReviewsAverage = !!productReviews.length && Math.floor(productReviews.reduce((prevReview, currReview) => prevReview + currReview.rating, 0) / productReviews.length)
 
-          return <div className='hover:shadow-md hover:shadow-rose-200 rounded-md p-2'>
+          return <div className='hover:bg-[#F4DADB] rounded-md p-2'>
             <a href={`/product-details/${obj.id}`} key={obj.id} className='flex flex-col gap-1.5 md:[24rem] sm:w-[16rem] w-[9rem]'>
               <img className='rounded-md' src={obj.image}></img>
               <div>
@@ -71,7 +71,7 @@ export const Body = () => {
               </div>
               <div>{obj.name}</div>
               <div>{CURRENCY} {obj.price.toFixed(2)}</div>
-              {obj.hasFreeDelivery && <div className='bg-[#F4DADB] sm:px-3 sm:py-1 p-1 rounded-md sm:w-1/2 w-full text-center'>Free Delivery</div>
+              {obj.hasFreeDelivery && <div className='bg-[#F4DADB] border-[1px] border-[#0000001a] sm:px-3 sm:py-1 p-1 rounded-md sm:w-1/2 w-full text-center'>Free Delivery</div>
               }
             </a>
           </div>
