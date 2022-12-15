@@ -14,7 +14,7 @@ export const PageSignUp = (prop) => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [isContinueButtonClicked, setIsContinueButtonClicked] = useState(false)
- 
+
   const ContinueToAccountConfirmationPage = () => {
     if (firstName && lastName && email && password && confirmPassword && password === confirmPassword) {
       return <button onClick={(event) => {
@@ -31,7 +31,9 @@ export const PageSignUp = (prop) => {
     else {
       return <div>
         <button onClick={() => setIsContinueButtonClicked(true)} className={`${buttonShadowEffect} p-2 font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] w-full rounded-md`}>CONTINUE</button>
-        {isContinueButtonClicked && <div>Please fill all the fields to create an account</div>}
+        {isContinueButtonClicked && <div className='mt-4 text-red-800 flex items-center gap-1.5'><span className="material-symbols-outlined">
+          warning
+        </span>Please fill all the fields to create an account</div>}
       </div>
     }
   }
