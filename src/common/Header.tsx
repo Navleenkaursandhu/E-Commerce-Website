@@ -42,7 +42,7 @@ export const Header = () => {
 
         {isMenuClicked && <div onClick={(e) => e.stopPropagation()} className="flex flex-col z-10 gap-6 sm:hidden absolute top-20 bg-[#7D515E] p-6 rounded-md text-sm">
           <a className="text-[#F4DADB]" href='/about-us'>About us</a>
-          {userLoginSessionData && <div className="text-[#F4DADB]">Orders</div>}
+          {userLoginSessionData && <div className="text-[#F4DADB]"><a href='/order-history'>Orders</a></div>}
           {!userLoginSessionData && <div>
             <button className={`${buttonShadowEffect} px-1.5 py-1 bg-[#F4DADB] rounded-md`}><a href='/login'>LOGIN</a></button>
           </div>}
