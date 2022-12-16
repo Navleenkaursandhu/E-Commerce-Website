@@ -1,5 +1,5 @@
 import { buttonShadowEffect } from '../common/tailwind_constants'
-import girlSignUpImage from '../assets/girlSignUpImage.svg'
+import girlSignUpImage from '../assets/GirlSignUpImage.svg'
 import { Header } from '../common/Header'
 import { Footer } from '../common/Footer'
 import { useState } from 'react'
