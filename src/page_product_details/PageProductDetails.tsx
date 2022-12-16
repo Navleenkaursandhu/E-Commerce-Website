@@ -79,13 +79,13 @@ export const PageProductDetails = () => {
             <div className='pt-10'>
               <button
                 className={`${buttonShadowEffect} flex items-center justify-center gap-2 w-full font-semibold shadow-[4px_4px_0px_0px_#c6838a9e] hover:shadow-[2px_2px_0px_0px_#c6838a9e] bg-[#F4DADB] p-2 rounded-md`}
-                onClick={async () =>
-                  await db.bagItems.add({
+                onClick={() => {
+                  void db.bagItems.add({
                     productId: productObject.id,
                     size: productObject.sizes[sizeButtonClicked],
                     qty: Number(quantitySelected)
                   })
-                }
+                }}
               >
                 Add To Bag<span className="material-symbols-outlined text-3xl ">
                   shopping_bag
@@ -119,7 +119,7 @@ export const PageProductDetails = () => {
           <textarea className='p-4 h-[10rem]' onChange={(e) => setReviewByLoggedInUser(e.target.value)} value={reviewByLoggedInUser}></textarea>
 
           <button onClick={() => {
-            db.reviews.add({
+            void db.reviews.add({
               userId: ordersWithProduct[0].userId,
               productId: id,
               review: reviewByLoggedInUser,

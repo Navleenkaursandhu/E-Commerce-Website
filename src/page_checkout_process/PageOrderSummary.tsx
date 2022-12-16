@@ -21,6 +21,23 @@ export const PageOrderSummary = (prop) => {
     return newSum
   }, 0)
 
+  const onClickPlaceOrderButton = async () => {
+    const orderId = await db.order.add({
+      userId: loggedInUser.id,
+      timestamp: new Date().getTime(),
+      products: bagItems.map(item => {
+        return {
+          productId: item.product.id,
+          qty: item.qty,
+          price: item.product.price,
+          size: item.size
+        }
+      })
+    })
+    prop.onNext(orderId)
+    await db.bagItems.clear()
+  }
+
   const displayCreditCardNum = prop.payment.slice(0, prop.payment.length - 4).replace(/[0-9]/g, '*').concat(prop.payment.slice(prop.payment.length - 4))
 
   return (
@@ -61,21 +78,8 @@ export const PageOrderSummary = (prop) => {
                 <div className="pt-8 text-2xl font-semibold">TOTAL: {CURRENCY} {(total * 1.12).toFixed(2)}</div>
               </div>
 
-              <button onClick={async () => {
-                const orderId = await db.order.add({
-                  userId: loggedInUser.id,
-                  timestamp: new Date().getTime(),
-                  products: bagItems.map(item => {
-                    return {
-                      productId: item.product.id,
-                      qty: item.qty,
-                      price: item.product.price,
-                      size: item.size
-                    }
-                  })
-                })
-                prop.onNext(orderId)
-                db.bagItems.clear()
+              <button onClick={() => {
+                void onClickPlaceOrderButton()
               }} className={`${buttonShadowEffect} font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>PLACE ORDER</button>
             </div>
           </div>

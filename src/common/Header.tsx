@@ -48,7 +48,7 @@ export const Header = () => {
             <button className={`${buttonShadowEffect} px-1.5 py-1 bg-[#F4DADB] rounded-md`}><a href='./sign-up'>SIGN UP</a></button>
           </div>}
           {userLoginSessionData && <div>
-            <button onClick={async () => await logOutUser()} className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md`}>LOG OUT</button>
+            <button onClick={() => { void logOutUser() }} className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md`}>LOG OUT</button>
           </div>}
           <div className="text-[#F4DADB]"><ShoppingBag /></div>
         </div>}
@@ -57,7 +57,7 @@ export const Header = () => {
           {userLoginSessionData && <div className="text-[#F4DADB] text-center ml-6 lg:text-lg sm:text-md text-sm">Welcome {userLoginSessionData.firstName}</div>}
           {!userLoginSessionData && <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md sm:inline hidden`}><a href='/login'>LOGIN</a></button>}
           {!userLoginSessionData && <button className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md sm:inline hidden`}><a href='./sign-up'>SIGN UP</a></button>}
-          {userLoginSessionData && <button onClick={async () => await logOutUser()} className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md sm:inline hidden`}>LOG OUT</button>}
+          {userLoginSessionData && <button onClick={() => { void logOutUser() }} className={`${buttonShadowEffect} px-3 py-1 bg-[#F4DADB] rounded-md sm:inline hidden`}>LOG OUT</button>}
           <div className=" sm:inline hidden"><ShoppingBag /></div>
         </div>
       </div>

@@ -22,7 +22,7 @@ export const PageSignUp = (prop) => {
     if (firstName && lastName && email && password && confirmPassword && password === confirmPassword && !emailAlreadyExists.length) {
       return <button onClick={(event) => {
         prop.onNext()
-        db.user.add({
+        void db.user.add({
           email,
           lastName,
           firstName,

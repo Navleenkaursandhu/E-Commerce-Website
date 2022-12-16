@@ -55,7 +55,7 @@ export const PageLogin = () => {
                   <div><a href='/forgot-password'>Forgot Password?</a></div>
                 </div>
               </div>
-              <button onClick={async () => await loginUser()} className={`${buttonShadowEffect} font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] w-full p-2 rounded-md`}>LOGIN</button>
+              <button onClick={() => { void loginUser() }} className={`${buttonShadowEffect} font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] w-full p-2 rounded-md`}>LOGIN</button>
               {loginFailed && <div className="flex items-center justify-center gap-1.5 text-red-800 text-lg"><span className="material-symbols-outlined">
                 warning
               </span>Oops! Incorrect E-mail or Password</div>}

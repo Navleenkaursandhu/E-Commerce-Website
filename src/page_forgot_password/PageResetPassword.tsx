@@ -12,14 +12,14 @@ export const PageResetPassword = (prop) => {
 
   const passwordMatched = async () => {
     const getUserAccount = await db.user.where({ email: prop.emailEntered }).toArray()
-    db.user.update(getUserAccount[0].id, { passwordHash: bcrypt.hashSync(newPasswordTyped, 10) })
+    await db.user.update(getUserAccount[0].id, { passwordHash: bcrypt.hashSync(newPasswordTyped, 10) })
     prop.onNext()
   }
 
   const ResetPasswordButton = () => {
     if (newPasswordTyped && newPasswordRetyped && newPasswordRetyped === newPasswordTyped) {
       return <button onClick={() => {
-        passwordMatched()
+        void passwordMatched()
         setIsResetPasswordButtonClicked(true)
       }}
         className={`${buttonShadowEffect} w-full font-semibold shadow-[4px_4px_0px_0px_#B58396] hover:shadow-[2px_2px_0px_0px_#B58396] bg-[#C2ADB3] p-2 rounded-md`}>RESET PASSWORD</button>

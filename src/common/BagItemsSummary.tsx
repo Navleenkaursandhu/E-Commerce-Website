@@ -25,7 +25,7 @@ export const BagItemsSummary = () => {
                   <div>Total: {CURRENCY} {bagObj.qty * bagObj.product.price}</div>
                 </div>
                 <div>
-                  <button><span onClick={async () => await db.bagItems.delete(bagObj.id)} className="material-symbols-outlined">close</span></button>
+                  <button><span onClick={() => { void db.bagItems.delete(bagObj.id) }} className="material-symbols-outlined">close</span></button>
                 </div>
               </div>
             </div>

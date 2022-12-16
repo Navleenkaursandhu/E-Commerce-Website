@@ -42,12 +42,12 @@ export const PagePayment = (prop) => {
 
               <div>
                 <div>Expiry Year*</div>
-                <input  type='number' onChange={(e) => setInputExpiryYear(e.target.value)} className='p-1.5 rounded-md bg-[#F4DADB]'></input>
+                <input type='number' onChange={(e) => setInputExpiryYear(e.target.value)} className='p-1.5 rounded-md bg-[#F4DADB]'></input>
               </div>
 
               <div>
                 <div>CVV*</div>
-                <input  type='number' onChange={(e) => setInputCvv(e.target.value)} className='p-1.5 rounded-md bg-[#F4DADB]'></input>
+                <input type='number' onChange={(e) => setInputCvv(e.target.value)} className='p-1.5 rounded-md bg-[#F4DADB]'></input>
               </div>
 
             </div>
