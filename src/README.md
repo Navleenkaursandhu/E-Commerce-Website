@@ -14,6 +14,7 @@ securely store user passwords and implement password hashing to protect user dat
 system for managing user orders and displaying order history along with adding responsive design to the website. 
 Overall, this project was a challenging and rewarding experience that allowed me to learn and apply a wide range of 
 technologies to create a functional e-commerce shopping website.
+
 ## SKILLS: 
 - Figma
 - Graphic Design
