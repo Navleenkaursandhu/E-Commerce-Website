@@ -6,7 +6,7 @@ along with React Router for managing routing and navigation within the app. I al
 framework, to style the website and make it look more professional. For the database, I used Dexie.js, a powerful in-browser database.
 Also, the graphic design for the entire website was initially done in Figma. 
 
-In order to view my website design, please visit: ''
+In order to view my website design, please visit: <https://ecommerce.navleenbrar.com/>
 
 One of the most complex aspects of this project was implementing the user authentication and authorization system.
 This involved creating routes and components for signing up, logging in, and managing user accounts. I also had to
